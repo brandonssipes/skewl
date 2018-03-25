@@ -1,0 +1,10 @@
+#!/bin/bash
+
+IFS='/'
+
+for i in $1; do
+  path+=" $path/$i"
+done
+IFS=
+
+echo $path

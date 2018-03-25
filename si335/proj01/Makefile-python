@@ -1,0 +1,8 @@
+build:
+	@echo "do nothing"
+
+command:
+	@echo "python3 selection.py"
+
+user:
+	@echo "roche"

@@ -1,0 +1,33 @@
+.caltable {
+  border-style: solid; 
+  border-collapse: collapse; 
+  border-width: 2px; 
+  border-color: #000084;
+  background: #FFFFFF;
+  width: 100%;
+  height: 95%;
+}
+
+.pad{padding: 20px;}
+
+td { 
+  width: 100pt;
+  border-width:1px;
+  border-style: solid; 
+  position: relative;
+  text-align: center;
+  empty-cells: show;
+}
+.calheader {
+  bottom: auto;
+  float: left;
+  display: block;
+  text-align: left;
+}
+tr.reg {
+  height: 86pt;
+  vertical-align: top;
+}
+tr {
+  display: table-row;
+}

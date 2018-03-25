@@ -1,0 +1,8 @@
+build:
+	javac selection.java
+
+command:
+	@echo "java selection"
+
+user:
+	@echo "roche"

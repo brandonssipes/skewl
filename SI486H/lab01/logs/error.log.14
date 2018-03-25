@@ -1,0 +1,4 @@
+[Tue Jan 02 06:25:02.374170 2018] [auth_digest:notice] [pid 2584] AH01757: generating secret for digest authentication ...
+[Tue Jan 02 06:25:02.401388 2018] [mpm_prefork:notice] [pid 2584] AH00163: Apache/2.4.18 (Ubuntu) OpenSSL/1.0.2g mod_perl/2.0.9 Perl/v5.22.1 configured -- resuming normal operations
+[Tue Jan 02 06:25:02.401401 2018] [core:notice] [pid 2584] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 03 06:25:02.050451 2018] [mpm_prefork:notice] [pid 2584] AH00171: Graceful restart requested, doing restart

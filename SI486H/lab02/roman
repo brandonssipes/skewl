@@ -1,0 +1,102 @@
+#!/bin/bash
+
+
+#Take a singular roman numeral and convert it to decimal
+function romdigit () {
+  Romulus=${1}
+  DIGIT=$(case $Romulus in
+    I)  echo 1;;
+    V)  echo 5;;
+    X)  echo 10;;
+    L)  echo 50;;
+    C)  echo 100;;
+    D)  echo 500;;
+    M)  echo 1000;;
+    *)  echo "NAN";;
+  esac)
+} 
+
+#romdigit 'P'
+#echo $DIGIT
+
+#REGEX Explained
+#^M{0,4} must start with between zero and four M's
+#(CD|CM| C can come before D or M or D can be alone D?C{0,3}) or three or more C's
+#(XC|XL| X can come before C or L or L can be alone L?X{0,3}) or three or more X's
+#(IX|IV| I can come before X or V or V can be alone V?I{0,3}) or three or more I's
+#$ this has to end it
+#
+
+#Based on a regular expression that should match all possible roman numerals determine if an 
+#inputed string is a valid roman numeral
+function isValidRom {
+  if [[ ${1} =~ ^M{0,4}(CD|CM|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$ ]]; then
+    echo 0
+  else
+    echo 1
+  fi
+}
+
+
+
+#Put all the functions together to get the full conversion
+cvtRom2Dec () {
+  #if it is invalid then just return out
+  if [ $(isValidRom ${1}) = 1 ]; then
+    echo -1;
+    return;
+  fi
+  local VALUE=0
+  #loop over every character of the roman numerals
+  for (( BLANK=0; BLANK < ${#1}; )); do
+    romdigit ${1:$BLANK:1}
+    local CURR=$DIGIT
+
+    romdigit ${1:$BLANK+1:1}
+    local NEXT=$DIGIT
+
+    #if the next character is greater we subtract
+    if (($CURR <  $NEXT)); then       #IX
+      VALUE=$((VALUE + NEXT - CURR));
+      BLANK=$((BLANK + 2));#move two characters over
+
+    #if the next character is less we add
+    elif (( $CURR > $NEXT )); then        #XI
+      VALUE=$((VALUE + CURR));
+      BLANK=$((BLANK + 1));#over two characters over
+      romdigit ${1:$BLANK+1:1}#check next character
+      if (( $NEXT > $DIGIT )); then continue; fi #XIV
+      VALUE=$((VALUE + NEXT)); 
+      BLANK=$((BLANK + 1));
+
+      #if the next digit is equal to the previous, continue to add
+      if (( $NEXT == $DIGIT )); then     #XII
+        VALUE=$((VALUE + DIGIT));
+        BLANK=$((BLANK + 1));
+        romdigit ${1:$BLANK:1}
+        #up to three times
+        if (( $NEXT == $DIGIT)); then   #XIII
+          VALUE=$((VALUE + DIGIT));
+          BLANK=$((BLANK + 1));
+        fi
+      fi
+    else
+      VALUE=$((VALUE+CURR+NEXT));        #X
+      BLANK=$((BLANK + 2));
+    fi
+  done
+  echo $VALUE
+}
+
+echo $(cvtRom2Dec ${1})
+      
+    
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,164 @@
+#!/bin/bash
+
+###Brandon Sipes Lab 3###########
+###Histogram of syslog data######
+
+
+MARK=${MARK:=#} #if unset use mark
+
+function sharp (){ #function to print the marks out for days
+  arr=("$@")
+  base=0
+  for i in ${arr[@]};do
+    base=$(( i > base ? i : base )) #find max number
+  done
+  for i in ${!arr[@]}; do #loop through each index and print them out with the marks
+    let indice=$i+1
+    printf "%02d ( %02d):" $indice ${arr[$i]}
+    math=$(( arr[$i]*50/base )) #determine how many marks to print out with a max of 50
+    for ((j=0; j<math; ++j)){
+      echo -n $MARK
+    }
+    echo
+  done
+}
+
+
+function d () { #function if days is inputed
+declare -a Jan #declare arrays to use
+declare -a Nov
+declare -a Dec
+while read mon day tim host five six seven eight nine ten rest; do #loop through each line pulling out what I need 
+
+  if [ ${ten%%=*} == "from" ]; then #from vs to
+    case $mon in
+      Jan)  Jan[$day]=$((Jan[$day]+=1)); #for each month parse out largest and total ammounts and add to each day
+        First=${rest##*size=};
+        size=${First%%,*};
+        maxJan=$(( size > maxJan ? size : maxJan ));
+        let janCount=$janCount+1;
+        let totalSizeJan=$totalSizeJan+$size;;
+      Dec) Dec[$day]=$((Dev[$day]+=1));
+        First=${rest##*size=};
+        size=${First%%,*};
+        maxDec=$(( size > maxDec ? size : maxDec ));
+        let decCount=$decCount+1;
+        let totalSizeDec=$totalSizeDec+$size;;
+      Nov)  Nov[$day]=$((Nov[$day]+=1));
+        First=${rest##*size=};
+        size=${First%%,*};
+        maxNov=$(( size > maxNov ? size : maxNov ));
+        let novCount=$novCount+1;
+        let totalSizeNov=$totalSizeNov+$size;;
+    esac
+  fi
+done < syslog.data
+
+#begin printing everything out
+
+echo -e "            Mail Log Analysis\n"
+echo -e "               By Month/Day\n"
+echo "Jan"
+sharp "${Jan[@]}"
+let avgJan=$totalSizeJan/$janCount
+printf "Largest message: %d\navg.(mean) size:  %d\n\n" $maxJan $avgJan
+echo "Dec"
+sharp "${Dec[@]}"
+let avgDec=$totalSizeDec/$decCount
+printf "Largest message: %d\navg.(mean) size:  %d\n\n" $maxDec $avgDec
+echo "Nov"
+sharp "${Nov[@]}"
+let avgNov=$totalSizeNov/$novCount
+printf "Largest message: %d\navg.(mean) size:  %d\n" $maxNov $avgNov
+}
+
+
+function a { #function for addr
+  declare -A uniqFrom
+  declare -A uniqTo
+  declare -A statTo
+  declare -a nrcptsFrom
+  while read mon day tim host five six seven eight nine ten rest; do #loop through everything
+    if [ ${ten%%=*} == "from" ]; then #only care about the froms
+      address=${ten##*=}
+      uniqFrom[$address]=1    #parse everything out
+      first=${rest##*nrcpts=};
+      num=${first%%,*}
+      nrcptsFrom[$num]=$((nrcptsFrom[$num]+=1))
+    fi
+    if [ ${ten%%=*} == "to" ]; then
+      address=${ten##*=}
+      uniqTo[$address]=1
+      first=${rest##*stat=};
+      stat=${first%% *}
+      stat=${stat%%:}
+      statTo[$stat]=$((statTo[$stat]+=1))
+    fi
+    err=${ten##*E}
+    err=${err:0:4}
+    if [ $err == "rror" ]; then
+      let errCount=$errCount+1
+    fi
+  done < syslog.data
+
+  #start printing things out
+
+  echo -e "          Mail Log Analysis\n"
+  echo -e "              By Address\n"
+  echo -e "From:"
+
+  counter=0
+  for i in ${!uniqFrom[@]}; do
+    let counter=$counter+1 #count uniqs
+  done
+  printf "  %d unique addresses\n  number of recipients per msg:\n" $counter
+  for i in ${nrcptsFrom[@]}; do
+    base=$(( i > base ? i : base )) #same basic method of counting out how many marks as part 1
+  done
+  for i in ${!nrcptsFrom[@]}; do
+    printf "  %d: (%4d): " $i ${nrcptsFrom[$i]}
+    math=$(( ${nrcptsFrom[$i]}*50/base ))
+    if [[ math -lt 1 ]]; then
+      math=1
+    fi
+    for ((j=0; j<math; ++j)){
+      echo -n $MARK
+    }
+    echo
+  done
+
+
+
+  echo -e "\nTo:"
+  counter=0
+  for i in ${!uniqTo[@]}; do
+    let counter=$counter+1
+  done
+  printf "   %d unique addresses\n   by status:\n" $counter
+  base=0
+  for i in ${statTo[@]}; do
+    base=$(( i > base ? i : base ))
+  done
+  for i in ${!statTo[@]}; do
+    printf "   %-8s:  (%4d): " $i ${statTo[$i]}
+    math=$(( ${statTo[$i]}*50/base ))
+    if [[ math -lt 1 ]]; then
+      math=1
+    fi
+    for ((j=0; j<math; ++j)){
+      echo -n $MARK
+    }
+    echo
+  done
+  printf "\n\n\nErrors:  %d\n" $errCount
+
+}
+
+
+
+case ${1} in  #begining input checking
+  days) d;;
+  addr) a;;
+  *) echo "unknown argument" >&2; exit 2;;
+esac
+

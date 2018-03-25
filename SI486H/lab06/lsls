@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#Brandon Sipes
+#program to ls -ld the file name of each file along a path
+#in order to check all the permissions
+
+IFS='/'
+
+count=0
+
+declare -a magic #split everything up into an array
+for i in $1; do
+  magic[$count]=$i
+  let count++
+done
+
+path=""
+comm=""
+for i in "${!magic[@]}"; do  #go through everything and create a command string
+  if (( i == 0 )); then
+    path="${magic[$i]}"
+    comm+="$path/,"
+    continue
+  fi
+  if (( i == ${#magic[@]} )); then
+    continue
+  fi
+  path+="/${magic[$i]}"
+  comm+="$path,"
+done
+IFS=","
+
+
+echo `ls -ld $comm` #finally print out the full command all at once
+

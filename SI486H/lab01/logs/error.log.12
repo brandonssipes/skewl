@@ -1,0 +1,13 @@
+[Thu Jan 04 06:25:01.857757 2018] [auth_digest:notice] [pid 2584] AH01757: generating secret for digest authentication ...
+[Thu Jan 04 06:25:01.884162 2018] [mpm_prefork:notice] [pid 2584] AH00163: Apache/2.4.18 (Ubuntu) OpenSSL/1.0.2g mod_perl/2.0.9 Perl/v5.22.1 configured -- resuming normal operations
+[Thu Jan 04 06:25:01.884174 2018] [core:notice] [pid 2584] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 04 17:46:42.776260 2018] [:error] [pid 169669] [client 10.4.25.196:58643] PHP Notice:  Undefined variable: content in /home/mids/m190108/public_html/IT350/Lab06/index.php on line 37, referer: http://midn.cs.usna.edu/~m190108/default.html
+[Thu Jan 04 17:46:54.439467 2018] [:error] [pid 190662] [client 10.4.25.196:58649] PHP Notice:  Undefined variable: content in /home/mids/m190108/public_html/IT350/Lab06/index.php on line 37, referer: http://midn.cs.usna.edu/~m190108/default.html
+[Thu Jan 04 17:47:24.758008 2018] [:error] [pid 169669] [client 10.4.25.196:58656] PHP Notice:  Undefined variable: courses in /home/mids/m190108/public_html/IT350/Lab11/part2.php on line 187, referer: http://midn.cs.usna.edu/~m190108/IT350/Lab11/
+[Thu Jan 04 17:47:24.773751 2018] [:error] [pid 169669] [client 10.4.25.196:58656] PHP Notice:  Undefined offset: -1 in /home/mids/m190108/public_html/IT350/Lab11/part2.php on line 224, referer: http://midn.cs.usna.edu/~m190108/IT350/Lab11/
+[Thu Jan 04 19:50:20.833428 2018] [:error] [pid 169670] [client 10.4.25.196:59252] PHP Notice:  Undefined offset: 4 in /var/www/html/it350-team5/userList.php on line 23, referer: http://midn.cs.usna.edu/it350-team5/
+[Thu Jan 04 19:50:22.597295 2018] [:error] [pid 169670] [client 10.4.25.196:59252] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Thu Jan 04 19:50:22.597318 2018] [:error] [pid 169670] [client 10.4.25.196:59252] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Thu Jan 04 19:50:22.597325 2018] [:error] [pid 169670] [client 10.4.25.196:59252] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Thu Jan 04 19:51:44.190162 2018] [include:warn] [pid 4330] [client 10.4.25.196:59288] AH01374: mod_include: Options +Includes (or IncludesNoExec) wasn't set, INCLUDES filter removed: /it350-team9/index.shtml
+[Fri Jan 05 06:25:02.497076 2018] [mpm_prefork:notice] [pid 2584] AH00171: Graceful restart requested, doing restart

@@ -1,0 +1,61 @@
+#!/bin/bash
+
+length=0
+name=0
+count=1
+while getopts "lnbc:" opt; do
+  case $opt in
+    l)length=1;;
+    n)name=1;;
+    b)length=1;
+      name=1;;
+    c)count=${count:+$OPTARG};;
+  esac
+done 
+
+shift $((OPTIND-1));
+
+IFS=','
+files=($(ls -m $1))
+numFiles=0
+for i in "${!files[@]}"; do
+  files[$i]=${files[$i]# }
+  let numFiles++
+done
+
+if (( numFiles < count )); then
+  count=$numFiles
+fi
+
+max=0
+declare -a size
+for (( i=0; i < count; ++i )){
+  for j in ${!files[*]}; do
+    if (( ${#files[$j]} > ${#files[$max]} )); then
+      max=$j
+    fi
+  done
+  echo ${files[$max]}
+  files[$max]=""
+}
+
+#echo $files
+#for i in $files; do
+#  echo test
+  #(( base = size > base ? size : base ));
+#done
+
+#for (( j=${#size[@]}; j > 0; --j )); do
+#  echo ${size[j]}
+#done
+
+#for i in ${size[@]}; do 
+#  echo $i
+#done
+
+
+#for i in $files; do
+#  if (( ${#i} == $base )); then
+#    printf "%d %s\n" $base ${i:1:$base}
+#  fi
+#done

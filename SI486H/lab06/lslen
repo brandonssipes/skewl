@@ -1,0 +1,51 @@
+#!/bin/bash
+
+#Brandon Sipes
+#program to get the name of the longest file name
+#and/or to get the length of the longest file name
+#up to an inputed amount of files
+
+length=1
+name=1 #by default return both name and length
+count=1
+while getopts "lnbc:" opt; do #get all the options
+  case $opt in
+    l)name=0;;
+    n)length=0;;
+    b)length=1;
+      name=1;;
+    c)count=${count:+$OPTARG};;
+  esac
+done 
+
+shift $((OPTIND-1)); #get right file path
+
+IFS=','
+files=($(ls -m $1)) #get the files
+numFiles=0
+for i in "${!files[@]}"; do
+  files[$i]=${files[$i]# }
+  let numFiles++
+done
+
+if (( numFiles < count )); then
+  count=$numFiles
+fi
+
+max=0
+declare -a size
+for (( i=0; i < count; ++i )){ #run through the ammount of files
+  for j in ${!files[*]}; do
+    if (( ${#files[$j]} > ${#files[$max]} )); then
+      max=$j
+    fi
+  done
+  if (( length )); then #print out the length
+    echo -n "${#files[$max]} "
+  fi
+  if (( name )); then #print out the name
+    echo -n ${files[$max]}
+  fi
+  echo
+  files[$max]=""
+}

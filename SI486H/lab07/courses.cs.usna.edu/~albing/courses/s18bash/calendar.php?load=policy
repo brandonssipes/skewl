@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head;
+         any other head content must come *after* these tags -->
+
+    <!-- Icon to use on the browser bar -->
+    <link rel="icon" href="calendar/images/web-icon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="calendar/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Skeleton CSS -->
+    <link rel="stylesheet" href="calendar/Skeleton/css/normalize.css">
+    <link rel="stylesheet" href="calendar/Skeleton/css/skeleton.css">
+    <link rel="stylesheet" href="calendar/css/skeleton-modifications.css">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="calendar/bootstrap3-ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='calendar/fonts/raleway.css' rel='stylesheet' type='text/css'>
+
+    <!-- Ace Code Editor - https://ace.c9.io/ -->
+    <script type="text/javascript"
+      src="calendar/ace-builds/src-noconflict/ace.js" charset="utf-8">
+    </script>
+
+    <!-- To support challenge/response authentication -->
+    <script type="text/javascript">
+      var nonce = "baeb9ef5aab93f84aa2e34131f0db28b5c9b24d500cb53b7d10b67feae3ff92c";
+    </script>
+    <script type="text/javascript" src="calendar/js/sha256.js"></script>
+
+    <!-- Styles for the submission System -->
+    <link href="calendar/css/calendar-default.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="calendar/highlight/styles/color-brewer.css">
+    <script src='calendar/highlight/highlight.pack.js'></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" type="text/css" href="calendar/Font-Awesome/css/font-awesome.min.css">
+
+    <!-- Printing -->
+    <link rel="stylesheet" type="text/css" media="print" href="calendar/css/calendar-print.css" />
+
+    <!-- Custom CSS based on user preferences -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="calendar/jquery/js/jquery.1.11.3.min.js"></script>
+    <script src="calendar/bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="calendar/bootstrap3-ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js"></script>
+  </head>
+
+  <title>SI486H (Spring 2018)</title>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--
+            <a class="navbar-brand" href="#">
+              <img alt="Navbar!" src="css/images/web-icon.png" width="24">
+            </a>
+          -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+            <li><a href="calendar.php?load=home">
+                SI486H - Advanced Bash Scripting</a></li>
+
+            
+            <li><a title="Calendar" href="calendar.php?show=calendar_display">
+                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                </a></li>
+
+            <li><a title="Course Policy" href="calendar.php?load=policy">
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                </a></li>
+
+            <li><a title="Resources" href="calendar.php?load=resources">
+                <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+                </a></li>
+
+        
+        
+          </ul>
+
+        
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+<a href="#" title="View files associated with lecture" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+Select &rarr;
+</a>
+<ul class="dropdown-menu  scrollable-menu">
+<li class="dropdown-header">Options</li>
+<form method=post class="navbar-form navbar-left" role="search" target="_blank">
+  <div class="input-group">
+    <input type="hidden" class="form-control" placeholder="Print" name="print" id="print">
+    <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-print"></i> Print</button>
+    </div>
+  </div>
+</form>
+<form method=get class="navbar-form navbar-left" role="search">
+  <div class="input-group">
+    <input type="hidden" name="show" value="calendar_search">
+    <input type="text" class="form-control" placeholder="Search" name="search" id="search">
+    <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+    </div>
+  </div>
+</form>
+<form method=post class="navbar-form navbar-left" role="search" onsubmit="return hashPassword()">
+  <div class="input-group">
+    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+    <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-lock"></i></button>
+    </div>
+</div>
+</form>
+</ul>
+</li>
+            <li class="dropdown">
+              <a href="#" title="Select class" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+                Class<span class="caret"></span></a>
+              <ul class="dropdown-menu  scrollable-menu">
+                <li><a href='calendar.php?type=class&event=1'>1 - Intro</a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>2 - Bash Overview</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>3 - Expansions</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>4 - Math</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>5 - Arrays</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>6 - Assoc Arrays</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>7 - Pipes</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>8 - IO Redirection</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>9 - Other Commands</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>10 - awk</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>11 - Beyond If</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>12 - Parsing</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>13 - Debugging</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>14 - REPL</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>15 - Secure Scripts</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>16 - shopts</font></a></li>
+<li><a title='Material not online at this time' href='#'><font color='#AAAAAA'>17 - TBD</font></a></li>
+              </ul>
+            </li>
+                        <li class="dropdown">
+              <a href="#" title="Select lab" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-knight" aria-hidden="true"></span>
+                Lab<span class="caret"></span></a>
+              <ul class="dropdown-menu  scrollable-menu">
+                <li><a href='calendar.php?type=lab&event=1'>1 - KeystrokeGolf</a></li>
+<li><a href='calendar.php?type=lab&event=2'>2 - Roman Math</a></li>
+<li><a href='calendar.php?type=lab&event=3'>3 - Histograms</a></li>
+<li><a href='calendar.php?type=lab&event=4'>4 - IO Lab</a></li>
+<li><a href='calendar.php?type=lab&event=5'>5 - UsingAWK</a></li>
+<li><a href='calendar.php?type=lab&event=6'>6 - lsExtended</a></li>
+<li><a href='calendar.php?type=lab&event=7'>7 - Calendars</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+  <!-- End TopBar and CSS Stuff! -->
+<!-- Begin providing the contents of the page -->
+<div class="container">
+<h2>Course Policy</h2>
+
+<h3>Instructor</h3>
+<p>
+  <b>Dr. Carl Albing, 410-293-6805, MI327, albing@usna.edu</b>
+</p>
+
+<h3>Course Description</h3>
+<p>
+Take command of the command line!
+The bash shell is one of the most useful software tools,
+used for running commands, but it is so much more.
+This course is an advanced, in-depth study of the bash shell:
+using bash as a fully featured programming language,
+understanding security issues and exploits - and how to prevent them;
+learning the twelve steps of command line processing (bash's REPL),
+and advanced scripting techniques for admin, automation,
+HPC batch jobs, and co-processing.
+Other topics include: regular expressions vs. pattern matching,
+argument parsing techniques, end-user speedups,
+customizing and configuring bash,
+and a few key  tools (grep, sed, awk, find) that work well with bash.
+</p>
+<p>
+This course assumes basic knowlege of programming in general
+and some exposure to scripting and OS concepts in particular
+(for example, IC221, systems programming).
+</p>
+
+<a name=objectives></a>
+<h3>Learning Objectives</h3>
+<p>
+  <b>Upon completing this course, students should be able to:</b>
+  <ol>
+    <li>
+    Know and understand the order of substitutions in the bash REPL.
+    </li>
+    <li>
+    Know and use the advanced features of bash for a variety of shell scripting applications.
+    </li>
+    <li>
+    Implement a non-trivial application using bash.
+    </li>
+    <li>
+    Demonstrate effective communication of shell issues orally, in writing, and/or via multimedia.
+    </li>
+  </ol>
+</p>
+
+<a name=textbook></a>
+<h3>Textbooks</h3>
+<p>
+  
+  <b>Required Textbooks:</b>
+  <ul>
+    <li>
+      bash man page
+    </li>
+  </ul>
+
+  <b>Recommended/Optional Textbook:</b>
+  <ul>
+    <li>
+      bash Cookbook, 2nd ed., by Albing and Vossen, O'Reilly Media, 2018
+    </li>
+  </ul>
+
+</p>
+
+<a name=prereq></a>
+<h3>Prerequisites</h3>
+<p>
+  <ul>
+    <li>
+      <b> IC221 </b> Systems Programming
+    </li>
+    <li>
+      or permission of instructor
+    </li>
+  </ul>
+</p>
+
+<h3>Labs</h3>
+<p>
+Labs will generally be started during lab period,
+completed outside of class,
+and are due prior to the following lab period.
+This is the main work of the class.
+Students should expect to spend time
+outside of weekly meetings to complete labs.
+It is important that each lab is completed, even if late.
+ALL labs must be completed to earn a passing grade!
+<p>
+
+<p><b>
+******** ALL labs must be completed to earn a passing grade! ********
+</b></p>
+
+<a name=ei></a>
+<h3>Extra Instruction (EI)</h3>
+<p>
+The instructor has an "open door" policy in regards to EI –
+come whenever you can; if I'm in then I'm usually willing to talk.
+To schedule an appointment,  send an email requesting a time;
+give an alternative or two if possible.
+Students are asked to avoid Thursdays for EI appointments if possible,
+as that time is set aside for research.
+</p>
+
+<a name=grading></a>
+<h3>Grading</h3>
+<table class='table table-striped table-bordered'>
+  <thead><tr><th></th>           <th>6wk</th><th>12wk</th><th>Final</th></tr></thead>
+  <tbody>
+    <tr><td>Labs            </td><td>30%</td><td>30%</td><td>30%</td></tr>
+    <tr><td>Exam (6wk)      </td><td>70%</td><td>35%</td><td>20%</td></tr>
+    <tr><td>Exam (12wk)     </td><td>   </td><td>35%</td><td>20%</td></tr>
+    <tr><td>Exam (Final)    </td><td>   </td><td>   </td><td>30%</td></tr>
+  </tbody>
+</table>
+
+<a name=project></a>
+<h3>Projects</h3>
+<p>
+  There may be one group project. Project must be completed entirely by the students
+  making the submission. The project grade will be based upon the instructor's estimation
+  of the group's collective results, <b>adjusted for each team member based upon the other
+  group members' estimation of the individual's teamwork and contribution.</b>
+</p>
+
+<a name=exam></a>
+<h3>Exams</h3>
+<p>
+<ul>
+<li>All exams for this class will include a practicum portion.</li>
+<li>The first exam will be held during lab on Tuesday, 13-Feb-2017.</li>
+<li>The second exam will be held during lab on Tuesday, 03-Apr-2017.</li>
+<li>The final exam date is TBD/TBA but sometime during 3-10 May.</li>
+<li>Any requested absence for these dates must be submitted as soon as possible, and at least one week in advance.</li>
+<li>Each student will be allowed to bring individually prepared, personally handwritten "study sheets" (1 for the 6-week and 12-week exams, 2 for the final exam). Study sheets will be turned in with the exam. The final exam is cumulative.</li>
+</ul>
+   <u>Study sheets will be collected at the exam and will not be returned.</u>
+   Use of any electronic devices is not permitted during the exams.
+</p>
+
+<a name=quiz></a>
+<h3>Quizzes</h3>
+<p>
+   <b>Expect quizzes.</b> Quizzes may be announced or unannounced.
+</p>
+
+<a name=late></a>
+<h3>Grace</h3>
+<p>
+Every assignment is due as specified in the calendar.  No points after the due date!  Plan for enough time (with a buffer) to get your labs done on time.  What about special situations?  As with most of life, speak up!  If you know you will have a problem meeting a deadline, it is better to ask early for some leeway than to ask after the fact.  When in doubt, ask.  Don't abuse the privilege.
+</p>
+
+<h3>Absence</h3>
+<p>
+Students are sometimes absent from class.
+ They are still responsible for the material covered those days.
+Finding out that material is the responsibility of
+the student who misses a lecture.
+Any requested absence for exam dates
+should be submitted as soon as possible,
+and at least one week in advance.
+</p>
+
+<a name=honor></a>
+<h3>Honor</h3>
+<p>
+  <b>You are expected to follow the guidance given in:</b><br>
+  Honor Concept of the Brigade of Midshipmen, USNAINST 1610.3F (or newer)<br>
+  Policies Concerning Graded Academic Work, USNAINST 1531.53 (or newer)<br>
+  Policy Concerning Programming Projects, COMPSCIDEPTINST 1531.1C (or newer)<br>
+</p>
+<h4> Lab Assignment Collaboration Policy*</h4>
+<ul>
+<li>All programming assignments must be the sole work of the student. </li>
+<li>You may not collaborate on any programming or lab assignment without instructor permission. </li>
+<li>You may not receive or copy program code from other students or the web. </li>
+<li>You may not share your program code with other students. </li>
+<li>You may not view another student's program code. </li>
+<li>You may not view solutions to program assignments from other semesters, other classes at USNA or elsewhere, or from any other sources, such as the Internet. </li>
+<li>You must be prepared to explain any program code you submit. </li>
+<li>All submission are subject to automated plagiarism detection. </li>
+</ul>
+
+<h4>Lab Assignment Discussion Policy<sup>1<sup></h4>
+<ul>
+<li>You may discuss any assignment with other students in a abstract, problem solving way, and you are encouraged to do so. However, discussion should not violate the collaboration policy as stated above, for example, you may not view other students' solutions or share your code with other students.  Neither look at someone else’s code nor show your code to another student.</li>
+<li>You may ask an instructor for help, show an instructor your code, and use any code provided by an instructor in your submission. However, you may not share program code (or pseudocode) provided to you by an instructor with other students unless authorized. Doing so would violate the collaboration policy of viewing other students' solutions or sharing your code with other students. </li>
+<li>If you received any assistance in completing an assignment through discussions with another student or instructor, you are required to acknowledge that assistance in your README file. </li>
+<li>While discussion based assistance is allowed, it in no way implies that the assisted and assisting student will be submitting identical program solutions. As indicated by the collaboration policy, all programming assignments must be the sole work of the student, and it is highly unlikely, even with assistance, two students' independently programmed solutions would be identical. </li>
+</ul>
+
+<h4>Section Leader</h4>
+The duties of the section leader include:
+<ul>
+<li>Calling the class to attention at the beginning and end of class;</li>
+<li>Reporting any absences to the instructor;</li>
+<li>Assisting the instructor as needed in collecting and distributing graded work;</li>
+<li>Promptly notifying the instructor of any abnormalities, omissions, or technical problems with the course website;</li>
+<li>Contacting the department main office (x36800, MI 346) if the instructor is 10 minutes late; and</li>
+<li>Directing the class in productive work in the instructor's absence.</li>
+</ul>
+
+<a name=misc></a>
+<h3>Miscellaneous</h3>
+<p>
+  <b>Classroom Expectations</b><br>
+  1. No food or smokeless tobacco is permitted in the classroom or in the labs. Drinks with closeable caps are permitted.<br>
+  2. Sleeping is not allowed in class. If you feel you may fall asleep at your desk, stand in the back of the room.<br>
+  3. No use of computer equipment for any purpose other than as outlined in the class activity, this is a distraction and will not be tolerated, i.e. reading e-mail, playing games, or messaging classmates.<br>
+  4. No profanity or swearing are permitted in the classrooms and labs.
+  5. Everyone in the class should show appropriate respect to everyone at all times.
+</p>
+<p>
+  <b>Other</b><br>
+  1. Reading assignments are expected to be completed prior to class for which it is assigned. Practical exercises will expand on concepts introduced in these readings. <br>
+  2. Please inform the instructor in advance if you will miss class (for instance, due to a movement order).<br>
+</p>
+
+<!-- Copyright -->
+<hr>
+Give credit where it is due!
+The calendar uses CSS from the skeleton CSS library at getskeleton.com (MIT License), and the bootstrap libraries
+at getbootstrap.com.<br/>
+<sup>1</sup>from Aviv, IC221, with minor modifications
+<br><b>Make sure you always cite your materials as well!</b>
+<hr>
+</div> <!-- /container --></body></html>

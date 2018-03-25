@@ -1,0 +1,33 @@
+#!/bin/bash
+
+
+#source the previous script file to call the functions.
+source ./roman 1>/dev/null #it keeps printing out the number two.. this will fix that.
+
+#Check for the three arguments
+if [ "$#" -ne 3 ]; then
+  echo -e "Please provide me with three arguments\nA Roman numeral, an operator, and another Roman numeral" 1>&2
+  exit 241
+fi
+
+#turn them into decimal by call the other script's fucntions
+FIRST=$(cvtRom2Dec ${1})
+SECOND=$(cvtRom2Dec ${3})
+
+#check to see if they were valid
+if [[ $FIRST == -1 ]] || [[ $SECOND == -1 ]]; then
+  echo "Error in the inputed Roman Numerals" 1>&2
+  exit 241
+fi
+
+
+#He did the math, he did the monster math.
+case ${2} in
+  add) echo $((FIRST + SECOND));;
+  sub) echo $((FIRST - SECOND));;
+  mult) echo $((FIRST * SECOND));;
+  div) echo $((FIRST/SECOND));;
+  mod) echo $((FIRST%SECOND));;
+  *) echo "error: unsupported operation: ${2}" 1>&2
+esac
+

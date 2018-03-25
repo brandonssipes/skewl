@@ -1,0 +1,18 @@
+5
+Pilot AH-1 Qualified
+Musician, Flute and Piccolo
+Air Traffic Control Maintenance Trainee
+Aeronautical Engineer
+Combat Artist (Officer)
+10
+Shalie 7 8 1 8 3
+Leah 8 6 10 10 4
+Gaelan 10 3 6 1 6
+Kesia 9 1 4 4 8
+Tyrie 6 7 3 3 7
+Jaden 5 5 2 5 1
+Krissi 2 9 9 6 2
+Kaven 4 2 8 9 9
+Montario 3 4 7 7 5
+Earnest 1 10 5 2 10
+

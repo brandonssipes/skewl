@@ -1,0 +1,38 @@
+#!/bin/bash
+
+
+file=/dev/stdin
+
+
+declare -a heap
+count=0
+freed=0
+totMem=0
+while read time type ID size; do
+  case $type in
+    A) heap[$ID]=$((heap[$ID]+=$size));
+      let totMem+=$size;
+      let count++;;
+    F) heap[$ID]=$((heap[$ID]-=$size));
+      let freed++;;
+  esac
+  if ((${heap[$ID]} < 0)); then
+    heap[$ID]=0
+  fi
+done < $file
+
+avg=$((totMem/count))
+
+trapped=0
+test=''
+for i in ${!heap[@]}; do
+  if ((${heap[$i]} > 0)); then
+    let trapped++
+    test="$test $i"
+  fi
+done
+
+
+printf "total requested: %d\tavg. request: %d\nalloc: %d\tfree: %d\n" $totMem $avg $count $freed
+printf "%d still allocated (not yet freed):$test\n" $trapped 
+

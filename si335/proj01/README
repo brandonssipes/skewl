@@ -1,0 +1,34 @@
+These are the files you need for Project 1
+
+A. WHEN YOU CREATE YOUR OWN VERSION ..
+######################################
+You will create a file called "Makefile" that will make your own
+solution program, as well as do some other things.  I would just
+copy the Makefile-XXX program for the language you are using.
+Please read the assignment for details, paying particular attention
+to the fact that it MUST HAVE targets: build, user and command.
+
+
+B. RUNNING WHAT'S HERE ...
+######################################
+
+Create an input file
+> python3 gencases.py 100 10 > in.txt
+
+Run Python version
+> python3 selection.py in.txt > out1.txt
+
+Run C++ version
+> make -f Makefile-cpp
+g++ -O6 selection.cpp -o selection
+
+Run Java version
+> ./selection in.txt > out2.txt
+> make -f Makefile-java
+javac selection.java
+> java selection in.txt > out3.txt
+
+Note that they all give the same output
+> diff -q out1.txt out2.txt  ← Note: when diff outputs nothing, the two files match!
+> diff -q out1.txt out3.txt  ← Note: when diff outputs nothing, the two files match!
+>

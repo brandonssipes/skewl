@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#acts like cat (i.e. read in from file to stdout)
+#if fd 3 is redirected to stdout then the dirname is echoed
+#if fd 4 is redirected to stdout then the basename is echoed
+
+
+
+filename=${1:-/dev/stdin}
+
+while read all; do
+  if [ -t 3 ]; then
+    echo ${all%/*}
+  elif [ -t 4 ]; then
+    echo ${all##*/}
+  else
+    echo -e "$all\n"
+  fi
+  
+done < $filename
+
+

@@ -1,0 +1,25 @@
+#!/usr/bin/awk -f
+
+#Calculate the duration of time differences
+function duration(startime, endtime) {
+  totalStart = startime[1]*3600 + startime[2]*60 + startime[3]#convert everything to seconds
+  totalEnd = endtime[1]*3600 + endtime[2]*60 + endtime[3]
+  diff = totalEnd-totalStart#total difference in seconds
+  hours = int(diff/3600)#diff hours should be rounded difference/3600
+  minutes = int(diff/60)%60#diff min should be rounded diff / 60 mod 60
+  seconds = diff%60
+  total=total+diff
+  counter=counter+1
+  printf ("%02d:%02d:%02d\n", hours, minutes, seconds)
+}
+
+#Find the individual types
+/A/ {time[$3]=$1}
+/F/ {
+  split(time[$3],start,":")
+  split($1, end,":")
+  duration(start, end)}
+END{
+  printf("Total:  %d  Avg:  %0.2f sec.\n", total, total/counter)
+}
+

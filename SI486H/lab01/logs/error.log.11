@@ -1,0 +1,360 @@
+[Fri Jan 05 06:25:02.530827 2018] [auth_digest:notice] [pid 2584] AH01757: generating secret for digest authentication ...
+[Fri Jan 05 06:25:02.558937 2018] [mpm_prefork:notice] [pid 2584] AH00163: Apache/2.4.18 (Ubuntu) OpenSSL/1.0.2g mod_perl/2.0.9 Perl/v5.22.1 configured -- resuming normal operations
+[Fri Jan 05 06:25:02.558950 2018] [core:notice] [pid 2584] AH00094: Command line: '/usr/sbin/apache2'
+[Fri Jan 05 10:09:35.136336 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:35.136371 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:35.136380 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:35.136390 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:39.841994 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:39.842020 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:39.842028 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:39.842038 2018] [:error] [pid 27549] [client 10.53.33.217:46810] PHP Notice:  Undefined offset: 5 in /var/www/html/it350-team5/search.php on line 36, referer: http://midn.cs.usna.edu/it350-team5/search.html
+[Fri Jan 05 10:09:50.556109 2018] [include:warn] [pid 24292] [client 10.53.33.217:46812] AH01374: mod_include: Options +Includes (or IncludesNoExec) wasn't set, INCLUDES filter removed: /it350-team9/index.shtml
+[Fri Jan 05 10:10:18.751099 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 4 in /var/www/html/it350-team5/userList.php on line 23, referer: http://midn.cs.usna.edu/it350-team5/
+[Fri Jan 05 10:10:20.199863 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:20.199885 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:20.199892 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:23.567174 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:23.567196 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:23.567204 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:23.567330 2018] [:error] [pid 27549] [client 10.53.33.217:46830] PHP Notice:  Undefined offset: 7 in /var/www/html/it350-team5/userProfile.php on line 151, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:29.201653 2018] [:error] [pid 24294] [client 10.53.33.217:46832] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:29.201687 2018] [:error] [pid 24294] [client 10.53.33.217:46832] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 10:10:29.201695 2018] [:error] [pid 24294] [client 10.53.33.217:46832] PHP Notice:  Undefined offset: 1 in /var/www/html/it350-team5/userProfile.php on line 122, referer: http://midn.cs.usna.edu/it350-team5/userList.php
+[Fri Jan 05 12:12:59.338968 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  parse_ini_file(../database/config.ini): failed to open stream: No such file or directory in /var/www/html/project-echits/includes/data.inc.php on line 19, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.339308 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in /var/www/html/project-echits/includes/data.inc.php on line 27, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.339340 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::real_escape_string(): Couldn't fetch mysqli in /var/www/html/project-echits/includes/data.inc.php on line 104, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.339374 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  parse_ini_file(../database/config.ini): failed to open stream: No such file or directory in /var/www/html/project-echits/includes/data.inc.php on line 19, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.339672 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in /var/www/html/project-echits/includes/data.inc.php on line 27, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.339696 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /var/www/html/project-echits/includes/data.inc.php on line 56, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.339727 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  parse_ini_file(../database/config.ini): failed to open stream: No such file or directory in /var/www/html/project-echits/includes/data.inc.php on line 19, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340053 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in /var/www/html/project-echits/includes/data.inc.php on line 27, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340075 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::real_escape_string(): Couldn't fetch mysqli in /var/www/html/project-echits/includes/data.inc.php on line 104, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340101 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  parse_ini_file(../database/config.ini): failed to open stream: No such file or directory in /var/www/html/project-echits/includes/data.inc.php on line 19, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340392 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in /var/www/html/project-echits/includes/data.inc.php on line 27, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340423 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /var/www/html/project-echits/includes/data.inc.php on line 56, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340434 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Notice:  Undefined variable: pos_0 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340440 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Notice:  Undefined variable: pos_1 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:12:59.340445 2018] [:error] [pid 24291] [client 10.53.37.242:35132] PHP Notice:  Undefined variable: pos_2 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://csmidn.academy.usna.edu/project-echits/makechit.php
+[Fri Jan 05 12:21:59.653282 2018] [:error] [pid 24294] [client 10.16.19.226:36220] PHP Notice:  Undefined index: username in /home/mids/m183990/public_html/IT350/IT350-Project/nav.inc.php on line 32
+[Fri Jan 05 20:57:51.751726 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined index: username in /var/www/html/project-echits/getcoc.script.php on line 5, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:51.757968 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_0 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:51.757991 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_1 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:51.757998 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_2 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:54.613856 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined index: username in /var/www/html/project-echits/getcoc.script.php on line 5, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:54.619220 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_0 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:54.619244 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_1 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:54.619252 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_2 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:55.772142 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined index: username in /var/www/html/project-echits/getcoc.script.php on line 5, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:55.777756 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_0 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:55.777778 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_1 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Fri Jan 05 20:57:55.777795 2018] [:error] [pid 27551] [client 10.16.19.125:57399] PHP Notice:  Undefined variable: pos_2 in /var/www/html/project-echits/getcoc.script.php on line 144, referer: http://midn.cs.usna.edu/project-echits/makechit.php
+[Sat Jan 06 02:09:58.076112 2018] [:error] [pid 45288] [client 10.1.75.33:60254] script '/var/www/html/header.php' not found or unable to stat
+[Sat Jan 06 02:09:58.085965 2018] [:error] [pid 27548] [client 10.1.75.33:38408] script '/var/www/html/header.php' not found or unable to stat
+[Sat Jan 06 02:09:58.092383 2018] [:error] [pid 45292] [client 10.1.75.33:38420] script '/var/www/html/login.php' not found or unable to stat
+[Sat Jan 06 02:09:58.140429 2018] [:error] [pid 27545] [client 10.1.75.33:38558] script '/var/www/html/header.php' not found or unable to stat
+[Sat Jan 06 02:09:58.143840 2018] [:error] [pid 45294] [client 10.1.75.33:60446] script '/var/www/html/login.php' not found or unable to stat
+[Sat Jan 06 02:09:58.203387 2018] [:error] [pid 27545] [client 10.1.75.33:60536] script '/var/www/html/header.php' not found or unable to stat
+[Sat Jan 06 02:09:58.205434 2018] [:error] [pid 45657] [client 10.1.75.33:60526] script '/var/www/html/XSNaBPPtfb9k.php' not found or unable to stat
+[Sat Jan 06 02:09:58.207940 2018] [:error] [pid 45657] [client 10.1.75.33:60526] script '/var/www/html/XSNaBPPtfb9k.php3' not found or unable to stat
+[Sat Jan 06 02:09:58.214591 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.html
+[Sat Jan 06 02:09:58.217975 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.cgi
+[Sat Jan 06 02:09:58.218989 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.sh
+[Sat Jan 06 02:09:58.220007 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.pl
+[Sat Jan 06 02:09:58.220919 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.inc
+[Sat Jan 06 02:09:58.221951 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.shtml
+[Sat Jan 06 02:09:58.222999 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.asp
+[Sat Jan 06 02:09:58.223900 2018] [:error] [pid 45657] [client 10.1.75.33:60526] script '/usr/lib/cgi-bin/XSNaBPPtfb9k.php' not found or unable to stat
+[Sat Jan 06 02:09:58.225588 2018] [:error] [pid 45657] [client 10.1.75.33:60526] script '/usr/lib/cgi-bin/XSNaBPPtfb9k.php3' not found or unable to stat
+[Sat Jan 06 02:09:58.227868 2018] [cgi:error] [pid 45657] [client 10.1.75.33:60526] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.cfm
+[Sat Jan 06 02:09:58.261707 2018] [:error] [pid 27551] [client 10.1.75.33:38674] script '/var/www/html/XSNaBPPtfb9k.php' not found or unable to stat
+[Sat Jan 06 02:09:58.262607 2018] [:error] [pid 27551] [client 10.1.75.33:38674] script '/var/www/html/XSNaBPPtfb9k.php3' not found or unable to stat
+[Sat Jan 06 02:09:58.264403 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.html
+[Sat Jan 06 02:09:58.265312 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.cgi
+[Sat Jan 06 02:09:58.266227 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.sh
+[Sat Jan 06 02:09:58.267128 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.pl
+[Sat Jan 06 02:09:58.268013 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.inc
+[Sat Jan 06 02:09:58.269409 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.shtml
+[Sat Jan 06 02:09:58.270311 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.asp
+[Sat Jan 06 02:09:58.271215 2018] [:error] [pid 27551] [client 10.1.75.33:38674] script '/usr/lib/cgi-bin/XSNaBPPtfb9k.php' not found or unable to stat
+[Sat Jan 06 02:09:58.272120 2018] [:error] [pid 27551] [client 10.1.75.33:38674] script '/usr/lib/cgi-bin/XSNaBPPtfb9k.php3' not found or unable to stat
+[Sat Jan 06 02:09:58.273012 2018] [cgi:error] [pid 27551] [client 10.1.75.33:38674] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/XSNaBPPtfb9k.cfm
+[Sat Jan 06 02:09:59.238560 2018] [core:error] [pid 27545] [client 10.1.75.33:60786] AH00126: Invalid URI in request GET c:\\boot.ini HTTP/1.1
+[Sat Jan 06 02:09:59.240425 2018] [core:error] [pid 27551] [client 10.1.75.33:38912] AH00126: Invalid URI in request GET c:\\boot.ini HTTP/1.1
+[Sat Jan 06 02:09:59.324623 2018] [:error] [pid 45292] [client 10.1.75.33:60884] script '/var/www/html/niet262591018.php' not found or unable to stat
+[Sat Jan 06 02:09:59.328904 2018] [:error] [pid 45292] [client 10.1.75.33:60884] script '/var/www/html/niet127322044.php3' not found or unable to stat
+[Sat Jan 06 02:09:59.331321 2018] [:error] [pid 45292] [client 10.1.75.33:60884] script '/var/www/html/niet987826574.php4' not found or unable to stat
+[Sat Jan 06 02:09:59.333799 2018] [:error] [pid 45292] [client 10.1.75.33:60884] script '/var/www/html/niet1165822623.php5' not found or unable to stat
+[Sat Jan 06 02:09:59.378875 2018] [:error] [pid 45288] [client 10.1.75.33:39088] script '/var/www/html/niet1970775626.php' not found or unable to stat
+[Sat Jan 06 02:09:59.383046 2018] [:error] [pid 45288] [client 10.1.75.33:39088] script '/var/www/html/niet394168394.php3' not found or unable to stat
+[Sat Jan 06 02:09:59.385941 2018] [:error] [pid 45288] [client 10.1.75.33:39088] script '/var/www/html/niet91430284.php4' not found or unable to stat
+[Sat Jan 06 02:09:59.391923 2018] [:error] [pid 45288] [client 10.1.75.33:39088] script '/var/www/html/niet657372290.php5' not found or unable to stat
+[Sat Jan 06 02:09:59.405685 2018] [cgi:error] [pid 27549] [client 10.1.75.33:32794] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/com5.pl
+[Sat Jan 06 02:09:59.409769 2018] [cgi:error] [pid 45657] [client 10.1.75.33:39162] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/com5.pl
+[Sat Jan 06 02:09:59.491159 2018] [cgi:error] [pid 24294] [client 10.1.75.33:32970] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/pdesk.cgi
+[Sat Jan 06 02:09:59.501061 2018] [cgi:error] [pid 24294] [client 10.1.75.33:39344] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/pdesk.cgi
+[Sat Jan 06 02:09:59.724866 2018] [authz_core:error] [pid 27545] [client 10.1.75.33:33422] AH01630: client denied by server configuration: /var/www/html/server-status
+[Sat Jan 06 02:09:59.725654 2018] [cgi:error] [pid 27550] [client 10.1.75.33:39780] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/kvm.cgi
+[Sat Jan 06 02:09:59.729206 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:39784] AH01630: client denied by server configuration: /var/www/html/server-status
+[Sat Jan 06 02:09:59.729368 2018] [cgi:error] [pid 27545] [client 10.1.75.33:33432] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/kvm.cgi
+[Sat Jan 06 02:09:59.821208 2018] [:error] [pid 24294] [client 10.1.75.33:33596] script '/var/www/html/login.php' not found or unable to stat
+[Sat Jan 06 02:09:59.828104 2018] [:error] [pid 45292] [client 10.1.75.33:39960] script '/var/www/html/login.php' not found or unable to stat
+[Sat Jan 06 02:09:59.877741 2018] [cgi:error] [pid 24294] [client 10.1.75.33:33690] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/client_execute.cgi
+[Sat Jan 06 02:09:59.878464 2018] [core:error] [pid 45292] [client 10.1.75.33:33692] AH00126: Invalid URI in request GET /../../../../../../../../../../../../windows/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.880135 2018] [core:error] [pid 45294] [client 10.1.75.33:33700] AH00126: Invalid URI in request GET /../../../../../../../../../../../../winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.881846 2018] [core:error] [pid 27545] [client 10.1.75.33:33708] AH00126: Invalid URI in request GET ../../../../../../../../../../../../windows/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.883295 2018] [core:error] [pid 45292] [client 10.1.75.33:33716] AH00126: Invalid URI in request GET ../../../../../../../../../../../../winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.886876 2018] [core:error] [pid 45657] [client 10.1.75.33:33718] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.888474 2018] [core:error] [pid 27545] [client 10.1.75.33:33724] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.891335 2018] [cgi:error] [pid 24294] [client 10.1.75.33:33732] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/guestimage.html
+[Sat Jan 06 02:09:59.900970 2018] [cgi:error] [pid 45657] [client 10.1.75.33:33758] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/camctrl.cgi
+[Sat Jan 06 02:09:59.902837 2018] [cgi:error] [pid 27545] [client 10.1.75.33:33762] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/ctrldirect.cgi
+[Sat Jan 06 02:09:59.911033 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:33790] AH01630: client denied by server configuration: /var/www/html/.htaccess.old
+[Sat Jan 06 02:09:59.911982 2018] [core:error] [pid 27545] [client 10.1.75.33:33794] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/windows/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.912619 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:33790] AH01630: client denied by server configuration: /var/www/html/.htaccess.bak
+[Sat Jan 06 02:09:59.913581 2018] [core:error] [pid 45294] [client 10.1.75.33:33798] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.914015 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:33790] AH01630: client denied by server configuration: /var/www/html/.htaccess~
+[Sat Jan 06 02:09:59.915393 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:33790] AH01630: client denied by server configuration: /var/www/html/.htaccess.copy
+[Sat Jan 06 02:09:59.917303 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:33790] AH01630: client denied by server configuration: /var/www/html/.htaccess.tmp
+[Sat Jan 06 02:09:59.918306 2018] [cgi:error] [pid 45292] [client 10.1.75.33:40162] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/client_execute.cgi
+[Sat Jan 06 02:09:59.920620 2018] [core:error] [pid 27550] [client 10.1.75.33:33818] AH00126: Invalid URI in request GET %5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cwinnt%5cwin.ini HTTP/1.1
+[Sat Jan 06 02:09:59.920620 2018] [authz_core:error] [pid 27551] [client 10.1.75.33:33816] AH01630: client denied by server configuration: /var/www/html/.htaccess.1
+[Sat Jan 06 02:09:59.922334 2018] [authz_core:error] [pid 27551] [client 10.1.75.33:33816] AH01630: client denied by server configuration: /var/www/html/.htaccess.~1~
+[Sat Jan 06 02:09:59.927136 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:40186] AH01630: client denied by server configuration: /var/www/html/.htaccess.old
+[Sat Jan 06 02:09:59.928497 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:40186] AH01630: client denied by server configuration: /var/www/html/.htaccess.bak
+[Sat Jan 06 02:09:59.929799 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:40186] AH01630: client denied by server configuration: /var/www/html/.htaccess~
+[Sat Jan 06 02:09:59.930486 2018] [cgi:error] [pid 27548] [client 10.1.75.33:40194] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/guestimage.html
+[Sat Jan 06 02:09:59.931193 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:40186] AH01630: client denied by server configuration: /var/www/html/.htaccess.copy
+[Sat Jan 06 02:09:59.935665 2018] [authz_core:error] [pid 45657] [client 10.1.75.33:40186] AH01630: client denied by server configuration: /var/www/html/.htaccess.tmp
+[Sat Jan 06 02:09:59.939472 2018] [authz_core:error] [pid 27545] [client 10.1.75.33:40216] AH01630: client denied by server configuration: /var/www/html/.htaccess.1
+[Sat Jan 06 02:09:59.939495 2018] [core:error] [pid 27551] [client 10.1.75.33:33864] AH00126: Invalid URI in request GET /././././././../../../../../windows/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.940230 2018] [cgi:error] [pid 45292] [client 10.1.75.33:40220] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/camctrl.cgi
+[Sat Jan 06 02:09:59.940978 2018] [authz_core:error] [pid 27545] [client 10.1.75.33:40216] AH01630: client denied by server configuration: /var/www/html/.htaccess.~1~
+[Sat Jan 06 02:09:59.941080 2018] [core:error] [pid 45657] [client 10.1.75.33:33868] AH00126: Invalid URI in request GET /././././././../../../../../winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.941824 2018] [cgi:error] [pid 27550] [client 10.1.75.33:40224] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/ctrldirect.cgi
+[Sat Jan 06 02:09:59.944478 2018] [core:error] [pid 27551] [client 10.1.75.33:33872] AH00126: Invalid URI in request GET .\\.\\.\\.\\.\\.\\.\\.\\.\\.\\/windows/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.946092 2018] [core:error] [pid 27545] [client 10.1.75.33:33878] AH00126: Invalid URI in request GET .\\.\\.\\.\\.\\.\\.\\.\\.\\.\\/winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:09:59.947075 2018] [:error] [pid 27550] [client 10.1.75.33:33882] script '/var/www/html/header.php' not found or unable to stat
+[Sat Jan 06 02:09:59.950848 2018] [:error] [pid 45294] [client 10.1.75.33:40248] script '/var/www/html/header.php' not found or unable to stat
+[Sat Jan 06 02:09:59.983852 2018] [core:error] [pid 45288] [client 10.1.75.33:33964] AH00126: Invalid URI in request GET /../../../../../../../../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:09:59.985297 2018] [core:error] [pid 27545] [client 10.1.75.33:33968] AH00126: Invalid URI in request GET /./../../../../../../../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:09:59.986814 2018] [core:error] [pid 27545] [client 10.1.75.33:33974] AH00126: Invalid URI in request GET //../../../../../../../../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:09:59.990465 2018] [core:error] [pid 45657] [client 10.1.75.33:33986] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1
+[Sat Jan 06 02:09:59.996905 2018] [core:error] [pid 27551] [client 10.1.75.33:34014] AH00126: Invalid URI in request GET /././././././../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.007657 2018] [core:error] [pid 45294] [client 10.1.75.33:40402] AH00126: Invalid URI in request GET /../../../../../../../../../../../../windows/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.011623 2018] [core:error] [pid 45288] [client 10.1.75.33:40406] AH00126: Invalid URI in request GET /../../../../../../../../../../../../winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.014436 2018] [core:error] [pid 27548] [client 10.1.75.33:40408] AH00126: Invalid URI in request GET ../../../../../../../../../../../../windows/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.018024 2018] [core:error] [pid 24294] [client 10.1.75.33:40414] AH00126: Invalid URI in request GET ../../../../../../../../../../../../winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.019566 2018] [core:error] [pid 27548] [client 10.1.75.33:40420] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\windows\\win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.021167 2018] [core:error] [pid 24294] [client 10.1.75.33:40426] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\winnt\\win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.050409 2018] [core:error] [pid 27548] [client 10.1.75.33:40492] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/windows/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.051983 2018] [core:error] [pid 45294] [client 10.1.75.33:40498] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.060155 2018] [core:error] [pid 27548] [client 10.1.75.33:40524] AH00126: Invalid URI in request GET %5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5c%2e%2e%5cwinnt%5cwin.ini HTTP/1.1
+[Sat Jan 06 02:10:00.075622 2018] [core:error] [pid 27549] [client 10.1.75.33:40586] AH00126: Invalid URI in request GET /././././././../../../../../windows/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.077098 2018] [core:error] [pid 27548] [client 10.1.75.33:40594] AH00126: Invalid URI in request GET /././././././../../../../../winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.078624 2018] [core:error] [pid 45657] [client 10.1.75.33:40602] AH00126: Invalid URI in request GET .\\.\\.\\.\\.\\.\\.\\.\\.\\.\\/windows/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.080458 2018] [core:error] [pid 24294] [client 10.1.75.33:40608] AH00126: Invalid URI in request GET .\\.\\.\\.\\.\\.\\.\\.\\.\\.\\/winnt/win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.111892 2018] [core:error] [pid 27548] [client 10.1.75.33:40726] AH00126: Invalid URI in request GET /../../../../../../../../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.113544 2018] [core:error] [pid 27550] [client 10.1.75.33:40732] AH00126: Invalid URI in request GET /./../../../../../../../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.115343 2018] [core:error] [pid 27550] [client 10.1.75.33:40738] AH00126: Invalid URI in request GET //../../../../../../../../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.118317 2018] [core:error] [pid 24294] [client 10.1.75.33:40748] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.124403 2018] [core:error] [pid 27551] [client 10.1.75.33:34420] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.125712 2018] [core:error] [pid 45657] [client 10.1.75.33:40780] AH00126: Invalid URI in request GET /%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.126248 2018] [core:error] [pid 45294] [client 10.1.75.33:40784] AH00126: Invalid URI in request GET /././././././../../../../../etc/passwd HTTP/1.1
+[Sat Jan 06 02:10:00.139899 2018] [core:error] [pid 27549] [client 10.1.75.33:34470] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\windows\\win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.142926 2018] [core:error] [pid 27549] [client 10.1.75.33:34476] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\winnt\\win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.147516 2018] [core:error] [pid 27551] [client 10.1.75.33:40844] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\windows\\win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.148961 2018] [core:error] [pid 45657] [client 10.1.75.33:40850] AH00126: Invalid URI in request GET ..\\..\\..\\..\\..\\..\\winnt\\win.ini HTTP/1.1
+[Sat Jan 06 02:10:00.207084 2018] [cgi:error] [pid 45294] [client 10.1.75.33:34634] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/pub
+[Sat Jan 06 02:10:00.212596 2018] [cgi:error] [pid 45292] [client 10.1.75.33:41000] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/pub
+[Sat Jan 06 02:10:00.394156 2018] [core:error] [pid 45292] [client 10.1.75.33:35018] AH00135: Invalid method in request TRACK /Nessus627832149.html HTTP/1.1
+[Sat Jan 06 02:10:00.397488 2018] [core:error] [pid 45292] [client 10.1.75.33:41390] AH00135: Invalid method in request TRACK /Nessus981389163.html HTTP/1.1
+[Sat Jan 06 02:10:00.437934 2018] [:error] [pid 45292] [client 10.1.75.33:35128] script '/var/www/html/main_internet.php' not found or unable to stat
+[Sat Jan 06 02:10:00.443637 2018] [:error] [pid 27550] [client 10.1.75.33:41496] script '/var/www/html/main_internet.php' not found or unable to stat
+[Sat Jan 06 02:10:00.457422 2018] [:error] [pid 27548] [client 10.1.75.33:35176] script '/var/www/html/default.php' not found or unable to stat
+[Sat Jan 06 02:10:00.466727 2018] [:error] [pid 45288] [client 10.1.75.33:41566] script '/var/www/html/default.php' not found or unable to stat
+[Sat Jan 06 02:10:00.526042 2018] [cgi:error] [pid 27548] [client 10.1.75.33:35368] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Sat Jan 06 02:10:00.530339 2018] [cgi:error] [pid 45288] [client 10.1.75.33:41734] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Sat Jan 06 02:10:00.978310 2018] [authz_core:error] [pid 45288] [client 10.1.75.33:35760] AH01630: client denied by server configuration: /nonexistent
+[Sat Jan 06 02:10:00.986235 2018] [authz_core:error] [pid 24294] [client 10.1.75.33:42134] AH01630: client denied by server configuration: /nonexistent
+[Sat Jan 06 02:10:01.003275 2018] [cgi:error] [pid 27550] [client 10.1.75.33:35810] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/printenv
+[Sat Jan 06 02:10:01.006957 2018] [cgi:error] [pid 45288] [client 10.1.75.33:42174] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/printenv
+[Sat Jan 06 02:10:01.025670 2018] [:error] [pid 24294] [client 10.1.75.33:35792] script '/var/www/html/63941x4k.php' not found or unable to stat
+[Sat Jan 06 02:10:01.026854 2018] [:error] [pid 24294] [client 10.1.75.33:35792] script '/var/www/html/63941x4k.php' not found or unable to stat
+[Sat Jan 06 02:10:01.028133 2018] [:error] [pid 24294] [client 10.1.75.33:35792] script '/var/www/html/63941x4k.php3' not found or unable to stat
+[Sat Jan 06 02:10:01.030182 2018] [:error] [pid 24294] [client 10.1.75.33:35792] script '/var/www/html/63941x4k.php3' not found or unable to stat
+[Sat Jan 06 02:10:01.125244 2018] [core:error] [pid 24294] [client 10.1.75.33:35792] AH00126: Invalid URI in request GET <script>document.cookie=%22testxxkp=4901;%22</script> HTTP/1.1
+[Sat Jan 06 02:10:01.138197 2018] [core:error] [pid 45292] [client 10.1.75.33:35986] AH00126: Invalid URI in request GET <meta%20http-equiv=Set-Cookie%20content=%22testxxkp=4901%22> HTTP/1.1
+[Sat Jan 06 02:10:01.197851 2018] [:error] [pid 27551] [client 10.1.75.33:42396] script '/var/www/html/olacujxv.php' not found or unable to stat
+[Sat Jan 06 02:10:01.199248 2018] [:error] [pid 27551] [client 10.1.75.33:42396] script '/var/www/html/olacujxv.php' not found or unable to stat
+[Sat Jan 06 02:10:01.200794 2018] [:error] [pid 27551] [client 10.1.75.33:42396] script '/var/www/html/olacujxv.php3' not found or unable to stat
+[Sat Jan 06 02:10:01.201991 2018] [:error] [pid 27551] [client 10.1.75.33:42396] script '/var/www/html/olacujxv.php3' not found or unable to stat
+[Sat Jan 06 02:10:01.264607 2018] [core:error] [pid 27551] [client 10.1.75.33:42396] AH00126: Invalid URI in request GET <script>document.cookie=%22testgylp=3272;%22</script> HTTP/1.1
+[Sat Jan 06 02:10:01.267370 2018] [authz_core:error] [pid 45292] [client 10.1.75.33:36254] AH01630: client denied by server configuration: /var/www/html/server-status
+[Sat Jan 06 02:10:01.271039 2018] [authz_core:error] [pid 45292] [client 10.1.75.33:42626] AH01630: client denied by server configuration: /var/www/html/server-status
+[Sat Jan 06 02:10:01.273204 2018] [core:error] [pid 27549] [client 10.1.75.33:42614] AH00126: Invalid URI in request GET <meta%20http-equiv=Set-Cookie%20content=%22testgylp=3272%22> HTTP/1.1
+[Sat Jan 06 02:10:01.396617 2018] [:error] [pid 27551] [client 10.1.75.33:36616] script '/var/www/html/status.php3' not found or unable to stat
+[Sat Jan 06 02:10:01.406924 2018] [:error] [pid 45292] [client 10.1.75.33:43002] script '/var/www/html/status.php3' not found or unable to stat
+[Sat Jan 06 02:10:01.440541 2018] [:error] [pid 24294] [client 10.1.75.33:36752] script '/var/www/html/forum.php' not found or unable to stat
+[Sat Jan 06 02:10:01.445975 2018] [:error] [pid 27548] [client 10.1.75.33:43116] script '/var/www/html/forum.php' not found or unable to stat
+[Sat Jan 06 02:10:11.516954 2018] [:error] [pid 45288] [client 10.1.75.33:43460] script '/var/www/html/login.php' not found or unable to stat
+[Sat Jan 06 02:10:11.524448 2018] [:error] [pid 45657] [client 10.1.75.33:49820] script '/var/www/html/login.php' not found or unable to stat
+[Sat Jan 06 02:10:23.276795 2018] [:error] [pid 27548] [client 10.1.75.33:45428] script '/var/www/html/internalServerReporting.php' not found or unable to stat
+[Sat Jan 06 02:10:23.279694 2018] [:error] [pid 27550] [client 10.1.75.33:51786] script '/var/www/html/internalServerReporting.php' not found or unable to stat
+[Sat Jan 06 02:10:34.652297 2018] [:error] [pid 27551] [client 10.1.75.33:46406] script '/var/www/html/login_up.php3' not found or unable to stat
+[Sat Jan 06 02:10:34.656870 2018] [:error] [pid 45657] [client 10.1.75.33:52768] script '/var/www/html/login_up.php3' not found or unable to stat
+[Sat Jan 06 02:10:35.778639 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46672] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.cgi
+[Sat Jan 06 02:10:35.780064 2018] [cgi:error] [pid 27549] [client 10.1.75.33:46676] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.pl
+[Sat Jan 06 02:10:35.782694 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46678] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/bugreport.cgi
+[Sat Jan 06 02:10:35.786349 2018] [cgi:error] [pid 27545] [client 10.1.75.33:46680] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/clwarn.cgi
+[Sat Jan 06 02:10:35.788328 2018] [cgi:error] [pid 45657] [client 10.1.75.33:46684] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/count.cgi
+[Sat Jan 06 02:10:35.793674 2018] [cgi:error] [pid 27545] [client 10.1.75.33:46688] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/Count.cgi
+[Sat Jan 06 02:10:35.795432 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46694] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/faqmanager.cgi
+[Sat Jan 06 02:10:35.796734 2018] [cgi:error] [pid 27545] [client 10.1.75.33:46696] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormHandler.cgi
+[Sat Jan 06 02:10:35.797932 2018] [cgi:error] [pid 45288] [client 10.1.75.33:46700] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormMail.cgi
+[Sat Jan 06 02:10:35.802826 2018] [cgi:error] [pid 45657] [client 10.1.75.33:46702] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/guestbook.cgi
+[Sat Jan 06 02:10:35.806222 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46704] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/help.cgi
+[Sat Jan 06 02:10:35.808619 2018] [cgi:error] [pid 45288] [client 10.1.75.33:46708] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/hi
+[Sat Jan 06 02:10:35.810622 2018] [cgi:error] [pid 45657] [client 10.1.75.33:46712] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Sat Jan 06 02:10:35.812570 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46716] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.pl
+[Sat Jan 06 02:10:35.814623 2018] [cgi:error] [pid 27545] [client 10.1.75.33:46718] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.sh
+[Sat Jan 06 02:10:35.816952 2018] [cgi:error] [pid 27550] [client 10.1.75.33:46724] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mailit.pl
+[Sat Jan 06 02:10:35.818803 2018] [cgi:error] [pid 45288] [client 10.1.75.33:46726] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:35.820855 2018] [cgi:error] [pid 27549] [client 10.1.75.33:46730] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:35.822957 2018] [cgi:error] [pid 45288] [client 10.1.75.33:46734] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:35.824788 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46736] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:35.828349 2018] [cgi:error] [pid 27545] [client 10.1.75.33:46740] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/ncbook
+[Sat Jan 06 02:10:35.830421 2018] [cgi:error] [pid 27549] [client 10.1.75.33:46742] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/quickstore.cgi
+[Sat Jan 06 02:10:35.833941 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46746] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:35.897681 2018] [cgi:error] [pid 24294] [client 10.1.75.33:46762] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search.cgi
+[Sat Jan 06 02:10:35.907118 2018] [cgi:error] [pid 27550] [client 10.1.75.33:46770] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:35.909787 2018] [cgi:error] [pid 24294] [client 10.1.75.33:46774] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.cgi
+[Sat Jan 06 02:10:35.911117 2018] [cgi:error] [pid 45288] [client 10.1.75.33:46776] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.sh
+[Sat Jan 06 02:10:35.912379 2018] [cgi:error] [pid 27550] [client 10.1.75.33:46780] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test-cgi
+[Sat Jan 06 02:10:35.913671 2018] [cgi:error] [pid 27551] [client 10.1.75.33:46784] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/upload.cgi
+[Sat Jan 06 02:10:35.915457 2018] [cgi:error] [pid 27550] [client 10.1.75.33:46788] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/urlcount.cgi
+[Sat Jan 06 02:10:35.917042 2018] [cgi:error] [pid 24294] [client 10.1.75.33:46792] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/viewcvs.cgi
+[Sat Jan 06 02:10:35.922589 2018] [cgi:error] [pid 45288] [client 10.1.75.33:46798] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa
+[Sat Jan 06 02:10:35.923849 2018] [cgi:error] [pid 27550] [client 10.1.75.33:46802] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.cgi
+[Sat Jan 06 02:10:35.925181 2018] [cgi:error] [pid 45288] [client 10.1.75.33:46806] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.exe
+[Sat Jan 06 02:10:35.928293 2018] [core:error] [pid 45288] [client 10.1.75.33:46810] AH00126: Invalid URI in request GET /././.. HTTP/1.1
+[Sat Jan 06 02:10:35.928347 2018] [cgi:error] [pid 24294] [client 10.1.75.33:46808] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/whois.cgi
+[Sat Jan 06 02:10:35.929437 2018] [core:error] [pid 27549] [client 10.1.75.33:46812] AH00126: Invalid URI in request GET ././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././../../../../../../../../ HTTP/1.1
+[Sat Jan 06 02:10:35.931114 2018] [core:error] [pid 27551] [client 10.1.75.33:53174] AH00126: Invalid URI in request GET /././.. HTTP/1.1
+[Sat Jan 06 02:10:35.932379 2018] [core:error] [pid 27545] [client 10.1.75.33:53178] AH00126: Invalid URI in request GET ././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././././../../../../../../../../ HTTP/1.1
+[Sat Jan 06 02:10:35.960029 2018] [:error] [pid 27549] [client 10.1.75.33:46874] script '/var/www/html/wp-login.php' not found or unable to stat
+[Sat Jan 06 02:10:35.988118 2018] [cgi:error] [pid 27550] [client 10.1.75.33:53270] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.cgi
+[Sat Jan 06 02:10:35.988284 2018] [:error] [pid 27549] [client 10.1.75.33:46918] script '/var/www/html/enter.php' not found or unable to stat
+[Sat Jan 06 02:10:35.990113 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53274] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.pl
+[Sat Jan 06 02:10:35.991403 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53278] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/bugreport.cgi
+[Sat Jan 06 02:10:35.993471 2018] [:error] [pid 27550] [client 10.1.75.33:53280] script '/var/www/html/enter.php' not found or unable to stat
+[Sat Jan 06 02:10:35.993857 2018] [cgi:error] [pid 27545] [client 10.1.75.33:53284] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/clwarn.cgi
+[Sat Jan 06 02:10:35.998239 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53288] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/count.cgi
+[Sat Jan 06 02:10:36.000859 2018] [cgi:error] [pid 27550] [client 10.1.75.33:53292] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/Count.cgi
+[Sat Jan 06 02:10:36.000977 2018] [cgi:error] [pid 45657] [client 10.1.75.33:46940] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/filescan
+[Sat Jan 06 02:10:36.003282 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53296] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/faqmanager.cgi
+[Sat Jan 06 02:10:36.005659 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53300] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormHandler.cgi
+[Sat Jan 06 02:10:36.006368 2018] [cgi:error] [pid 45657] [client 10.1.75.33:53302] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/filescan
+[Sat Jan 06 02:10:36.008129 2018] [cgi:error] [pid 27550] [client 10.1.75.33:53304] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormMail.cgi
+[Sat Jan 06 02:10:36.010822 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53308] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/guestbook.cgi
+[Sat Jan 06 02:10:36.012100 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53312] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/help.cgi
+[Sat Jan 06 02:10:36.014146 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53314] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/hi
+[Sat Jan 06 02:10:36.015347 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53318] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Sat Jan 06 02:10:36.017716 2018] [cgi:error] [pid 45657] [client 10.1.75.33:53322] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.pl
+[Sat Jan 06 02:10:36.022281 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53326] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.sh
+[Sat Jan 06 02:10:36.025693 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53328] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mailit.pl
+[Sat Jan 06 02:10:36.027056 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53332] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:36.029082 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53336] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:36.030755 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53340] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:36.032104 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53344] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:36.034175 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53348] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/ncbook
+[Sat Jan 06 02:10:36.036546 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53352] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/quickstore.cgi
+[Sat Jan 06 02:10:36.038502 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53356] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:36.041231 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53358] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search.cgi
+[Sat Jan 06 02:10:36.042386 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53362] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:36.043803 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53368] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.cgi
+[Sat Jan 06 02:10:36.047471 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53372] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.sh
+[Sat Jan 06 02:10:36.049701 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53374] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test-cgi
+[Sat Jan 06 02:10:36.052045 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53378] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/upload.cgi
+[Sat Jan 06 02:10:36.053155 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53382] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/urlcount.cgi
+[Sat Jan 06 02:10:36.054446 2018] [cgi:error] [pid 45292] [client 10.1.75.33:53386] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/viewcvs.cgi
+[Sat Jan 06 02:10:36.059676 2018] [cgi:error] [pid 27550] [client 10.1.75.33:53390] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa
+[Sat Jan 06 02:10:36.061687 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53394] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.cgi
+[Sat Jan 06 02:10:36.064275 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53398] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.exe
+[Sat Jan 06 02:10:36.066938 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53404] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/whois.cgi
+[Sat Jan 06 02:10:36.107294 2018] [:error] [pid 45292] [client 10.1.75.33:53462] script '/var/www/html/wp-login.php' not found or unable to stat
+[Sat Jan 06 02:10:36.183510 2018] [cgi:error] [pid 24294] [client 10.1.75.33:47188] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.cgi
+[Sat Jan 06 02:10:36.188215 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47194] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.pl
+[Sat Jan 06 02:10:36.195018 2018] [cgi:error] [pid 45292] [client 10.1.75.33:47196] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/bugreport.cgi
+[Sat Jan 06 02:10:36.198197 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47200] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/clwarn.cgi
+[Sat Jan 06 02:10:36.201840 2018] [cgi:error] [pid 24294] [client 10.1.75.33:47204] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/count.cgi
+[Sat Jan 06 02:10:36.203873 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47208] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/Count.cgi
+[Sat Jan 06 02:10:36.205990 2018] [cgi:error] [pid 27550] [client 10.1.75.33:47210] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/faqmanager.cgi
+[Sat Jan 06 02:10:36.207184 2018] [cgi:error] [pid 45292] [client 10.1.75.33:47216] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormHandler.cgi
+[Sat Jan 06 02:10:36.210927 2018] [cgi:error] [pid 27550] [client 10.1.75.33:47220] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormMail.cgi
+[Sat Jan 06 02:10:36.212930 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47224] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/guestbook.cgi
+[Sat Jan 06 02:10:36.216004 2018] [cgi:error] [pid 45292] [client 10.1.75.33:47226] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/help.cgi
+[Sat Jan 06 02:10:36.219281 2018] [cgi:error] [pid 27550] [client 10.1.75.33:47228] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/hi
+[Sat Jan 06 02:10:36.222858 2018] [cgi:error] [pid 27551] [client 10.1.75.33:47230] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Sat Jan 06 02:10:36.225699 2018] [cgi:error] [pid 24294] [client 10.1.75.33:47234] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.pl
+[Sat Jan 06 02:10:36.227007 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47236] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.sh
+[Sat Jan 06 02:10:36.228623 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47240] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mailit.pl
+[Sat Jan 06 02:10:36.230045 2018] [cgi:error] [pid 24294] [client 10.1.75.33:47246] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:36.231456 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47250] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:36.232795 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47252] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/faqmanager.cgi
+[Sat Jan 06 02:10:36.233172 2018] [cgi:error] [pid 27551] [client 10.1.75.33:47254] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:36.234175 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53610] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/faqmanager.cgi
+[Sat Jan 06 02:10:36.234440 2018] [cgi:error] [pid 27551] [client 10.1.75.33:47258] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:36.239615 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47260] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/ncbook
+[Sat Jan 06 02:10:36.242903 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47264] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/quickstore.cgi
+[Sat Jan 06 02:10:36.244624 2018] [cgi:error] [pid 27551] [client 10.1.75.33:47266] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:36.246046 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47268] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search.cgi
+[Sat Jan 06 02:10:36.252060 2018] [cgi:error] [pid 27551] [client 10.1.75.33:47270] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:36.256331 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47274] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.cgi
+[Sat Jan 06 02:10:36.258463 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47276] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.sh
+[Sat Jan 06 02:10:36.260931 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47278] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test-cgi
+[Sat Jan 06 02:10:36.262680 2018] [cgi:error] [pid 27551] [client 10.1.75.33:47280] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/upload.cgi
+[Sat Jan 06 02:10:36.264837 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47282] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/urlcount.cgi
+[Sat Jan 06 02:10:36.266770 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47284] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/viewcvs.cgi
+[Sat Jan 06 02:10:36.268670 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47286] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa
+[Sat Jan 06 02:10:36.274234 2018] [cgi:error] [pid 27551] [client 10.1.75.33:47288] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.cgi
+[Sat Jan 06 02:10:36.275556 2018] [cgi:error] [pid 45294] [client 10.1.75.33:47290] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.exe
+[Sat Jan 06 02:10:36.280132 2018] [cgi:error] [pid 27549] [client 10.1.75.33:47296] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/whois.cgi
+[Sat Jan 06 02:10:36.331479 2018] [:error] [pid 45294] [client 10.1.75.33:47334] script '/var/www/html/wp-login.php' not found or unable to stat
+[Sat Jan 06 02:10:36.359700 2018] [cgi:error] [pid 45292] [client 10.1.75.33:53712] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.cgi
+[Sat Jan 06 02:10:36.361949 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53714] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/admin.pl
+[Sat Jan 06 02:10:36.365043 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53716] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/bugreport.cgi
+[Sat Jan 06 02:10:36.367504 2018] [cgi:error] [pid 45292] [client 10.1.75.33:53718] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/clwarn.cgi
+[Sat Jan 06 02:10:36.369355 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53720] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/count.cgi
+[Sat Jan 06 02:10:36.370554 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53722] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/Count.cgi
+[Sat Jan 06 02:10:36.371756 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53726] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/faqmanager.cgi
+[Sat Jan 06 02:10:36.373009 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53728] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormHandler.cgi
+[Sat Jan 06 02:10:36.374183 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53730] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/FormMail.cgi
+[Sat Jan 06 02:10:36.376835 2018] [cgi:error] [pid 24294] [client 10.1.75.33:53734] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/guestbook.cgi
+[Sat Jan 06 02:10:36.378045 2018] [cgi:error] [pid 45292] [client 10.1.75.33:53736] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/help.cgi
+[Sat Jan 06 02:10:36.380372 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53738] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/hi
+[Sat Jan 06 02:10:36.381527 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53740] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.cgi
+[Sat Jan 06 02:10:36.382700 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53742] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.pl
+[Sat Jan 06 02:10:36.384436 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53744] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/index.sh
+[Sat Jan 06 02:10:36.385535 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53746] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mailit.pl
+[Sat Jan 06 02:10:36.386758 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53748] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:36.387898 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53750] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt
+[Sat Jan 06 02:10:36.389944 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53752] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:36.391160 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53754] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/mt-static
+[Sat Jan 06 02:10:36.392421 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53756] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/ncbook
+[Sat Jan 06 02:10:36.393595 2018] [cgi:error] [pid 45294] [client 10.1.75.33:53758] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/quickstore.cgi
+[Sat Jan 06 02:10:36.394819 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53762] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:36.395991 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53764] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search.cgi
+[Sat Jan 06 02:10:36.397106 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53766] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/search
+[Sat Jan 06 02:10:36.398310 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53768] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.cgi
+[Sat Jan 06 02:10:36.399472 2018] [cgi:error] [pid 45292] [client 10.1.75.33:53770] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test.sh
+[Sat Jan 06 02:10:36.400538 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53772] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/test-cgi
+[Sat Jan 06 02:10:36.402656 2018] [cgi:error] [pid 45292] [client 10.1.75.33:53774] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/upload.cgi
+[Sat Jan 06 02:10:36.403885 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53776] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/urlcount.cgi
+[Sat Jan 06 02:10:36.404994 2018] [cgi:error] [pid 45292] [client 10.1.75.33:53778] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/viewcvs.cgi
+[Sat Jan 06 02:10:36.406193 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53780] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa
+[Sat Jan 06 02:10:36.409418 2018] [cgi:error] [pid 27549] [client 10.1.75.33:53782] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.cgi
+[Sat Jan 06 02:10:36.411914 2018] [cgi:error] [pid 45288] [client 10.1.75.33:53784] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/wa.exe
+[Sat Jan 06 02:10:36.413105 2018] [cgi:error] [pid 27551] [client 10.1.75.33:53786] AH02811: script not found or unable to stat: /usr/lib/cgi-bin/whois.cgi
+[Sat Jan 06 02:10:36.435441 2018] [:error] [pid 45294] [client 10.1.75.33:53820] script '/var/www/html/wp-login.php' not found or unable to stat
+[Sat Jan 06 06:25:01.939410 2018] [mpm_prefork:notice] [pid 2584] AH00171: Graceful restart requested, doing restart

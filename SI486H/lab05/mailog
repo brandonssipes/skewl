@@ -1,0 +1,104 @@
+#!/bin/bash
+
+MARK=${MARK:=#}
+
+echo -e "             Mail Log Anaylysis\n"
+echo "                By Address"
+
+awk -v MARK="$MARK" ' #pass in the MARK variable
+  BEGIN { #declare variables
+    fromCount=0
+    errors=0
+    base=0
+    counter=0
+  }
+
+  #Look for from messages
+  /from=/{
+    uniqFrom[$10]=1
+    split($13, recips, "=")
+    split(recips[2], num, ",")
+    nrcptsFrom[int(num[1])]++
+    #print $10 $0
+  }
+
+  #Look for To messages
+  /to=/{
+    split($20, status, "=")
+    if(status[2] == ""){
+      next    
+    }
+    uniqTo[$10]=1
+    statTo[status[2]]++
+  }
+
+  #look for errors
+  /Error/{
+    errors++
+  }
+
+  #Do the math to calculate how the base line MARKs
+  function calculateBase(arr){
+    base = 0
+    for (i in arr){
+      base=(arr[i] > base)? arr[i] : base
+    }
+    return base
+  }
+
+  #Put it all together at the end
+  END{
+
+    #print out the From
+    printf("From:\n")
+    for (i in uniqFrom)
+      counter=counter+1
+    printf ("   %d unique addresses\n   number of recipients per msg:\n", counter)
+
+    base = calculateBase(nrcptsFrom)
+
+    for (i in nrcptsFrom){
+      printf("   %d: (%4d): ", i, nrcptsFrom[i])
+      math= nrcptsFrom[i]*50/base
+      if (math < 1 ) {
+        math = 1
+      }
+      for (j = 0; j < math; ++j){
+        printf("%c",MARK)
+      }
+      printf("\n")
+    }
+    
+
+    #print out the To
+    printf("\nTo:\n")
+    coutner = 0
+    for (i in uniqTo){
+      counter++
+    }
+    printf("   %d unique addresses\n   by status:\n", counter)
+
+    base = calculateBase(statTo)
+
+    for (i in statTo){
+      printf("   %-8s:  (%4d): ", i, statTo[i])
+      math = statTo[i]*50/base
+      if (math < 1){
+        math = 1
+      }
+      for (j = 0; j < math; ++j){
+        printf("%c",MARK)
+      }
+      printf("\n")
+    }
+
+    #print out the number of errors
+    printf("\n\n\nErrors:  %d\n", errors)
+
+    #clean up
+    delete uniqFrom
+    delete nrcptsFrom
+    delete uniqTo
+    delete statTo
+  }
+' < $1

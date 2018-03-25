@@ -1,0 +1,7 @@
+[Wed Jan 03 06:25:02.084043 2018] [auth_digest:notice] [pid 2584] AH01757: generating secret for digest authentication ...
+[Wed Jan 03 06:25:02.110808 2018] [mpm_prefork:notice] [pid 2584] AH00163: Apache/2.4.18 (Ubuntu) OpenSSL/1.0.2g mod_perl/2.0.9 Perl/v5.22.1 configured -- resuming normal operations
+[Wed Jan 03 06:25:02.110820 2018] [core:notice] [pid 2584] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 03 10:01:59.429618 2018] [authz_core:error] [pid 122451] [client 10.53.37.242:41162] AH01630: client denied by server configuration: /home/mids/m999999/public_html
+[Wed Jan 03 10:02:09.749390 2018] [authz_core:error] [pid 122452] [client 10.53.37.242:41164] AH01630: client denied by server configuration: /home/mids/m999999/public_html
+[Wed Jan 03 12:48:57.976743 2018] [authz_core:error] [pid 122455] [client 10.53.37.242:42258] AH01630: client denied by server configuration: /home/mids/m999999/public_html
+[Thu Jan 04 06:25:01.824067 2018] [mpm_prefork:notice] [pid 2584] AH00171: Graceful restart requested, doing restart
