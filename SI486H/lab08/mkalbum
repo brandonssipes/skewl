@@ -53,6 +53,28 @@ END
   done
 }
 
+
+function readStdin () {
+  while read fn; do
+    if (( count == col )); then
+      count=0
+      cat<<END
+      </tr>
+      <tr>
+END
+    fi
+    newFile=${fn%.*}.png
+    $(convert $fn -resize '20%' $newFile)
+    echo "<td><img src=\"$newFile\">"
+    if (( useCap == 1 )); then
+      read -r line < $capFile
+      echo $line
+    fi
+    echo "</td>"
+    let count++
+  done >> $output
+}
+
 # ************************************
 # usage
 # ************************************
@@ -107,25 +129,29 @@ shift $((OPTIND-1)); #get right file path
 pagehead "$title" > $output
 count=0
 echo "<tr>" >> $output
-for fn
-do
-  if (( count == col )); then
-    count=0
-    cat<<END
-    </tr>
-    <tr>
+if [ $input -eq 1 ]; then
+  readStdin
+else
+  for fn
+  do
+    if (( count == col )); then
+      count=0
+      cat<<END
+      </tr>
+      <tr>
 END
-  fi
-  newFile=${fn%.*}.png
-  $(convert $fn -resize '20%' $newFile)
-  echo "<td><img src="$newFile">"
-  if (( useCap == 1 )); then
-    read -r line < $capFile
-    echo $line
-  fi
-  echo "</td>"
-  let count++
-done >> $output
+    fi
+    newFile=${fn%.*}.png
+    $(convert $fn -resize '20%' $newFile)
+    echo "<td><img src=\"$newFile\">"
+    if (( useCap == 1 )); then
+      read -r line < $capFile
+      echo $line
+    fi
+    echo "</td>"
+    let count++
+  done >> $output
+fi
 echo "</tr>" >> $output
 pageend >> $output
 
