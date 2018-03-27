@@ -1,4 +1,124 @@
 #!/bin/bash
 
+#Brandon Sipes lab08 Creating a table of image thumbnails
+#NOT FINISHED
 
+
+# ====================================
+# pagehead
+# ====================================
+#simple function to generate the head of the page
+function pagehead () {
+  cat<<EOF
+<html>
+  <head>
+    <title>
+      $1
+    </title>
+    <link rel="stylesheet" href="./calstyle.css">
+  </head>
+  <body>
+    <table>
+EOF
+}
+
+# ====================================
+# pageend
+# ====================================
+#function to end each page
+function pageend () {
+  cat<<EOF
+    </table>
+  </body>
+</html>
+EOF
+}
+
+
+# ====================================
+# mkTable
+# ====================================
+function mkTable () {
+  echo $col
+  echo "      <tr>"
+  count=0
+  while read line; do
+    if (( count == col )); then
+      count=0
+      cat<<END
+      </tr>
+      <tr>
+END
+    fi
+  done
+}
+
+# ************************************
+# usage
+# ************************************
+function usage () {
+  cat<<ENOENT
+Usage: ./mkablum [OPTION]... [FILES]...
+Create an html table of image thumbnails
+
+  -w           set the column number (default is 5)
+  -t           set title of the table
+  -c           accept a caption file
+  -i           read from stdin  ####NOT IMPLIMENTED YET
+  -o           set output file name (default is album.html)
+ENOENT
+  exit
+}
+
+
+
+# ====================================
+# main
+# ====================================
+
+col=5
+title="image Table"
+capFile="test.txt"
+output="album.html"
+input=0
+kill=1
+while getopts "w:t:c:io:" opt; do
+  case $opt in
+    w)col=$OPTARG;
+      [ $OPTARG ];;
+    t)title=$OPTARG;
+      [ "$OPTARG" ];;
+    c)capFile=$OPTARG;
+      [ "$OPTARG" ];;
+    i)input=1;;
+    o)output=$OPTARG;
+      [ "$OPTARG" ];;
+    *)kill=0;;
+  esac
+done
+if [ $kill -eq "0" ];then
+  usage
+fi
+
+shift $((OPTIND-1)); #get right file path
+
+pagehead "$title" > $output
+count=0
+echo "<tr>" >> $output
+for fn
+do
+  if (( count == col )); then
+    count=0
+    cat<<END
+    </tr>
+    <tr>
+END
+  fi
+  newFile=${fn%.*}.png
+  $(convert $fn -resize '20%' $newFile)
+  echo "<td><img src="$newFile"></td>"
+  let count++
+done >> $output
+echo "</tr>" >> $output
+pageend >> $output
 
