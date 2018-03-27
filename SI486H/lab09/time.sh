@@ -31,8 +31,8 @@ function difftime ()
     sc1=$t1
     sc2=$t2
 
-    insec1=$((hr1*3600+mn1*60+sc1))
-    insec2=$((hr2*3600+mn2*60+sc2))
+    insec1=$((10#$hr1*3600+10#$mn1*60+10#$sc1)) #Bash thinks that these are octal numbers b/c of leading zero
+    insec2=$((10#$hr2*3600+10#$mn2*60+10#$sc2))
 
     diffsec=$((insec2-insec1))
     diffsec=${diffsec#-}
