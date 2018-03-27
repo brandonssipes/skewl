@@ -79,6 +79,7 @@ ENOENT
 col=5
 title="image Table"
 capFile="test.txt"
+useCap=0
 output="album.html"
 input=0
 kill=1
@@ -89,6 +90,7 @@ while getopts "w:t:c:io:" opt; do
     t)title=$OPTARG;
       [ "$OPTARG" ];;
     c)capFile=$OPTARG;
+      useCap=1;
       [ "$OPTARG" ];;
     i)input=1;;
     o)output=$OPTARG;
@@ -116,7 +118,12 @@ END
   fi
   newFile=${fn%.*}.png
   $(convert $fn -resize '20%' $newFile)
-  echo "<td><img src="$newFile"></td>"
+  echo "<td><img src="$newFile">"
+  if (( useCap == 1 )); then
+    read -r line < $capFile
+    echo $line
+  fi
+  echo "</td>"
   let count++
 done >> $output
 echo "</tr>" >> $output
