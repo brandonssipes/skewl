@@ -53,7 +53,9 @@ END
   done
 }
 
-
+# ************************************
+# readStdin
+# ************************************
 function readStdin () {
   while read fn; do
     if (( count == col )); then
