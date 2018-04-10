@@ -1,0 +1,46 @@
+#!/bin/bash -
+#oodiff - diff the content of open office files
+#Brandon Sipes April 10, 2018
+
+##########################################################
+# testFile - test the file extension
+##########################################################
+function testFile(){
+  if [[ $1 != *.odt ]]; then 
+    exit
+  fi
+}
+
+##########################################################
+# parseFiles
+##########################################################
+parseFiles (){
+  sed 's/<.*?>/\n/g' $file1 > $file1
+}
+
+
+##########################################################
+# main
+##########################################################
+function main(){
+  file1=/tmp/oodiff1.$RANDOM
+  file2=/tmp/oodiff2.$RANDOM
+  #while [ ! -f $file1 ] || [ ! -f $file2 ]; do
+  #  file1=/tmp/file1.$RANDOM
+  #  file2=/tmp/file2.$RANDOM
+  #done
+  trap "rm -f $file1 $file2" SIGINT SIGTERM SIGKILL EXIT SIGQUIT
+  testFile $1
+  testFile $2
+  file3=$(unzip -p $1 content.xml)
+  $(unzip -p $2 content.xml > $file2)
+  sed 's/<office:body>/\n/' <<<$file3
+  #sed 's/<office:body>/\n/' $file1 
+
+}
+
+
+main $*
+
+
+
