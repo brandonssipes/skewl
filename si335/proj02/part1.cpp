@@ -31,10 +31,12 @@ int main(int argc, char** argv){
   fin.ignore(1024, '\n');
 
   bool matrix[row][col];
+
   
-  //We can use bascially an adjacency list where there is an array of linked lists
-  //the array is gonna be size col for each 
-  //each time we read in 
+  //We can use bascially an adjacency list where there is an array of BSTs
+  //the array is gonna be size col 
+  //each time we read in we will O(1) go to that column and add to the BST a node for that row
+  //Then for that lookup we O(1) go to the column that we want to look at and O(lg(r)) look for that key point
 
   for(int i = 0; i < row; ++i)
     for(int j = 0; j < col; ++j)
@@ -61,18 +63,35 @@ int main(int argc, char** argv){
     if(row < bound-1 && matrix[row+1][col]) mask += 4;
     switch(mask){
       case 0:
-        col++;
+      case 2:
         break;
       case 1:
+        row--;
+        break;
+      case 3:
+        if(abs(row - start) >= abs(row-1 - start))
+          row--;
+        break;
+      case 4:
+        row++;
+        break;
+      case 5:
+        if(abs(row +1 -start) >= abs(row-1 - start))
+          row--;
+        else
+          row++;
+        break;
+      case 6:
+        if(abs(row - start) > abs(row + 1 - start))
+          row++;
+        break;
+      case 7:
+        if(abs(row - start) > abs(row - 1 - start))
+          row--;
+        else if(abs(row - start) > abs(row+1 - start))
+          row++;
+        break;
     }
   }
-
-
-  
-
-
-
-    
-
   return 0;
 }
