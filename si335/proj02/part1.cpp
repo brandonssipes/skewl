@@ -19,6 +19,7 @@ struct Node {
   int col;
 };
 void push(struct Node**,int,int);
+void print_list(struct Node*);
 
 int buffer = 1024;
 
@@ -39,9 +40,6 @@ int main(int argc, char** argv){
   fin.ignore(1024, '\n');
 
   Node **LL = new Node*[col]; 
-  for(int i = 0; i < col; ++i){
-    LL[i] = new Node;
-  }
 
   
   //We can use bascially an adjacency list where there is an array of BSTs
@@ -55,7 +53,6 @@ int main(int argc, char** argv){
   int middle = row/2;
   int end = col;
   int bound = row;
-  Coord data;
   do{
     fin >> row >> col;
     if(!fin) break;
@@ -75,10 +72,12 @@ int main(int argc, char** argv){
     do{
       if(cur == NULL)
         break;
-      printf("Our position is: %d, %d\nColumn we're checking is: %d\n", pos.row, pos.col, col);
-      if(cur->row > (col - pos.col) + pos.row || cur->row < (col - pos.col) - pos.row){ //not in scope
+      if(!(cur->row <= (col - pos.col) + pos.row && cur->row >= pos.row - (col - pos.col)))
         continue;
-      }
+      printf("point %d, %d is in scope\n", cur->row, cur->col);
+      //if(cur->row > (col - pos.col) + pos.row || cur->row < (col - pos.col) - pos.row){ //not in scope
+      //  continue;
+      //}
       if(best.row == -1){
         best.row = cur->row;
       }
@@ -128,4 +127,10 @@ void push(struct Node** head, int r, int c){
   newNode->col = c;
   newNode->next = *head;
   *head = newNode;
+}
+void print_list(struct Node* cur){
+  while(cur){
+    printf("coord = %d, %d\n", cur->row, cur->col);
+    cur=cur->next;
+  }
 }
