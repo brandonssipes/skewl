@@ -63,23 +63,20 @@ int main(int argc, char** argv){
   int found = 0;
   //determine if it is in scope if: the row < (col - pos.col)  + pos.row && row > (col - pos.col) - pos.row
   Coord best;
-  best.row = -1;
   Node*cur;
   for(int col = 1; col < end; ++col){
     cur = LL[col];
+    best.row = -1;
     do{
       if(cur == NULL)
         break;
-      if(!(cur->row <= (col - pos.col) + pos.row && cur->row >= pos.row - (col - pos.col)))
+      if(!(cur->row <= (col - pos.col) + pos.row && cur->row >= pos.row - (col - pos.col))) //check for scope
         continue;
       printf("point %d, %d is in scope\n", cur->row, cur->col);
-      //if(cur->row > (col - pos.col) + pos.row || cur->row < (col - pos.col) - pos.row){ //not in scope
-      //  continue;
-      //}
       if(best.row == -1){
         best.row = cur->row;
       }
-      if(pos.row <= middle && cur->row > best.row && best.row <= middle){
+      if(pos.row <= middle && cur->row > best.row && (cur->row -middle) > best.row - middle){
         best.row = cur->row;
         best.col = cur->col;
         found = 1;
@@ -107,7 +104,6 @@ int main(int argc, char** argv){
         direction[string++] = 'S';
       }
       printf("Our new position is: %d, %d\n", pos.row, pos.col);
-      best.row = -1;
       found = 0;
     }
   }
