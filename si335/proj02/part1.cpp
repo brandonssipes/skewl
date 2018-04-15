@@ -20,8 +20,6 @@ struct Node {
 };
 void push(struct Node**,int,int);
 
-int buffer = 1024;
-
 int main(int argc, char** argv){
   if (argc < 2) {
     std::cerr << "usage: part1 <filename>\n";
