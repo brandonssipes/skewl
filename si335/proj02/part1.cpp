@@ -7,6 +7,12 @@
 #include <cstdlib>
 #include <list>
 #include <string>
+#include <cmath>
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
+#include <fcntl.h>
 
 struct Coord{
   int row;
@@ -24,13 +30,13 @@ void print_list(struct Node*);
 int main(int argc, char** argv){
   if (argc < 2) {
     std::cerr << "usage: part1 <filename>\n";
-    exit(1);
+    exit(7);
   }
 
   std::ifstream fin(argv[1]);
   if (!fin) {
     std::cerr << "Error: file \"" << argv[1] << "\" could not be opened!" << std::endl;
-    exit(2);
+    exit(8);
   }
   
   int row, col;
@@ -72,23 +78,24 @@ int main(int argc, char** argv){
         break;
       if(!(cur->row <= (col - pos.col) + pos.row && cur->row >= pos.row - (col - pos.col))) //check for scope
         continue;
-      printf("point %d, %d is in scope\n", cur->row, cur->col);
       if(best.row == -1){
         best.row = cur->row;
       }
-      if(pos.row <= middle && cur->row > best.row && (cur->row -middle) > best.row - middle){
+      if(abs(cur->row - middle) < abs(best.row - middle)){
         best.row = cur->row;
         best.col = cur->col;
         found = 1;
-      }
-      if(pos.row > middle && cur->row < best.row && best.row > middle){
-        found = 1;
+      }else if(abs(cur->row - middle) == abs(best.row - middle) && cur->row <= best.row){
         best.row = cur->row;
         best.col = cur->col;
+        found = 1;
       }
     }while((cur = cur->next));
     if(found){
-      printf("best coord = %d, %d\n", best.row, best.col);
+      while(abs(best.col - pos.col) != abs(best.row - pos.row)){
+        pos.col++;
+        direction[string++] = 'S';
+      }
       while(pos.row < best.row){
         pos.row++;
         pos.col++;
@@ -99,11 +106,6 @@ int main(int argc, char** argv){
         pos.col++;
         direction[string++] = 'U';
       }
-      while(pos.col < col){
-        pos.col++;
-        direction[string++] = 'S';
-      }
-      printf("Our new position is: %d, %d\n", pos.row, pos.col);
       found = 0;
     }
   }
@@ -112,6 +114,7 @@ int main(int argc, char** argv){
     pos.col++;
     direction[string++] = 'S';
   }
+  direction[end-1] = '\00';
   printf("%s\n", direction);
 }
 
