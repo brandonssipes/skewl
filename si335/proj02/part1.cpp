@@ -92,10 +92,10 @@ int main(int argc, char** argv){
       }
     }while((cur = cur->next));
     if(found){
-      while(abs(best.col - pos.col) != abs(best.row - pos.row)){
-        pos.col++;
-        direction[string++] = 'S';
-      }
+      //while(abs(best.col - pos.col) != abs(best.row - pos.row)){
+      //  pos.col++;
+      //  direction[string++] = 'S';
+      //}
       while(pos.row < best.row){
         pos.row++;
         pos.col++;
@@ -105,6 +105,10 @@ int main(int argc, char** argv){
         pos.row--;
         pos.col++;
         direction[string++] = 'U';
+      }
+      while(pos.col < best.col){
+        pos.col++;
+        direction[string++] = 'S';
       }
       found = 0;
     }
