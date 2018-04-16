@@ -85,7 +85,7 @@ int main(int argc, char** argv){
         best.row = cur->row;
         best.col = cur->col;
         found = 1;
-      }else if(abs(cur->row - middle) == abs(best.row - middle) && cur->row >= best.row){
+      }else if(abs(cur->row - middle) == abs(best.row - middle) && cur->row <= best.row){
         best.row = cur->row;
         best.col = cur->col;
         found = 1;
