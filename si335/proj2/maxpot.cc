@@ -48,7 +48,7 @@ int main(int argc, char *argv[]){
   return 0;
 }
 
-int maxpot(int Nc, int Nr, int** cp){
+/*int maxpot(int Nc, int Nr, int** cp){
   int i,j;
   int u,s,d;
 
@@ -67,7 +67,7 @@ int maxpot(int Nc, int Nr, int** cp){
   cout << "the max value is " << maxval << endl;
   
   return 0;
-}
+}*/
 
 int maxpot(int Nc, int Nr, int** cp){
   int i,j;

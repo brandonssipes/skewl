@@ -45,13 +45,6 @@ int main(int argc, char** argv){
 
   Node **LL = new Node*[col]; 
 
-  
-  //We can use bascially an adjacency list where there is an array of BSTs
-  //the array is gonna be size col 
-  //each time we read in we will O(1) go to that column and add to the BST a node for that row
-  //Then for that lookup we O(1) go to the column that we want to look at and O(lg(r)) look for that key point
-
-
   char direction[col]; 
   int string = 0;
   int middle = row/2;
@@ -67,7 +60,7 @@ int main(int argc, char** argv){
   pos.row = middle;
   pos.col = 0;
   int found = 0;
-  //determine if it is in scope if: the row < (col - pos.col)  + pos.row && row > (col - pos.col) - pos.row
+  //determine if it is in scope if: the row <= (col - pos.col)  + pos.row && row >= (col - pos.col) - pos.row
   Coord best;
   Node*cur;
   for(int col = 1; col < end; ++col){
@@ -92,10 +85,6 @@ int main(int argc, char** argv){
       }
     }while((cur = cur->next));
     if(found){
-      //while(abs(best.col - pos.col) != abs(best.row - pos.row)){
-      //  pos.col++;
-      //  direction[string++] = 'S';
-      //}
       while(pos.row < best.row){
         pos.row++;
         pos.col++;
