@@ -1,0 +1,114 @@
+#!/bin/bash -
+#12 week Practicum Retake
+#Brandon Sipes April 17, 2018
+
+##################################################
+# nameRead
+##################################################
+function nameRead(){
+  while read first last alpha; do
+    names[$last.$first]=$alpha
+  done <$1
+}
+
+##################################################
+# fileRead
+##################################################
+function fileRead(){
+  while read alpha score; do
+    scores[$alpha]="${scores[$alpha]} $score"
+  done < $i
+}
+##################################################
+# readLine
+##################################################
+function readLine(){
+  while read alpha score; do
+    scores[$alpha]="${scores[$alpha]} $score"
+  done
+  
+}
+
+##################################################
+# computeScores
+##################################################
+computeScores(){
+  total=0
+  count=0
+  max=0
+  average=0
+  testt=0
+  for j in ${!scores[*]}; do
+    if (( $1 == $j )); then
+      testt=1
+    fi
+  done
+
+  if (( testt==1 )); then
+    for i in ${scores[$1]}; do
+      (( total = total + $i ))
+      (( count = count + 1 ))
+      if (( max < $i ));then
+        (( max = $i ))
+      fi
+    done
+    (( average = total/count ))
+    output="$count $max $average"
+  fi
+}
+
+##################################################
+# Main
+##################################################
+function main(){
+  student=$1
+  declare -A names
+  declare -A scores
+  output=
+  if [[ ${1} ]]; then
+    nameRead $1
+  fi
+  shift 
+  if [[ ${1} ]]; then
+    for i in $*; do
+      fileRead $i
+    done
+  else 
+    readLine
+  fi
+
+
+  for i in ${!names[*]}; do
+    go=0
+    alpha=${names[$i]}
+    alp=${alpha#m}
+    for j in ${!scores[*]}; do
+      if (( $alp == $j )); then
+        go=1
+      fi
+    done
+    if (( $go == 0 )); then
+      continue
+    fi
+    a="${alpha#m} "
+    name=$i
+    n="${i/./, }"
+    computeScores ${alpha#m}
+    together=$a$n
+    size=${#together}
+    for ((i=23; ${#together} > i; )); do
+      together=${together%[a-Z]*}
+    done
+    for((i=25; i>${#together};));do
+      together="$together "
+    done
+    echo -n "$together"
+    printf "% 2d %d %d\n" $output
+  done
+}
+
+
+
+
+
+main $*
