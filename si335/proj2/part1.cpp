@@ -14,6 +14,7 @@
 #include <sys/mman.h>
 #include <fcntl.h>
 
+
 struct Coord{
   int row;
   int col;
@@ -53,6 +54,7 @@ int main(int argc, char** argv){
   do{
     fin >> row >> col;
     if(!fin) break;
+    if(row > middle+col || row < middle-col) continue;
     push(&LL[col], row, col);
   } while(true);
 
