@@ -6,15 +6,13 @@
 #include <fstream>
 #include <cstdlib>
 #include <list>
-#include <cstring>
+#include <string>
 #include <cmath>
 
-//mmap
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <fcntl.h>
-
 
 struct Coord{
   int row;
@@ -26,8 +24,6 @@ struct Node {
   int row;
   int col;
 };
-char* map_file(char* fname, size_t& length);
-//static uintmax_t wc(char const*);
 void push(struct Node**,int,int);
 void print_list(struct Node*);
 
@@ -36,27 +32,6 @@ int main(int argc, char** argv){
     std::cerr << "usage: part1 <filename>\n";
     exit(7);
   }
-  
-  size_t length;
-  char* f = map_file(argv[1], length);
-  char* l = f+length;
-
-  char* oldF = f;
-  int numLines = 0;
-
-  char* test;
-  sprintf(test, "%d", f);
-  printf("%d\n",test);
-
-  //while (f && f!=l)
-  //  if ((f = (char*)(memchr(f, ' ', l-f)))){
-  //    snprintf(test, oldF-f, f);
-  //    printf("%s\n",test);
-  //    *oldF=*f;
-  //    f++;
-  //  }
-
-  exit(1);
 
   std::ifstream fin(argv[1]);
   if (!fin) {
@@ -78,7 +53,6 @@ int main(int argc, char** argv){
   do{
     fin >> row >> col;
     if(!fin) break;
-    if(row > middle+col || row < middle-col) continue;
     push(&LL[col], row, col);
   } while(true);
 
@@ -150,41 +124,3 @@ void print_list(struct Node* cur){
     cur=cur->next;
   }
 }
-
-char* map_file(char* fname, size_t& length){
-  int fd = open(fname, O_RDONLY);
-  // obtain file size
-  struct stat sb;
-  fstat(fd, &sb);
-  length = sb.st_size;
-
-  char* addr = (char*)(mmap(NULL, length, PROT_READ, MAP_PRIVATE, fd, 0u));
-
-  // TODO close fd at some point in time, call munmap(...)
-  return addr;
-}
-
-
-/*static uintmax_t wc(char const *fname){
-  static const auto BUFFER_SIZE = 16*1024;
-  int fd = open(fname, O_RDONLY);
-
-  posix_fadvise(fd, 0, 0, 1);  // FDADVICE_SEQUENTIAL
-
-  char buf[BUFFER_SIZE + 1];
-  uintmax_t lines = 0;
-
-  while(size_t bytes_read = read(fd, buf, BUFFER_SIZE))
-  {
-    if(bytes_read == (size_t)-1)
-      handle_error("read failed");
-    if (!bytes_read)
-      break;
-
-    for(char *p = buf; (p = (char*) memchr(p, '\n', (buf + bytes_read) - p)); ++p)
-      ++lines;
-  }
-
-  return lines;
-}
-*/

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cmath>
 #include <stdlib.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -47,16 +48,6 @@ int main(int argc, char *argv[]){
   bestpath(Nc,Nr,potential);
   // outputs the actual best path
 
-  /*
-  for(j=0;j<Nr;++j){
-    for(i=0;i<Nc;++i){
-      cout<<potential[i][j];
-      if(potential[i][j]<10)  cout<<" ";
-      cout<<" ";
-    }
-    cout<<endl;
-  }
-  */
   
   return 0;
 }
@@ -112,18 +103,17 @@ void bestpath(int Nc, int Nr, int** pot){
     // getting the maximum checkpoints abailable after next step
 
     if(maxval==s)
-      cout<<"S";
+      write(1,"S",1);
     else if(maxval==u){
-      cout<<"U";
+      write(1,"U",1);
       --j;
     }else{
-      cout<<"D";
+      write(1,"D",1);
       ++j;
     }// choosing which move to take, moving position up or down as needed
 
     ++i;
     // moving position right
   }
-
-  cout<<endl;
+  write(1,"\n",1);
 }
