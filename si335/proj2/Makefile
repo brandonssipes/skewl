@@ -1,7 +1,7 @@
 build:	build-greedy build-optval build-opt
 
 build-greedy:
-	g++ -O4 -o gog part1.cpp
+	g++ -O4 -o gog greedy.cpp
 
 comm-greedy:
 	@echo "./gog"
