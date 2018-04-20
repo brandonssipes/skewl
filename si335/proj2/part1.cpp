@@ -9,7 +9,6 @@
 #include <string>
 #include <cmath>
 
-#include <unistd.h>
 struct Coord{
   int row;
   int col;
@@ -40,6 +39,8 @@ int main(int argc, char** argv){
 
   Node **LL = new Node*[col]; 
 
+  char direction[col];
+  int string = 0;
   int middle = row/2;
   int end = col;
   int bound = row;
@@ -81,16 +82,16 @@ int main(int argc, char** argv){
       while(pos.row < best.row){
         pos.row++;
         pos.col++;
-        write(1, "D", 1);
+        direction[string++]='D';
       }
       while(pos.row > best.row){
         pos.row--;
         pos.col++;
-        write(1, "U", 1);
+        direction[string++]='U';
       }
       while(pos.col < best.col){
         pos.col++;
-        write(1, "S", 1);
+        direction[string++]='S';
       }
       found = 0;
     }
@@ -98,9 +99,9 @@ int main(int argc, char** argv){
 
   while(pos.col < end){
     pos.col++;
-    write(1, "S", 1);
+    direction[string++]='S';
   }
-  write(1, "\n", 1);
+  printf("%s\n", direction);
 }
 
 void push(struct Node** head, int r, int c){
