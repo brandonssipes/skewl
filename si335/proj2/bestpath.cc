@@ -94,6 +94,8 @@ void bestpath(int Nc, int Nr, int** pot){
   int j=Nr/2;
   // initalizing starting point
   int u,s,d;
+  char dir[Nc];
+  int spot=0;
 
   while(i<Nc-1){
     u = (j>0?pot[i+1][j-1]:0);
@@ -103,17 +105,17 @@ void bestpath(int Nc, int Nr, int** pot){
     // getting the maximum checkpoints abailable after next step
 
     if(maxval==s)
-      write(1,"S",1);
+      dir[spot++]='S';
     else if(maxval==u){
-      write(1,"U",1);
+      dir[spot++]='U';
       --j;
     }else{
-      write(1,"D",1);
+      dir[spot++]='D';
       ++j;
     }// choosing which move to take, moving position up or down as needed
 
     ++i;
     // moving position right
   }
-  write(1,"\n",1);
+  printf("%s\n",dir);
 }
