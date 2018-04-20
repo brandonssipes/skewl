@@ -9,11 +9,7 @@
 #include <string>
 #include <cmath>
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/mman.h>
-#include <fcntl.h>
-
+#include <unistd.h>
 struct Coord{
   int row;
   int col;
@@ -25,7 +21,6 @@ struct Node {
   int col;
 };
 void push(struct Node**,int,int);
-void print_list(struct Node*);
 
 int main(int argc, char** argv){
   if (argc < 2) {
@@ -45,8 +40,6 @@ int main(int argc, char** argv){
 
   Node **LL = new Node*[col]; 
 
-  char direction[col]; 
-  int string = 0;
   int middle = row/2;
   int end = col;
   int bound = row;
@@ -88,16 +81,16 @@ int main(int argc, char** argv){
       while(pos.row < best.row){
         pos.row++;
         pos.col++;
-        direction[string++] = 'D';
+        write(1, "D", 1);
       }
       while(pos.row > best.row){
         pos.row--;
         pos.col++;
-        direction[string++] = 'U';
+        write(1, "U", 1);
       }
       while(pos.col < best.col){
         pos.col++;
-        direction[string++] = 'S';
+        write(1, "S", 1);
       }
       found = 0;
     }
@@ -105,10 +98,9 @@ int main(int argc, char** argv){
 
   while(pos.col < end){
     pos.col++;
-    direction[string++] = 'S';
+    write(1, "S", 1);
   }
-  direction[end-1] = '\00';
-  printf("%s\n", direction);
+  write(1, "\n", 1);
 }
 
 void push(struct Node** head, int r, int c){
@@ -117,10 +109,4 @@ void push(struct Node** head, int r, int c){
   newNode->col = c;
   newNode->next = *head;
   *head = newNode;
-}
-void print_list(struct Node* cur){
-  while(cur){
-    printf("coord = %d, %d\n", cur->row, cur->col);
-    cur=cur->next;
-  }
 }
