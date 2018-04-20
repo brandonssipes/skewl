@@ -1,4 +1,4 @@
-build:	build-greedy #build-optval build-opt
+build:	build-greedy build-optval build-opt
 
 build-greedy:
 	g++ -O4 -o gog part1.cpp
@@ -6,20 +6,20 @@ build-greedy:
 comm-greedy:
 	@echo "./gog"
 
-#build-optval:
-#	g++ -O4 -o gov solA.cpp
+build-optval:
+	g++ -O4 -o gov maxpot.cc
 
-#comm-optval:
-#	@echo "./gov"
+comm-optval:
+	@echo "./gov"
 
-#build-opt:
-#	g++ -O4 -o goo solB.cpp
+build-opt:
+	g++ -O4 -o goo bestpath.cc
 
-#comm-opt:
-#	@echo "./goo"
+comm-opt:
+	@echo "./goo"
 
-#users:
-#	@echo "bssipes"
+users:
+	@echo "Bodeman, Maas, Paris, Sipes"
 
 clean:
-	rm -f gog #gov goo rcheck
+	rm -f gog gov goo rcheck
