@@ -13,7 +13,11 @@ function main(){
     lookup=${lookup}_$i
   done
   cURL=https://en.wikipedia.org/wiki/$lookup
-  echo $(curl $cURL)
+  echo $cURL
+  output=$(curl $cURL 2>/dev/null)
+  smaller=${output%%<div id=\"toc*}
+  final=${smaller#*<p>}
+  echo $final | sed -r -e 's/<\/?p>/\n/g' -e 's/<[^>]*>//g'
 }
 
 
