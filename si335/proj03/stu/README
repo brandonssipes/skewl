@@ -1,0 +1,34 @@
+Project3 WormWorld Game (Chris Brown, 2018)
+
+Once this file is unpacked, give the command
+
+make Greedy
+
+to compile and package as an executable my simple greedy worm, "greedy".
+You can then run it in the environment, e.g. as
+
+./p3game i1c ./greedy
+
+EXECUTABLE FILES:
+dbgreedy - an executable worm brain that is stupidly greedy (this is so you
+           have a copy of the simple greedy worm, even if you modify Greedy.java)
+jar2exec - a program used by the Makefile to make executables of java programs.
+p3game   - the WormWorld game simulator.
+
+GAME BOARDS:
+i1a - a simple board
+i1b - a bigger board
+i1c - a simple board with lots of food
+
+HELPFUL CLASSES:
+The package "si335" has helpful classes: Dir, Pos, PosPlus and ShortestPathOracle.
+If you do a
+
+    import si335.*;
+
+... you can use all of these.  The project page has links to the java doc for
+these classes.
+
+GREEDY DEMO PROGRAM
+Greedy.java - source code you can understand, modify and steal if you wish
+Makefile    - a makefile for Greedy, ... and more targets for your code.
