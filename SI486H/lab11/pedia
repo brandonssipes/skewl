@@ -1,0 +1,21 @@
+#!/bin/bash -
+#Brandon Sipes
+#April 17, 2018
+#lab11 Wikipedia tool to lookup topics on wikipedia
+
+######################################################
+# Main
+######################################################
+function main(){
+  lookup=$1
+  shift
+  for i in $*; do 
+    lookup=${lookup}_$i
+  done
+  cURL=https://en.wikipedia.org/wiki/$lookup
+  echo $(curl $cURL)
+}
+
+
+
+main $*
