@@ -1,5 +1,5 @@
 # These three variables control the target "Greedy".
-GREEDYNAME=greedy
+GREEDYNAME=sol1
 GREEDYMAINCLASS=Greedy
 GREEDYSOURCES=Greedy.java
 

@@ -16,10 +16,12 @@ public class Greedy
   private int rows, cols, dur, len;
   private Dir mydir;
   private Pos mypos = null;
+  private ShortestPathOracle BLANK;
 
   public Greedy()
   {
     food = new ArrayList<PosPlus>();    
+    BLANK = new ShortestPathOracle();
   }
 
   /**
@@ -40,14 +42,17 @@ public class Greedy
 	cols = sc.nextInt();
 	dur = sc.nextInt();
 	len = sc.nextInt();
+        BLANK.setBoardSize(rows, cols);
 	break;
       case 'r': // "right" barrier (my greedy just ignores this!)
 	p = Pos.read(sc);
 	k = sc.nextInt();
+        BLANK.addBarrier('r', p, k);
 	break;
       case 'd': // "down" barrier (my greedy just ignores this!)
 	p = Pos.read(sc);
 	k = sc.nextInt();
+        BLANK.addBarrier('d', p, k);
 	break;
       case 'o': // "food" (use a PolsPlus where val = food value)
 	food.add(PosPlus.read(sc));
@@ -72,7 +77,8 @@ public class Greedy
     for(int j = 0; j < N; j++)
       if (!visited[j])
       {
-	int nextDist = curr.distance(food.get(j)); // "manhattan distance"!!!
+        int nextDist = BLANK.getLengthOfShortestPath(curr, food.get(j));
+	//int nextDist = curr.distance(food.get(j)); // "manhattan distance"!!!
 	if (nextDist < bestDist)
 	{
 	  ibest = j;
@@ -146,7 +152,8 @@ public class Greedy
 	else if (food.size() == 0 || i_target >= path.size())
 	  move = 'F'; // if no food remains or finished with path, charge ahead!
 	else
-	  move = mydir.getMoveTowards(mypos,path.get(i_target)); // move towards the current target
+          move = BLANK.getFirstMoveOnShortestPath(mypos, mydir, path.get(i_target));
+	  //move = mydir.getMoveTowards(mypos,path.get(i_target)); // move towards the current target
 	mydir = mydir.turn(move); // update direction based on the turn
 	System.out.println(move); // send our move back to the server
 	break;
