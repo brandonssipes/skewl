@@ -7,17 +7,16 @@
 # Main
 ######################################################
 function main(){
-  lookup=$1
+  lookup=${1^} #make sure the first word starts with a capital
   shift
   for i in $*; do 
-    lookup=${lookup}_$i
+    lookup=${lookup}_$i  #add underscores per word
   done
   cURL=https://en.wikipedia.org/wiki/$lookup
-  echo $cURL
-  output=$(curl $cURL 2>/dev/null)
-  smaller=${output%%<div id=\"toc*}
+  output=$(curl $cURL 2>/dev/null) #use curl to pull everything down
+  smaller=${output%%<div id=\"toc*} #I determined the end of the introductory information to be right before the table of contents.
   final=${smaller#*<p>}
-  echo $final | sed -r -e 's/<\/?p>/\n/g' -e 's/<[^>]*>//g'
+  echo $final | sed -r -e 's/<\/?p>/\n/g' -e 's/<[^>]*>//g' #convert all paragraphs to new lines and remove all other tags
 }
 
 
