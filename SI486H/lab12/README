@@ -5,3 +5,10 @@ When I timed both using sed and the detag, the detag builtin ran in
 about .058s and the sed ran in about .338s. Therefore the detag builtin
 was much faster.  However, when I ran the compiled c program ./dtag it
 ran on average of .047s which was also faster than the builtin.
+
+
+NOTE:
+The commands I ran to get the time was:
+(time detag <mega.txt >/dev/null) 2>&1 | grep real | cut -f2 | cut -f2 -d'm' | cut -f1 -d's'
+(time sed -e 's/<[^>]*>//g' <mega.txt >/dev/null) 2>&1 | grep real | cut -f2 | cut -f2 -d'm' | cut -f1 -d's'
+(time ./dtag <mega.txt >/dev/null) 2>&1 | grep real | cut -f2 | cut -f2 -d'm' | cut -f1 -d's'
