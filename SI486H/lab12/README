@@ -1,0 +1,7 @@
+Brandon Sipes
+lab12 builtin
+
+When I timed both using sed and the detag, the detag builtin ran in
+about .058s and the sed ran in about .338s. Therefore the detag builtin
+was much faster.  However, when I ran the compiled c program ./dtag it
+ran on average of .047s which was also faster than the builtin.
