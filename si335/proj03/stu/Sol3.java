@@ -14,6 +14,26 @@ public class Sol3
     ArrayList<Pos> bestPath = new ArrayList<Pos>();
     for(long i = System.currentTimeMillis(); i-start < 5000; i = System.currentTimeMillis()){
       path = brain.planPath();
+      //local refinement here
+      Pos start, end;
+      int r, r2, rMax, c, c2, cMax;
+      for(int j = path.size() - 2; j > 0; --j){
+        start = path[j];
+        end = path[j+1];
+        r = start.getRow();
+        r2 = end.getRow();
+        rMax = r > r2 ? r : r2; //bigger row
+        r = r > r2 ? r2 : r; //smaller row
+        c = start.getCol();
+        c2 = end.getCol();
+        cMax = c > c2 ? c : c2;
+        c = c > c2 ? c2 : c;
+        Pos curr = start;
+        for(int n = r; n < rMax; ++n){
+          for(int m = c; m < cMax; ++m){
+            if(foodMatrix[n][m] != 0 && !path.contains()){
+              //food is there test if it is in the path
+        
       if (path.size() > bestPath.size())
         bestPath = path;
     }
