@@ -18,6 +18,7 @@ function pagehead () {
     <link rel="stylesheet" href="./calstyle.css">
   </head>
   <body>
+    <h1>$1</h1>
     <table>
 EOF
 }
@@ -66,7 +67,7 @@ function readStdin () {
 END
     fi
     newFile=${fn%.*}.png
-    $(convert $fn -resize '20%' $newFile)
+    convert $fn -resize '20%' $newFile
     echo "<td><a href=${fn}><img src=\"$newFile\"></a>"
     if (( useCap == 1 )); then
       read -r line < $capFile
