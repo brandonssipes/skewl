@@ -15,25 +15,29 @@ public class Sol3
     for(long i = System.currentTimeMillis(); i-start < 5000; i = System.currentTimeMillis()){
       path = brain.planPath();
       //local refinement here
-      Pos start, end;
+      Pos startCheck, endCheck;
       int r, r2, rMax, c, c2, cMax;
       for(int j = path.size() - 2; j > 0; --j){
-        start = path[j];
-        end = path[j+1];
-        r = start.getRow();
-        r2 = end.getRow();
+        startCheck = path.get(j);
+        endCheck = path.get(j+1);
+        r = startCheck.getRow();
+        r2 = endCheck.getRow();
         rMax = r > r2 ? r : r2; //bigger row
         r = r > r2 ? r2 : r; //smaller row
-        c = start.getCol();
-        c2 = end.getCol();
-        cMax = c > c2 ? c : c2;
-        c = c > c2 ? c2 : c;
-        Pos curr = start;
+        c = startCheck.getCol();
+        c2 = endCheck.getCol();
+        cMax = c > c2 ? c : c2; //bigger column
+        c = c > c2 ? c2 : c; //smaller column
         for(int n = r; n < rMax; ++n){
           for(int m = c; m < cMax; ++m){
-            if(foodMatrix[n][m] != 0 && !path.contains()){
+            Pos test = new Pos(n,m);
+            if(foodMatrix[n][m] != 0 && !path.contains(test)){
+              path.add(j,test);
               //food is there test if it is in the path
-        
+            }
+          }
+        }
+      }
       if (path.size() > bestPath.size())
         bestPath = path;
     }
@@ -41,7 +45,7 @@ public class Sol3
   }
   
   private ArrayList<PosPlus> food;
-  private int**foodMatrix;
+  private static int foodMatrix[][];
   private int rows, cols, dur, len;
   private Dir mydir;
   private Pos mypos = null;
@@ -73,10 +77,10 @@ public class Sol3
 	dur = sc.nextInt();
 	len = sc.nextInt();
         BLANK.setBoardSize(rows, cols);
-        foodMatrix = new int[rows][col]
+        foodMatrix = new int[rows][cols];
         for(int j = 0; j < rows; ++j)
-          for(int i = 0; i < cols ++i)
-          foodMatrix[j][i] = 0;
+          for(int i = 0; i < cols; ++i)
+            foodMatrix[j][i] = 0;
 	break;
       case 'r': // "right" barrier (my greedy just ignores this!)
 	p = Pos.read(sc);
@@ -91,8 +95,8 @@ public class Sol3
       case 'o': // "food" (use a PolsPlus where val = food value)
         PosPlus temp = PosPlus.read(sc);
 	food.add(temp);
-        r = temp.getRow();
-        c = temp.getCol();
+        int r = temp.getRow();
+        int c = temp.getCol();
         foodMatrix[r][c] = 1;
 	break;
       case 's': // "start" i.e. get my position & directionx
@@ -174,32 +178,7 @@ public class Sol3
       if (length > dur) break;
       
       // the "best" food location becomes the next location in the path (and our new current location)
-      // add in local refinement
-      Pos temp = food.get(best[0]);
-      int r2 = temp.getRow();
-      int c2 = temp.getCol();
-      int r = curr.getRow();
-      int c = curr.getCol();
-      int rMax = r2 > r ? r2 : r;
-      int cMax = c2 > c ? c2 : c;
-      r = r2 > r ? r : r2;
-      c = c2 > c ? c : c2;
-      int test = 0;
-      for(int u = r; u < rMax; ++u){
-        for(int v = c; v < cMax; ++v){
-          if(foodMatrix[u][v] != 0){ // && !(visited[i]){
-            for(int w = 0; w < N; ++w){
-              if(visited[w]
-            food.
-            //add it to the list
-            path.add(food.get(
-
-
-
-
-
       curr = food.get(best[0]);
-      
       path.add(curr);
       visited[best[0]] = true;
     }
