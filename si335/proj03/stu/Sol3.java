@@ -12,12 +12,15 @@ public class Sol3
     brain.readPreamble(sc);
     ArrayList<Pos> path;
     ArrayList<Pos> bestPath = new ArrayList<Pos>();
+    int count = 0;
     for(long i = System.currentTimeMillis(); i-start < 5000; i = System.currentTimeMillis()){
+      count++;
       path = brain.planPath();
+      System.err.println(path.toString());
       //local refinement here
       Pos startCheck, endCheck;
       int r, r2, rMax, c, c2, cMax;
-      for(int j = path.size() - 2; j > 0; --j){
+      for(int j = 0; j < path.size()-1; ++j){
         startCheck = path.get(j);
         endCheck = path.get(j+1);
         r = startCheck.getRow();
@@ -28,19 +31,29 @@ public class Sol3
         c2 = endCheck.getCol();
         cMax = c > c2 ? c : c2; //bigger column
         c = c > c2 ? c2 : c; //smaller column
+        boolean die = false;
         for(int n = r; n < rMax; ++n){
           for(int m = c; m < cMax; ++m){
             Pos test = new Pos(n,m);
             if(foodMatrix[n][m] != 0 && !path.contains(test)){
-              path.add(j,test);
+              if(j+1 == path.size())
+                path.add(test);
+              else
+                path.add(j+1,test);
+              die = true;
+              j--;
+              break;
               //food is there test if it is in the path
             }
+            if(die) break;
           }
         }
       }
+      System.err.println(path.toString());
       if (path.size() > bestPath.size())
         bestPath = path;
     }
+    System.err.println(count);
     brain.playGame(sc,bestPath);
   }
   
