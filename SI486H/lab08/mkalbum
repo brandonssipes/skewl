@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Brandon Sipes lab08 Creating a table of image thumbnails
-#NOT FINISHED
+
 
 
 # ====================================
@@ -67,7 +67,7 @@ END
     fi
     newFile=${fn%.*}.png
     $(convert $fn -resize '20%' $newFile)
-    echo "<td><img src=\"$newFile\">"
+    echo "<td><a href=${fn}><img src=\"$newFile\"></a>"
     if (( useCap == 1 )); then
       read -r line < $capFile
       echo $line
@@ -88,7 +88,7 @@ Create an html table of image thumbnails
   -w           set the column number (default is 5)
   -t           set title of the table
   -c           accept a caption file
-  -i           read from stdin  ####NOT IMPLIMENTED YET
+  -i           read from stdin
   -o           set output file name (default is album.html)
 ENOENT
   exit
@@ -122,11 +122,13 @@ while getopts "w:t:c:io:" opt; do
     *)kill=0;;
   esac
 done
-if [ $kill -eq "0" ];then
+if [ $kill -eq "0" ];then #something is wrong send usage message
   usage
+  exit
 fi
 
 shift $((OPTIND-1)); #get right file path
+
 
 pagehead "$title" > $output
 count=0
@@ -143,12 +145,13 @@ else
       <tr>
 END
     fi
+    
     newFile=${fn%.*}.png
-    $(convert $fn -resize '20%' $newFile)
-    echo "<td><img src=\"$newFile\">"
+    convert $fn -resize '20%' $newFile
+    echo "<td><a href=${fn}><img src=\"$newFile\"></a>"
     if (( useCap == 1 )); then
       read -r line < $capFile
-      echo $line
+      echo "<p>$line</p>"
     fi
     echo "</td>"
     let count++
