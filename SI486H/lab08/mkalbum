@@ -52,7 +52,7 @@ END
     fi
     newFile=${fn%.*}.png
     convert $fn -resize '20%' $newFile
-    echo "<td><a href=${fn}><img src=\"$newFile\"></a>"
+    echo "<td><a href=${fn}><img src=\"$newFile\" width=\"128\" height=\"128\"></a>"
     if (( useCap == 1 )); then
       read -r line < $capFile
       echo $line
