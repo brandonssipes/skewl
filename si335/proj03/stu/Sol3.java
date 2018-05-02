@@ -16,13 +16,15 @@ public class Sol3
     for(long i = System.currentTimeMillis(); i-start < 5000; i = System.currentTimeMillis()){
       count++;
       path = brain.planPath();
-      System.err.println(path.toString());
+      //System.err.println(path.toString());
       //local refinement here
       Pos startCheck, endCheck;
       int r, r2, rMax, c, c2, cMax;
-      for(int j = 0; j < path.size()-1; ++j){
-        startCheck = path.get(j);
-        endCheck = path.get(j+1);
+      System.err.println(path.toString());
+      for(int y = 0; y < path.size()-1; ++y){
+        //System.err.println(count++);
+        startCheck = path.get(y);
+        endCheck = path.get(y+1);
         r = startCheck.getRow();
         r2 = endCheck.getRow();
         rMax = r > r2 ? r : r2; //bigger row
@@ -31,29 +33,56 @@ public class Sol3
         c2 = endCheck.getCol();
         cMax = c > c2 ? c : c2; //bigger column
         c = c > c2 ? c2 : c; //smaller column
-        boolean die = false;
+        ArrayList<Pos> addedFoods = new ArrayList<Pos>();
+        //addedFoods.add(startCheck);
+        //boolean die = false;
         for(int n = r; n < rMax; ++n){
           for(int m = c; m < cMax; ++m){
             Pos test = new Pos(n,m);
-            if(foodMatrix[n][m] != 0 && !path.contains(test)){
-              if(j+1 == path.size())
+            if(foodMatrix[n][m] != 0 && !path.contains(test) && !addedFoods.contains(test)){
+              addedFoods.add(test);
+              /*if(y >= path.size())
                 path.add(test);
               else
-                path.add(j+1,test);
+                path.add(y+1,test);
               die = true;
-              j--;
-              break;
+              y--;
+              break;*/
               //food is there test if it is in the path
             }
-            if(die) break;
+          }
+          //if(die) break;
+        }
+        ArrayList<Pos> bestFoods = new ArrayList<Pos>();
+        ArrayList<Pos> curFoods = new ArrayList<Pos>();
+        for(int u = 0; u < addedFoods.size(); ++u){
+          Pos testFood = addedFoods.get(u);
+          r = testFood.getRow();
+          rMax = r > r2 ? r : r2;
+          r = r > r2 ? r2 : r;
+          c = testFood.getCol();
+          cMax = c > c2 ? c : c2;
+          c = c > c2 ? c2 : c;
+          for(int w = r; w < rMax; w++){
+            for(int q = c; q < cMax; q++){
+              Pos test = new Pos(w,q);
+              if(foodMatrix[w][q] != 0 && !path.contains(test) && !curFoods.contains(test)) {
+                curFoods.add(test);   
+              }
+            }
+          }
+          if(curFoods.size() > bestFoods.size()){
+            bestFoods = curFoods;
           }
         }
+        path.addAll(y+1,bestFoods);
+        y+=bestFoods.size();
       }
-      System.err.println(path.toString());
+      //System.err.println(path.toString());
       if (path.size() > bestPath.size())
         bestPath = path;
     }
-    System.err.println(count);
+    System.err.println(bestPath.toString());
     brain.playGame(sc,bestPath);
   }
   
@@ -146,6 +175,7 @@ public class Sol3
   int[] findBest(Pos curr, boolean[] visited, int N)
   {
     int ibest = -1, bestDist = 99999999;
+    int secbest = -1, secbestDist = 99999999;
     for(int j = 0; j < N; j++)
       if (!visited[j])
       {
@@ -153,12 +183,16 @@ public class Sol3
 	//int nextDist = curr.distance(food.get(j)); // "manhattan distance"!!!
 	if (nextDist < bestDist)
 	{
+          secbest = ibest;
+          secbestDist =  bestDist;
 	  ibest = j;
 	  bestDist = nextDist;
 	}
       }
-
-    return new int[] {ibest,bestDist};
+    if(rand.nextInt(9)==0)
+      return new int[] {secbest,secbestDist};
+    else
+      return new int[] {ibest,bestDist};
   }
   
   /**
@@ -182,7 +216,7 @@ public class Sol3
     {
       // find the "best" (i.e. closest) unvisited food best[0] = index of best, best[1] = distance
       int[] best;
-      if (rand.nextInt(10) == 1){
+      if (rand.nextInt(49) == 0){
         best = findRandom(curr,visited,N);
       } else {
         best = findBest(curr,visited,N);
@@ -216,6 +250,8 @@ public class Sol3
 	lastAck = sc.nextInt();
 	if (lastAck >= 0)
 	  mypos = mydir.stepFrom(mypos);
+        if(path.contains(mypos))
+          path.remove(mypos);
 	if (i_target < path.size() && mypos.equals(path.get(i_target)))  // if we've reached the current target, move to the next
 	  i_target++;
 	break;
