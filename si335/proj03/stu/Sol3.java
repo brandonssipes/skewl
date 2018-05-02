@@ -83,7 +83,6 @@ public class Sol3
       if (path.size() > bestPath.size())
         bestPath = path;
     }
-    System.err.println(bestPath.toString());
     brain.playGame(sc,bestPath);
   }
   
@@ -190,7 +189,7 @@ public class Sol3
 	  bestDist = nextDist;
 	}
       }
-    if(rand.nextInt(9)==0)
+    if(rand.nextInt(10)==0)
       return new int[] {secbest,secbestDist};
     else
       return new int[] {ibest,bestDist};
@@ -217,7 +216,7 @@ public class Sol3
     {
       // find the "best" (i.e. closest) unvisited food best[0] = index of best, best[1] = distance
       int[] best;
-      if (rand.nextInt(49) == 0){
+      if (rand.nextInt(50) == 0){
         best = findRandom(curr,visited,N);
       } else {
         best = findBest(curr,visited,N);
