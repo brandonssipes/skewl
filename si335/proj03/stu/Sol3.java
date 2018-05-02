@@ -16,53 +16,55 @@ public class Sol3
     for(long i = System.currentTimeMillis(); i-start < 5000; i = System.currentTimeMillis()){
       count++;
       path = brain.planPath();
-      //System.err.println(path.toString());
       //local refinement here
       Pos startCheck, endCheck;
       int r, r2, rMax, c, c2, cMax;
-      System.err.println(path.toString());
       for(int y = 0; y < path.size()-1; ++y){
-        //System.err.println(count++);
         startCheck = path.get(y);
         endCheck = path.get(y+1);
         r = startCheck.getRow();
         r2 = endCheck.getRow();
-        rMax = r > r2 ? r : r2; //bigger row
-        r = r > r2 ? r2 : r; //smaller row
+        if(r > r2){
+          rMax = r;
+          r = r2;
+        }else {
+          rMax = r2;
+        }
         c = startCheck.getCol();
         c2 = endCheck.getCol();
-        cMax = c > c2 ? c : c2; //bigger column
-        c = c > c2 ? c2 : c; //smaller column
+        if(c > c2){
+          cMax = c;
+          c = c2;
+        }else{
+          cMax = c2;
+        }
         ArrayList<Pos> addedFoods = new ArrayList<Pos>();
-        //addedFoods.add(startCheck);
-        //boolean die = false;
         for(int n = r; n < rMax; ++n){
           for(int m = c; m < cMax; ++m){
             Pos test = new Pos(n,m);
             if(foodMatrix[n][m] != 0 && !path.contains(test) && !addedFoods.contains(test)){
               addedFoods.add(test);
-              /*if(y >= path.size())
-                path.add(test);
-              else
-                path.add(y+1,test);
-              die = true;
-              y--;
-              break;*/
-              //food is there test if it is in the path
             }
           }
-          //if(die) break;
         }
         ArrayList<Pos> bestFoods = new ArrayList<Pos>();
         ArrayList<Pos> curFoods = new ArrayList<Pos>();
         for(int u = 0; u < addedFoods.size(); ++u){
           Pos testFood = addedFoods.get(u);
           r = testFood.getRow();
-          rMax = r > r2 ? r : r2;
-          r = r > r2 ? r2 : r;
+          if(r > r2){
+            rMax = r;
+            r = r2;
+          }else {
+            rMax = r2;
+          }
           c = testFood.getCol();
-          cMax = c > c2 ? c : c2;
-          c = c > c2 ? c2 : c;
+          if(c > c2){
+            cMax = c;
+            c = c2;
+          }else{
+            cMax = c2;
+          }
           for(int w = r; w < rMax; w++){
             for(int q = c; q < cMax; q++){
               Pos test = new Pos(w,q);
@@ -78,7 +80,6 @@ public class Sol3
         path.addAll(y+1,bestFoods);
         y+=bestFoods.size();
       }
-      //System.err.println(path.toString());
       if (path.size() > bestPath.size())
         bestPath = path;
     }
