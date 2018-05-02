@@ -16,73 +16,79 @@ public class Sol3
     for(long i = System.currentTimeMillis(); i-start < 5000; i = System.currentTimeMillis()){
       count++;
       path = brain.planPath();
-      //local refinement here
-      Pos startCheck, endCheck;
-      int r, r2, rMax, c, c2, cMax;
-      for(int y = 0; y < path.size()-1; ++y){
-        startCheck = path.get(y);
-        endCheck = path.get(y+1);
-        r = startCheck.getRow();
-        r2 = endCheck.getRow();
+      if (path.size() > bestPath.size())
+        bestPath = path;
+    }
+    System.err.println(bestPath.toString());
+    System.err.println(bestPath.size());
+    //local refinement here
+    path = bestPath;
+    Pos startCheck, endCheck;
+    int r, r2, rMax, c, c2, cMax;
+    for(int y = 0; y < path.size()-1; ++y){
+      startCheck = path.get(y);
+      endCheck = path.get(y+1);
+      r = startCheck.getRow();
+      r2 = endCheck.getRow();
+      if(r > r2){
+        rMax = r;
+        r = r2;
+      }else {
+        rMax = r2;
+      }
+      c = startCheck.getCol();
+      c2 = endCheck.getCol();
+      if(c > c2){
+        cMax = c;
+        c = c2;
+      }else{
+        cMax = c2;
+      }
+      ArrayList<Pos> addedFoods = new ArrayList<Pos>();
+      for(int n = r; n < rMax; ++n){
+        for(int m = c; m < cMax; ++m){
+          Pos test = new Pos(n,m);
+          if(foodMatrix[n][m] != 0 && !path.contains(test) && !addedFoods.contains(test)){
+            addedFoods.add(test);
+          }
+        }
+      }
+      ArrayList<Pos> bestFoods = new ArrayList<Pos>();
+      ArrayList<Pos> curFoods = new ArrayList<Pos>();
+      for(int u = 0; u < addedFoods.size(); ++u){
+        Pos testFood = addedFoods.get(u);
+        r = testFood.getRow();
         if(r > r2){
           rMax = r;
           r = r2;
         }else {
           rMax = r2;
         }
-        c = startCheck.getCol();
-        c2 = endCheck.getCol();
+        c = testFood.getCol();
         if(c > c2){
           cMax = c;
           c = c2;
         }else{
           cMax = c2;
         }
-        ArrayList<Pos> addedFoods = new ArrayList<Pos>();
-        for(int n = r; n < rMax; ++n){
-          for(int m = c; m < cMax; ++m){
-            Pos test = new Pos(n,m);
-            if(foodMatrix[n][m] != 0 && !path.contains(test) && !addedFoods.contains(test)){
-              addedFoods.add(test);
+        for(int w = r; w < rMax; w++){
+          for(int q = c; q < cMax; q++){
+            Pos test = new Pos(w,q);
+            if(foodMatrix[w][q] != 0 && !path.contains(test) && !curFoods.contains(test)) {
+              curFoods.add(test);   
             }
           }
         }
-        ArrayList<Pos> bestFoods = new ArrayList<Pos>();
-        ArrayList<Pos> curFoods = new ArrayList<Pos>();
-        for(int u = 0; u < addedFoods.size(); ++u){
-          Pos testFood = addedFoods.get(u);
-          r = testFood.getRow();
-          if(r > r2){
-            rMax = r;
-            r = r2;
-          }else {
-            rMax = r2;
-          }
-          c = testFood.getCol();
-          if(c > c2){
-            cMax = c;
-            c = c2;
-          }else{
-            cMax = c2;
-          }
-          for(int w = r; w < rMax; w++){
-            for(int q = c; q < cMax; q++){
-              Pos test = new Pos(w,q);
-              if(foodMatrix[w][q] != 0 && !path.contains(test) && !curFoods.contains(test)) {
-                curFoods.add(test);   
-              }
-            }
-          }
-          if(curFoods.size() > bestFoods.size()){
-            bestFoods = curFoods;
-          }
+        if(curFoods.size() > bestFoods.size()){
+          bestFoods = curFoods;
         }
-        path.addAll(y+1,bestFoods);
-        y+=bestFoods.size();
       }
-      if (path.size() > bestPath.size())
-        bestPath = path;
+      path.addAll(y+1,bestFoods);
+      y+=bestFoods.size();
     }
+    bestPath = path;
+    System.err.println(bestPath.toString());
+    System.err.println(bestPath.size());
     brain.playGame(sc,bestPath);
   }
   
