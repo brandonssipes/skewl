@@ -19,8 +19,6 @@ public class Sol3
       if (path.size() > bestPath.size())
         bestPath = path;
     }
-    System.err.println(bestPath.toString());
-    System.err.println(bestPath.size());
     //local refinement here
     path = bestPath;
     Pos startCheck, endCheck;
@@ -87,8 +85,6 @@ public class Sol3
       y+=bestFoods.size();
     }
     bestPath = path;
-    System.err.println(bestPath.toString());
-    System.err.println(bestPath.size());
     brain.playGame(sc,bestPath);
   }
   
@@ -103,7 +99,7 @@ public class Sol3
   public Sol3()
   {
     food = new ArrayList<PosPlus>();    
-    BLANK = new ShortestPathOracle();
+    BLANK = new Memo();
   }
 
   /**

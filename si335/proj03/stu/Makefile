@@ -19,6 +19,7 @@ GREEDYSOURCES2=Sol2.java
 
 
 Sol2:
+	echo "\033[0;31mMemo.java needs to be in si335\033[0;30m"
 	javac $(GREEDYSOURCES2)
 	echo "Main-Class: $(GREEDYMAINCLASS2)" > Manifest.txt
 	jar cfm $(GREEDYNAME2).jar Manifest.txt $(GREEDYMAINCLASS2).class si335/*.class
@@ -33,10 +34,10 @@ GREEDYSOURCES=Sol3.java
 
 
 Sol3:
+	echo "\033[0;31mMemo.java needs to be in si335\033[0;30m"
 	javac $(GREEDYSOURCES)
 	echo "Main-Class: $(GREEDYMAINCLASS)" > Manifest.txt
 	jar cfm $(GREEDYNAME).jar Manifest.txt $(GREEDYMAINCLASS).class si335/*.class
 	./jar2exec $(GREEDYNAME).jar $(GREEDYNAME)
 	rm -f Manifest.txt
 	rm -f $(GREEDYNAME).jar
-

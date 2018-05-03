@@ -12,8 +12,10 @@ public class Sol2
     brain.readPreamble(sc);
     ArrayList<Pos> path;
     ArrayList<Pos> bestPath = new ArrayList<Pos>();
+    int count = 0;
     for(long i = System.currentTimeMillis(); i-start < 5000; i = System.currentTimeMillis()){
       path = brain.planPath();
+      count++;
       if (path.size() > bestPath.size())
         bestPath = path;
     }
@@ -30,7 +32,8 @@ public class Sol2
   public Sol2()
   {
     food = new ArrayList<PosPlus>();    
-    BLANK = new ShortestPathOracle();
+    //BLANK = new ShortestPathOracle();
+    BLANK = new Memo();
   }
 
   /**
@@ -52,6 +55,7 @@ public class Sol2
 	dur = sc.nextInt();
 	len = sc.nextInt();
         BLANK.setBoardSize(rows, cols);
+        //BLANK.setBoardSize(rows, cols);
 	break;
       case 'r': // "right" barrier (my greedy just ignores this!)
 	p = Pos.read(sc);
@@ -100,6 +104,7 @@ public class Sol2
   int[] findBest(Pos curr, boolean[] visited, int N)
   {
     int ibest = -1, bestDist = 99999999;
+    int secbest = -1, secbestDist = 99999999;
     for(int j = 0; j < N; j++)
       if (!visited[j])
       {
@@ -107,12 +112,16 @@ public class Sol2
 	//int nextDist = curr.distance(food.get(j)); // "manhattan distance"!!!
 	if (nextDist < bestDist)
 	{
+          secbest = ibest;
+          secbestDist =  bestDist;
 	  ibest = j;
 	  bestDist = nextDist;
 	}
       }
-
-    return new int[] {ibest,bestDist};
+    if(rand.nextInt(10)==0)
+      return new int[] {secbest,secbestDist};
+    else
+      return new int[] {ibest,bestDist};
   }
   
   /**
@@ -136,7 +145,7 @@ public class Sol2
     {
       // find the "best" (i.e. closest) unvisited food best[0] = index of best, best[1] = distance
       int[] best;
-      if (rand.nextInt(10) == 1){
+      if (rand.nextInt(50) == 1){
         best = findRandom(curr,visited,N);
       } else {
         best = findBest(curr,visited,N);
