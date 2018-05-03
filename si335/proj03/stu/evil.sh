@@ -36,8 +36,10 @@ for i in ${aux[*]};do
 done
 
 echo $myPID
-#for i in ${PIDS[@]}; do
-#  $(kill -2 $i)
-#done
+for i in ${PIDS[@]}; do
+  if [[ $i -ne $myWorm ]]; then
+    $(kill -2 $i)
+  fi
+done
 
 
