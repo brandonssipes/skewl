@@ -43,16 +43,16 @@ Sol3:
 	rm -f $(GREEDYNAME).jar
 
 
-GREEDYNAME3=evil
-GREEDYMAINCLASS3=Evil
-GREEDYSOURCES3=Evil.java
+GREEDYNAME4=sol4
+GREEDYMAINCLASS4=Sol4
+GREEDYSOURCES4=Sol4.java
 
 
-Evil:
+Sol4:
 	echo "\033[0;31mMemo.java needs to be in si335\033[0;30m"
-	javac $(GREEDYSOURCES3)
-	echo "Main-Class: $(GREEDYMAINCLASS3)" > Manifest.txt
-	jar cfm $(GREEDYNAME3).jar Manifest.txt $(GREEDYMAINCLASS3).class si335/*.class
-	./jar2exec $(GREEDYNAME3).jar $(GREEDYNAME3)
+	javac $(GREEDYSOURCES4)
+	echo "Main-Class: $(GREEDYMAINCLASS4)" > Manifest.txt
+	jar cfm $(GREEDYNAME4).jar Manifest.txt $(GREEDYMAINCLASS4).class si335/*.class
+	./jar2exec $(GREEDYNAME4).jar $(GREEDYNAME4)
 	rm -f Manifest.txt
-	rm -f $(GREEDYNAME3).jar
+	rm -f $(GREEDYNAME4).jar
