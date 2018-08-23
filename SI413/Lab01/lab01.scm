@@ -99,7 +99,7 @@
         (else z)))
 ;;;Exercise 11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (factorial x)
-  (if (= x 1)
+  (if (<= x 1)
       1
       (* x (factorial (- x 1)))))
 ;Java would not be able to do (factorial 111) because
