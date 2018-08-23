@@ -82,18 +82,21 @@
   (if (> x y)
       (if (> y z)
           (y)
-          z))
-  (if (> x z)
-      x)
-  z)
+          (if (> x z)
+              z
+              x))
+      (if (> x z)
+          x
+          (if (> y z)
+              z
+              y))))
 ;;;Exercise 10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (middle-better x y z)
-  (cond ((> x y)
-         (cond ((< x z) x);;NOT FINISHED
-               ((> y z) y))
-        ((> x z) x)
+  (cond ((and (> x y) (< x z)) x)
+        ((and (< x y) (> x z)) x)
+        ((and (> y z) (< y x)) y)
+        ((and (< y z) (> y x)) y)
         (else z)))
-  ))
 ;;;Exercise 11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (factorial x)
   (if (= x 1)
@@ -117,7 +120,11 @@
       B))
 
 ;;;Exercise 13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(define (fib x)DO THIS
+(define (fib x)
+  (if (<= x 2)
+      1
+      (+ (fib (- x 1)) (fib (- x 2)))
+      ))
   
   
 ;;;Exercise 14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
