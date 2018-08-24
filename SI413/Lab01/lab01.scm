@@ -54,12 +54,12 @@
 
 ;;;Exercise 5;;;;;;;;;;;;;;;;;;;;;;;;
 (define (to-celsius f)
-  (* (/ 5 9)
+  (* (/ 5 9.0)
      (- f 32)))
 (define (to-fahrenheit c)
   (+ 32
      (/ (* 9 c)
-        5)))
+        5.0)))
 ;;;Exercise 6;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (test-trig x)
   (+ (* (cos x)
@@ -75,10 +75,16 @@
   (if (> x 0)
       (+ x 1)
       (if (= x 0)
-          (x)
+          x
           (- x 1))))
 ;;;Exercise 9;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (middle x y z)
+  (if (= x y)
+      x)
+  (if (= y z)
+      y)
+  (if (= x z)
+      x)
   (if (> x y)
       (if (> y z)
           (y)
@@ -92,7 +98,9 @@
               y))))
 ;;;Exercise 10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (middle-better x y z)
-  (cond ((and (> x y) (< x z)) x)
+  (cond ((or (= x y) (= x z)) x)
+        ((= y z) z)
+        ((and (> x y) (< x z)) x)
         ((and (< x y) (> x z)) x)
         ((and (> y z) (< y x)) y)
         ((and (< y z) (> y x)) y)
@@ -116,15 +124,21 @@
   
 (define (accrue B r y)
   (if (> y 0)
-      (accrue (accrue-months B r 12) r (- y 1))
+      (accrue-months B r (* y 12))
       B))
 
 ;;;Exercise 13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define (fiber x)
+  (if (= x 0)
+      0
+      (if (or (= x 2) (= x 1))
+          1
+          (+ (fib (- x 1)) (fib (- x 2)))
+          )))
 (define (fib x)
-  (if (<= x 2)
-      1
-      (+ (fib (- x 1)) (fib (- x 2)))
-      ))
+  (if (< x 0)
+      (* (expt -1 (+ x 1)) (fiber (* -1 x)))
+      (fiber x)))
   
   
 ;;;Exercise 14;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
