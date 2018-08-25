@@ -13,8 +13,9 @@
   (sin 1)
   (sin 2)
   (sin 3))
- (/ 31 13));Produces exact rational due to how the
-;max function evaluates inputs
+ (/ 31 13));/ sign produces exact rational numbers but
+           ;due to how the max function evaluates inputs
+           ;it turns into a decimal
            
 
 ;;;Exercise 3;;;;;;;;;;;;;;;;;;;;;;
@@ -69,7 +70,7 @@
 (define (signed-inc x)
   (if (>= x 0)
       (+ x 1)
-      (- x 1)))
+      (+ x -1)))
 ;;;Exercise 8;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (signed-inc-better x)
   (if (> x 0)
@@ -87,7 +88,7 @@
       x)
   (if (> x y)
       (if (> y z)
-          (y)
+          y
           (if (> x z)
               z
               x))
