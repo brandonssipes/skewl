@@ -56,6 +56,8 @@
 
 ;;;Exercise 8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Optional
+;(define (uniquefy L1)
+  
 
 ;;;Exercise 9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (test-sin x)
@@ -64,7 +66,10 @@
     (- (+ (/ 1 a) (expt a 0.5)) (expt a 2))))
 
 ;;;Exercise 10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(define (dist a b c d)
+(define (dist a b c d)
+  (let ((L1 (+ (* 12 a) b))
+        (L2 (+ (* 12 c) d)))
+    (abs (- L1 L2))))
 
 ;;;Exercise 11;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (fd-at g n)
@@ -90,5 +95,7 @@
 
 ;;;Exercise 13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (sqr x) (* x x))
+(define (divideByThree x) (/ x 3))
+(define (timesThree x) (* x 3))
 (define (special-nums n)
-  (map sqr  (filter integer? (map sqrt (range 1 n)))))
+  (map timesThree (filter integer? (map divideByThree (map sqr  (filter integer? (map sqrt (range 1 n))))))))
