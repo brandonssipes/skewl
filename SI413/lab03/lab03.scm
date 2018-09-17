@@ -12,15 +12,22 @@
    (apply min (map sin (cons x vals))) (cons x vals)))
 
 ;;;Exercise 2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define (makeList k lst args)
+(define (removeList k lst) ;delete k elements from the lst
   (if (> k 0)
-      (if (null? lst)
-          (makeList (- k 1) (list (car args)) (cdr args))
-          (makeList (- k 1) (list lst (car args)) (cdr args)))
+      (removeList (- k 1) (cdr lst))
       lst))
-;(define (groupHelp k lst args
-      
-;(define (group k . args)
+
+(define (makeList k lst) ;build lst into the list from args
+  (if (> k 0)
+      (cons (car lst) (makeList (- k 1) (cdr lst)))
+      '()))
+
+
+(define (group k . args)
+  (if (not (null? args))
+      (cons (makeList k args) (apply group k (removeList k args)))
+      '()))
+
 
 ;;;Exercise 3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (power n)
@@ -28,8 +35,31 @@
     (expt x n)))
 
 ;;;Exercise 4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;(define (make-cXr x)
-;  (lambda (y) 
+
+
+
+;(define (make-cXr . args)
+;  (lambda (lst)
+;    (if (not (null? args))
+;        (cond ((eqv? (car args) 'a)
+;               ((apply make-cXr (cdr args))(car lst)))
+;              ((eqv? (car args) 'd)
+;               ((apply make-cXr (cdr args)) (cdr lst)))
+;              (else (display args)))
+;        lst)))
+ 
+(define (make-cXr i . x)
+  (if (not (null? (x)))
+      (lambda (y)
+        (cond ((eqv? i 'a)
+               (car y))
+              ((eqv? i 'd)
+               (cdr y)))
+        (cond ((eqv? i 'a)
+               (car ((apply make-cXr x) y)))
+              ((eqv? i 'd)
+               (cdr ((apply make-cXr x) y)))))))
+
 
 ;;;Exercies 5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define (make-stack)
@@ -64,8 +94,8 @@
         ((eqv? x (car lst))
          #t)
         (else (contains x (cdr lst)))))
-(define (insert new old lst)
-  (
+;(define (insert new lst)
+; (
   
 (define (make-set)
   (let ((set '()))
@@ -80,8 +110,45 @@
              (contains nums set))
             ((eqv? command 'insert!);use contains to check each one
              (if (not (contains nums set))
+                 (insert nums set)))))))
                  
 
-    
-    
-                  
+;;;Exercise 8;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define (merge lst set)
+  (if (not (null? lst))
+      (if (not (contains (car lst) set))
+          (insert (car lst) set))
+      (intersect (cdr lst) set)))
+
+;(define (intersect lst set);NOT DONE
+
+(define (make-set)
+  (let ((set '()))
+    (lambda (command . nums)
+      (cond ((eqv? command 'get)
+             set)
+            ((eqv? command 'size)
+             (length set))
+            ((eqv? command 'set!)
+             (set! set (car nums)))
+            ((eqv? command 'contains?)
+             (contains nums set))
+            ((eqv? command 'insert!);use contains to check each one
+             (if (not (contains nums set))
+                 (insert nums set)))
+            ((eqv? command 'intersect)
+             (intersect nums set))))))
+
+;;;Exercise 10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define (min-sinHelp min lst)
+  (if (not (= min (sin (car lst)))) ;break when you hit empty list
+      (min-sinHelp min (cdr lst))
+      (car lst)))
+      
+
+(define (min-sin x . vals)
+  (min-sinHelp
+   (apply min (map sin (cons x vals))) (cons x vals)))
+
+
+
