@@ -35,30 +35,18 @@
     (expt x n)))
 
 ;;;Exercise 4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-;(define (make-cXr . args)
-;  (lambda (lst)
-;    (if (not (null? args))
-;        (cond ((eqv? (car args) 'a)
-;               ((apply make-cXr (cdr args))(car lst)))
-;              ((eqv? (car args) 'd)
-;               ((apply make-cXr (cdr args)) (cdr lst)))
-;              (else (display args)))
-;        lst)))
- 
-(define (make-cXr i . x)
-  (if (not (null? (x)))
-      (lambda (y)
+(define (make-cXr i . args)
+  (lambda (lst)
+    (if (not (null? args)) ;then break it down even more
         (cond ((eqv? i 'a)
-               (car y))
+               (car ((apply make-cXr args) lst)))
               ((eqv? i 'd)
-               (cdr y)))
-        (cond ((eqv? i 'a)
-               (car ((apply make-cXr x) y)))
+               (cdr ((apply make-cXr args) lst))))
+        (cond ((eqv? i 'a) ;otherwise just use the initial one
+               (car lst))
               ((eqv? i 'd)
-               (cdr ((apply make-cXr x) y)))))))
+               (cdr lst))))))
+
 
 
 ;;;Exercies 5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
