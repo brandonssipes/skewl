@@ -16,61 +16,77 @@ int main()
    //   Array size should be NTHREADS.
 
 
-   int i, j;
-   
-   srand(time(NULL));
-   
-   // Initialize the scores and the static numeric array
-   for(i=0; i < NTHREADS; i++)
-   {
-      statics[i] = i;
-      army_scores[i] = 0;
-      navy_scores[i] = 0;
-   }   
-
-    /* The statics[] array is useful because &i may increment
-    before it is referenced, resulting in the wrong thread_num being assigned.
-    We use &statics[i] instead of &i to initalize the (common) thread number. */
-    
-    // TODO: Create the Army threads. 
+  pthread_t navy[NTHREADS];
+  pthread_t army[NTHREADS];
 
 
+  int i, j;
 
-    // TODO: Join all Army threads when complete
+  srand(time(NULL));
 
-  
-    
-    // TODO: Create the Navy threads. 
+  // Initialize the scores and the static numeric array
+  for(i=0; i < NTHREADS; i++)
+  {
+    statics[i] = i;
+    army_scores[i] = 0;
+    navy_scores[i] = 0;
+  }   
+
+  /* The statics[] array is useful because &i may increment
+     before it is referenced, resulting in the wrong thread_num being assigned.
+     We use &statics[i] instead of &i to initalize the (common) thread number. */
+
+  // TODO: Create the Army threads. 
+  for(i=0; i < NTHREADS; ++i)
+    pthread_create( &army[i], NULL, army_function, &statics[i]);
 
 
 
-    // TODO: Join all Navy threads when complete
+  // TODO: Join all Army threads when complete
+  for(j = 0; j < NTHREADS; ++j)
+    pthread_join(army[j], NULL);
 
- 
-     
-  
-    // Reveal final scores
-    printf("Final scores:\n");
-    for(i=0; i < NTHREADS; i++)
-    {
-        printf("Thread:%d Navy:%d, Army:%d\n", i, navy_scores[i], army_scores[i]);
-    }    
+
+
+  // TODO: Create the Navy threads. 
+  for(i=0; i < NTHREADS; ++i)
+    pthread_create( &navy[i], NULL, navy_function, &statics[i]);
+
+
+
+  // TODO: Join all Navy threads when complete
+  for(j = 0; j < NTHREADS; ++j)
+    pthread_join(navy[j], NULL);
+
+
+
+
+  // Reveal final scores
+  printf("Final scores:\n");
+  for(i=0; i < NTHREADS; i++)
+  {
+    printf("Thread:%d Navy:%d, Army:%d\n", i, navy_scores[i], army_scores[i]);
+  }    
 }
 
 void *army_function(void * arg)
 {
-    // thread_num is a "common" thread index between 0 and (NTHREADS-1)	
-    int thread_num = * (int *) arg;
-    
-    // TODO: Give Army a random integer score between 0 and 100
+  // thread_num is a "common" thread index between 0 and (NTHREADS-1)	
+  int thread_num = * (int *) arg;
+
+
+  // TODO: Give Army a random integer score between 0 and 100
+  army_scores[thread_num] = rand() % 100;
+
 
 }
 
 void *navy_function(void * arg)
 {
-	// thread_num is a "common" thread index between 0 and (NTHREADS-1)
-    int thread_num = * (int *) arg;
-    
-    // TODO: Give Navy double the score of Army for this thread
+  // thread_num is a "common" thread index between 0 and (NTHREADS-1)
+  int thread_num = * (int *) arg;
+
+  // TODO: Give Navy double the score of Army for this thread
+  navy_scores[thread_num] = army_scores[thread_num] * 2;
 
 }
