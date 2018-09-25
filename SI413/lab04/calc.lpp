@@ -1,0 +1,32 @@
+/* SI 413 Fall 2018
+ * Lab 4
+ * Brandon Sipes
+ * Flex file specifying the calculator program scanner
+ */
+%{
+#include "calc.tab.hpp"
+#include <cstdlib> // for atoi
+%}
+
+/* This tells flex to quit when it reaches EOF */
+%option noyywrap
+
+%%
+
+[0-9]+    { yylval.val = atoi(yytext); return NUM; }
+[0-9]+"b"   { yylval.val = strtol(yytext, NULL, 2); return NUM; }
+[+-]      { yylval.sym = yytext[0]; return OPA; }
+[*/]      { yylval.sym = yytext[0]; return OPM; }
+"("       { return LP; }
+")"       { return RP; }
+"#".*     { ; } 
+"!"       { return SETACC; }
+"@"       { return ACC; }
+":="      { return ASN; }
+[a-zA-Z0-9]+ { yylval.str = strdup(yytext); return NAME; }
+";"       { return STOP; }
+";b"      { return SOB;  }
+<<EOF>>   { return 0; }
+[ \t\n]+  { }
+.         { errout << "Unrecognized token starting with " << yytext[0] << endl; exit(1); }
+%%
