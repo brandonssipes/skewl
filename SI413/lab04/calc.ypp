@@ -74,7 +74,7 @@ S: stmt { YYACCEPT; }
 stmt: exp STOP { resout << $1 << endl; }
 | exp SOB { printbin($1); resout << endl; }
 | SETACC exp STOP     { var = $2; }
-| NAME ASN exp STOP   { ST[$1] = $3;}
+| NAME ASN exp STOP   { for (char *p = $1; *p; ++p) *p = (char)tolower(*p); ST[$1] = $3;}
 
 
 
@@ -90,7 +90,7 @@ sfactor: OPA factor    { $$ = ($1 == '+' ? $2 : -$2); }
 factor: NUM            { $$ = $1; }
 | LP exp RP            { $$ = $2; }
 | ACC                  { $$ = var; } 
-| NAME                 { $$ = ST[$1]; }
+| NAME                 { for (char *p = $1; *p; ++p) *p = (char)tolower(*p); $$ = ST[$1]; }
 
 %%
 // These are the colored output streams to make things all pretty.

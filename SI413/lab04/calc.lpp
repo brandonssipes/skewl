@@ -20,6 +20,7 @@
 "("       { return LP; }
 ")"       { return RP; }
 "#".*     { ; } 
+"\"".*"\"" { ; }
 "!"       { return SETACC; }
 "@"       { return ACC; }
 ":="      { return ASN; }
