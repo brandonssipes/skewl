@@ -12,9 +12,12 @@ import "fmt"
 import "math/rand"//https://gobyexample.com/random-numbers
 
 
-//fmt.Scanf("%s", &ln)
 
 var bottlesOfBeer int = 0;
+
+func primeFac (bottlesOfBeer int){
+  
+}
 
 func takeOneBeer(ch chan bool) {
     bottlesOfBeer+= rand.Intn(10);
@@ -23,17 +26,17 @@ func takeOneBeer(ch chan bool) {
 
 func singTheSong(ch chan bool) {
     if bottlesOfBeer < 100 {
-        fmt.Printf("%d bottles of beer on the wall, %d bottles of beer.\n", 
+        fmt.Printf("%d bugs in your code, %d bugs.\n", 
         bottlesOfBeer, bottlesOfBeer)
-        fmt.Println("Take one down and pass it around, %d bottles of beer on the wall.\n", bottlesOfBeer)
+        fmt.Printf("Take one down and pass it around, %d bugs in your code.\n\n", bottlesOfBeer)
         go takeOneBeer(ch)
     } else if bottlesOfBeer == 1 {
-        fmt.Println("1 bottle of beer on the wall, 1 bottle of beer.")
-        fmt.Println("Take one down and pass it around, no more bottles of beer on the wall.\n")
+        fmt.Println("1 bug in your code, 1 bug.")
+        //fmt.Println("Take one down and pass it around, no more bottles of beer on the wall.\n")
         go takeOneBeer(ch)
     } else {
         //fmt.Println("No more bottles of beer on the wall, no more bottles of beer.")
-        fmt.Println("Go to the store and buy some more, 100 bottles of beer on the wall.")
+        fmt.Println("Go to the store and buy some more beer, 100 bugs in your code.")
         ch <- true
     }
 }
