@@ -23,8 +23,8 @@ func takeOneBeer(ch chan bool) {
     go singTheSong(ch)
 }
 
-func singTheSong(ch chan bool) {
-    if bottlesOfBeer < 100 {
+func singTheSong(ch chan bool, upTo int) {
+    if bottlesOfBeer < upTo {
         fmt.Printf("%d bugs in your code, %d bugs.\n", 
         bottlesOfBeer, bottlesOfBeer)
         fmt.Printf("Take one down and pass it around, %d bugs in your code.\n\n", bottlesOfBeer)
@@ -35,7 +35,7 @@ func singTheSong(ch chan bool) {
         go takeOneBeer(ch)
     } else {
         //fmt.Println("No more bottles of beer on the wall, no more bottles of beer.")
-        fmt.Println("Go to the store and buy some more beer, 100 bugs in your code.")
+        fmt.Printf("Go to the store and buy some more beer, %d bugs in your code.\n", upTo)
         ch <- true
     }
 }
@@ -43,9 +43,8 @@ func singTheSong(ch chan bool) {
 func main() {
     ch := make(chan bool)
     var upTo int
-    //var err error
     fmt.Printf("How many lines? ")
     fmt.Scanf("%d", &upTo)
-    go singTheSong(ch)
+    go singTheSong(ch, upTo)
     <- ch
 }
