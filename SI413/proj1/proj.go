@@ -11,11 +11,21 @@ package main
 import "fmt"
 import "math/rand"//https://gobyexample.com/random-numbers
 //import "strings"//https://golang.org/pkg/strings/
+import "strconv"
 
 
 var bottlesOfBeer int = 0;
 
 func primeFac (bottlesOfBeer int){
+  var factors string
+  var i int
+  i = 2
+  while(bottlesOfBeer > 1){
+    if(bottlesOfBeer % i ==0){
+      //factors += 
+    }
+  }
+
 
 }
 
@@ -27,7 +37,7 @@ func takeOneBeer(ch chan bool, upTo int) {
 func singTheSong(ch chan bool, upTo int) {
     var facBeer = primeFac(bottlesOfBeer)
     if bottlesOfBeer < upTo {
-        fmt.Printf("%d bugs in your code, %d bugs.\n", 
+        fmt.Printf("%d bugs in your code, %d bugs.\n", bottlesOfBeer, bottlesOfBeer)
         bottlesOfBeer, bottlesOfBeer)
         fmt.Printf("Take one down and pass it around, %d bugs in your code.\n\n", bottlesOfBeer)
         go takeOneBeer(ch, upTo)
