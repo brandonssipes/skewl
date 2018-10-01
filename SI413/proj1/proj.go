@@ -15,9 +15,8 @@ import "math/rand"//https://gobyexample.com/random-numbers
 
 var bottlesOfBeer int = 0;
 
-func primeFac (bottlesOfBeer int){
-  
-}
+//func primeFac (bottlesOfBeer int){
+//}
 
 func takeOneBeer(ch chan bool) {
     bottlesOfBeer+= rand.Intn(10);
@@ -43,6 +42,10 @@ func singTheSong(ch chan bool) {
 
 func main() {
     ch := make(chan bool)
+    var upTo int
+    //var err error
+    fmt.Printf("How many lines? ")
+    fmt.Scanf("%d", &upTo)
     go singTheSong(ch)
     <- ch
 }
