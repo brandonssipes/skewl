@@ -6,16 +6,23 @@
  *
  */
 
+//SI413 Project 1 Bodeman, Sipes
+//Resources: tour.golang.org/basics
+
 package main
 
 import "fmt"
 import "math/rand"//https://gobyexample.com/random-numbers
 import "strconv"
 import "time"
+import "os"
+//import "io"
+//import "bufio"
+import "sync"
 
 
-var bottlesOfBeer int = 1;
 var randNum int;
+var upTo int
 
 func primeFac (bottlesOfBeer int) string {
   var factors string = "("
@@ -34,40 +41,49 @@ func primeFac (bottlesOfBeer int) string {
     }
   }
   factors += ")"
-  //fmt.Printf("%s\n", factors)
   return factors
 }
 
-func takeOneBeer(ch chan bool, upTo int) {
-    bottlesOfBeer+= randNum;
-    go singTheSong(ch, upTo)
-}
-
-func singTheSong(ch chan bool, upTo int) {
-    var facBeer string = primeFac(bottlesOfBeer)
-    //fmt.Printf("%s\n", facBeer)
-    if bottlesOfBeer < upTo {
-        fmt.Printf("%s bugs in your code, %s bugs.\n", facBeer, facBeer);
-        fmt.Printf("Take one down and pass it around, %s bugs in your code.\n\n", facBeer);
-        go takeOneBeer(ch, upTo)
-    } else if bottlesOfBeer == 1 {
-        fmt.Printf("%s bug in your code, %s bug.", facBeer, facBeer);
-        //fmt.Println("Take one down and pass it around, no more bottles of beer on the wall.\n")
-        go takeOneBeer(ch, upTo)
-    } else {
-        //fmt.Println("No more bottles of beer on the wall, no more bottles of beer.")
-        fmt.Printf("Go to the store and buy some more tequila, %s bugs in your code.\n", primeFac(upTo))
-        ch <- true
+func singTheSong(fd *os.File) {
+    var bottlesOfBeer int = 1;
+    for bottlesOfBeer < upTo {
+      var facBeer string = primeFac(bottlesOfBeer)
+      if bottlesOfBeer == 1 {
+        fmt.Fprintf(fd, "%s bug in your code, %s bug.\n\n", facBeer, facBeer);
+        bottlesOfBeer += randNum;
+      }else {
+        fmt.Fprintf(fd, "%s bugs in your code, %s bugs.\n", facBeer, facBeer);
+        fmt.Fprintf(fd, "Take one down and pass it around, %s bugs in your code.\n\n", facBeer);
+        bottlesOfBeer += randNum;
+      }
     }
+    fmt.Fprintf(fd, "Go to the store and buy some more tequila, %s bugs in your code.\n", primeFac(upTo))
 }
 
 func main() {
     rand.Seed(time.Now().UTC().UnixNano())//https://stackoverflow.com/questions/12321133/golang-random-number-generator-how-to-seed-properly
     randNum = rand.Intn(10);
-    ch := make(chan bool)
-    var upTo int
     fmt.Printf("How many lines? ")
     fmt.Scanf("%d", &upTo)
-    go singTheSong(ch, upTo)
-    <- ch
+
+    var wg sync.WaitGroup //https://www.ardanlabs.com/blog/2014/01/concurrency-goroutines-and-gomaxprocs.html
+    wg.Add(2)
+
+    go func(){
+      defer wg.Done()
+
+      f, err := os.OpenFile("out.txt", os.O_CREATE | os.O_WRONLY | os.O_TRUNC, 0666 ) //https://stackoverflow.com/questions/29981050/concurrent-writing-to-a-file
+      if err != nil {
+        panic(err)
+      }
+      singTheSong(f);
+    }()
+
+    go func(){
+      defer wg.Done()
+
+      singTheSong(os.Stdout);
+    }()
+
+    wg.Wait()
 }
