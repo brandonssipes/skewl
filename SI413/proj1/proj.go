@@ -10,49 +10,60 @@ package main
 
 import "fmt"
 import "math/rand"//https://gobyexample.com/random-numbers
-//import "strings"//https://golang.org/pkg/strings/
 import "strconv"
+import "time"
 
 
-var bottlesOfBeer int = 0;
+var bottlesOfBeer int = 1;
+var randNum int;
 
-func primeFac (bottlesOfBeer int){
-  var factors string
+func primeFac (bottlesOfBeer int) string {
+  var factors string = "("
   var i int
+  var temp int = bottlesOfBeer
   i = 2
-  while(bottlesOfBeer > 1){
-    if(bottlesOfBeer % i ==0){
-      //factors += 
+  for temp > 1 {
+    if temp % i == 0 {
+      factors += strconv.Itoa(i)
+      temp = temp/i
+      if temp > 1 {
+        factors += "*"
+      }
+    }else{
+      i++
     }
   }
-
-
+  factors += ")"
+  //fmt.Printf("%s\n", factors)
+  return factors
 }
 
 func takeOneBeer(ch chan bool, upTo int) {
-    bottlesOfBeer+= rand.Intn(10);
+    bottlesOfBeer+= randNum;
     go singTheSong(ch, upTo)
 }
 
 func singTheSong(ch chan bool, upTo int) {
-    var facBeer = primeFac(bottlesOfBeer)
+    var facBeer string = primeFac(bottlesOfBeer)
+    //fmt.Printf("%s\n", facBeer)
     if bottlesOfBeer < upTo {
-        fmt.Printf("%d bugs in your code, %d bugs.\n", bottlesOfBeer, bottlesOfBeer)
-        bottlesOfBeer, bottlesOfBeer)
-        fmt.Printf("Take one down and pass it around, %d bugs in your code.\n\n", bottlesOfBeer)
+        fmt.Printf("%s bugs in your code, %s bugs.\n", facBeer, facBeer);
+        fmt.Printf("Take one down and pass it around, %s bugs in your code.\n\n", facBeer);
         go takeOneBeer(ch, upTo)
     } else if bottlesOfBeer == 1 {
-        fmt.Println("1 bug in your code, 1 bug.")
+        fmt.Printf("%s bug in your code, %s bug.", facBeer, facBeer);
         //fmt.Println("Take one down and pass it around, no more bottles of beer on the wall.\n")
         go takeOneBeer(ch, upTo)
     } else {
         //fmt.Println("No more bottles of beer on the wall, no more bottles of beer.")
-        fmt.Printf("Go to the store and buy some more tequila, %d bugs in your code.\n", upTo)
+        fmt.Printf("Go to the store and buy some more tequila, %s bugs in your code.\n", primeFac(upTo))
         ch <- true
     }
 }
 
 func main() {
+    rand.Seed(time.Now().UTC().UnixNano())//https://stackoverflow.com/questions/12321133/golang-random-number-generator-how-to-seed-properly
+    randNum = rand.Intn(10);
     ch := make(chan bool)
     var upTo int
     fmt.Printf("How many lines? ")
