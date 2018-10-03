@@ -16,8 +16,6 @@ import "math/rand"//https://gobyexample.com/random-numbers
 import "strconv"
 import "time"
 import "os"
-//import "io"
-//import "bufio"
 import "sync"
 
 
