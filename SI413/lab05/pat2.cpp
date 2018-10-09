@@ -43,10 +43,10 @@ vector<string> rev(const vector<string> &A) {
 // These are the prototypes for your recursive descent function.
 // Of course you need to implement these below!
 void stmt();
-void seq(); void seqtail();
-void catseq(); void cattail(vector<string>& vec);
-void opseq(); void optail();
-void atom();
+void seq(vector<string>& vec); void seqtail(vector<string>& vec);
+void catseq(vector<string>&vec); void cattail(vector<string>& vec);
+void opseq(vector<string>&vec); void optail(vector<string>& vec);
+void atom(vector<string>&vec);
 
 int lookahead = -1; // store next token
 
@@ -86,23 +86,36 @@ string match(int tok) {
 // ---------------- Recursive descent functions
 
 void stmt() {
-  seq();
+  vector<string> vec;
+  seq(vec);
+  resout << vec << endl;
   match(STOP);
-  cout << "Parse OK" << endl;
-  //perror("stmt (Not implemented yet!)");
 }
 
-void seq(){
-  catseq();
-  seqtail();
+void seq(vector<string>&vec ){
+  catseq(vec);
+  seqtail(vec);
 }
 
-void seqtail(){
+vector<string> fold(const vector<string> &A, const vector<string> &B){
+  vector<string> res;
+  unsigned long int i;
+  for(i = 0; i < max(A.size(), B.size()); ++i){//go for the longest one
+    if (i < A.size()) res.push_back(A[i]);//make sure we do not go over the buffer
+    if (i < B.size()) res.push_back(B[i]);
+  }
+  return res;
+}
+
+void seqtail(vector<string>&vec){
+  vector<string> helper;
   switch(peek()) {
-    case FOLD:
+    case FOLD: //FOLD: "*" mesh the strings
       match(FOLD);
-      catseq();
-      seqtail();//do the thing then call the funcs
+      catseq(helper);//do everything for this side of the fold
+      seqtail(helper);
+      vec = fold(vec, helper);//then put them together
+
       break;
     case RB: case STOP:
       break;
@@ -112,16 +125,19 @@ void seqtail(){
 }
 
 
-void catseq(){
-  opseq();
-  cattail();//Call the next two
+void catseq(vector<string>&vec){
+  vector<string> A;//separate it out to avoid clobbering of calls
+  vector<string> B;
+  opseq(A);
+  cattail(B);//Call the next two
+  vec = concat(A,B);
 }
 
-void cattail(){
+void cattail(vector<string>&vec){
   switch(peek()) {
     case COLON: case NAME: case REV: case SYM: case LB:
-      opseq();
-      cattail();
+      opseq(vec);
+      cattail(vec);
       break;
     case STOP: case RB: case FOLD:
       break;
@@ -130,21 +146,24 @@ void cattail(){
   }
 }
 
-void opseq(){
-  atom();
-  optail();
+void opseq(vector<string>&vec){
+  atom(vec);
+  optail(vec);
 }
 
-void optail(){
+void optail(vector<string>&vec){
   switch(peek()) {
     case COLON:
       match(COLON);
-      match(NAME);//FIXME? add these to return value??
-      optail();
+      //Store current vec into NAME
+      symTable[match(NAME)] = vec;
+      optail(vec);
       break;
     case REV:
       match(REV);
-      optail();
+      //reverse the vector
+      vec = rev(vec);
+      optail(vec);
       break;
     case STOP: case RB: case NAME: case SYM: case FOLD: case LB:
       break;
@@ -153,17 +172,23 @@ void optail(){
   }
 }
 
-void atom(){
+void atom(vector<string>&vec){
+  string var;
+  vector<string> cev;
   switch(peek()) {
     case SYM:
-      match(SYM);
+      vec.push_back(match(SYM));
       break;
     case NAME:
-      match(NAME);
+      var = match(NAME); //get the variable name
+      if(symTable.count(var) <= 0) //check if the name exists
+        exit(1);
+      vec = concat(vec, symTable[var]);
       break;
     case LB:
       match(LB);
-      seq();
+      seq(cev);
+      vec = concat(vec, cev);
       match(RB);
       break;
     default:
