@@ -69,18 +69,7 @@ seq: seq FOLD seq        {$$ = new ParseTree("seq",$1,$2,$3);}
 |    SYM                 {$$ = new ParseTree("seq",$1);}
 |    LB seq RB           {$$ = new ParseTree("seq",$1,$2,$3);}
 
-/* ONLY S and seq are the none terminals
-catseq: catseq opseq     {$$ = new ParseTree("catseq",$1,$2);}
-|       opseq            {$$ = new ParseTree("catseq",$1);}
 
-opseq: opseq COLON NAME  {$$ = new ParseTree("opseq",$1,$2,$3);}
-|      opseq REV         {$$ = new ParseTree("opseq",$1,$2);}
-|      atom              {$$ = new ParseTree("opseq",$1);}
-
-atom: SYM                {$$ = new ParseTree("atom",$1);}
-|     NAME               {$$ = new ParseTree("atom",$1);}
-|     LB seq RB          {$$ = new ParseTree("atom",$1,$2,$3);}
-*/
 %%
 int main()
 {
