@@ -1,0 +1,3 @@
+new i := 0;
+new sum := 0;
+while read
