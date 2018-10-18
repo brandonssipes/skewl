@@ -1,7 +1,7 @@
 /* SI 413 Fall 2018
  * Lab 7
  * This is a C++ header file for the AST class hierarchy.
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 #ifndef AST_HPP
@@ -136,6 +136,8 @@ class Id :public Exp {
 
     // Returns a reference to the stored string value.
     string& getVal() { return val; }
+    Value eval() override { return Value(ST.lookup(val)); }
+
 };
 
 /* A literal number in the program. */
@@ -341,6 +343,11 @@ class Block :public Stmt {
       body = b;
       ASTchild(body);
     }
+
+    void exec() override { //FIXME Does not work on part 8
+      setNext(body);
+      getNext()->exec();
+    };
 };
 
 /* This class is for "if" AND "ifelse" statements. */
@@ -431,6 +438,7 @@ class Write :public Stmt {
       ASTchild(val);
     }
 
+
     void exec() override {
       Value res = val->eval();
       if (!error) {
@@ -439,6 +447,7 @@ class Write :public Stmt {
       }
       getNext()->exec();
     }
+
 };
 
 /* A lambda expression consists of a parameter name and a body. */
