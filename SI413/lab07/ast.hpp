@@ -18,6 +18,8 @@ using namespace std;
 #include "value.hpp"
 #include "st.hpp"
 
+#include <string.h>
+
 // This global variable is the actual global symbol table object.
 // It is actually declared in the ast.cpp file, so we put keyword "extern"
 // here.
@@ -260,6 +262,16 @@ class NotOp :public Exp {
 class Read :public Exp {
   public:
     Read() { nodeLabel = "Exp:Read"; }
+
+
+    Value eval() override {
+      if(showPrompt){
+        cerr << "read> ";
+      }
+      int read; //used to store value read in
+      cin >> read; //pronounced like "red"
+      return Value(read);
+    };
 };
 
 /* A Stmt is anything that can be evaluated at the top level such
@@ -345,7 +357,8 @@ class Block :public Stmt {
     }
 
     void exec() override { //FIXME Does not work on part 8
-      setNext(body);
+      //two lines...
+      body->exec();
       getNext()->exec();
     };
 };
@@ -367,6 +380,19 @@ class IfStmt :public Stmt {
       ASTchild(ifblock);
       ASTchild(elseblock);
     }
+
+
+    void exec() override {
+      if (clause->eval().tf() == true){
+        //do what I did in Block class
+        ifblock->exec();
+        getNext()->exec();
+      }else{
+        //same thing but with the else stuff
+        elseblock->exec();
+        getNext()->exec(); 
+      }
+    }
 };
 
 /* Class for while statements. */
@@ -382,6 +408,14 @@ class WhileStmt :public Stmt {
       body = b;
       ASTchild(clause);
       ASTchild(body);
+    }
+
+    void exec() override{
+      while (clause->eval().tf() == true){
+        //do what I did in Block class
+        body->exec();
+        getNext()->exec();
+      }
     }
 };
 
@@ -403,6 +437,7 @@ class NewStmt :public Stmt {
 
     void exec() override {
       ST.bind(lhs->getVal(),rhs->eval());
+      getNext()->exec();
     }
 };
 
@@ -423,6 +458,7 @@ class Asn :public Stmt {
 
     void exec() override {
       ST.rebind(lhs->getVal(),rhs->eval());
+      getNext()->exec();
     }
 };
 
