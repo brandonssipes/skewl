@@ -10,8 +10,8 @@
 #define NUM_MIDS			24
 #define NUM_HONOR			3
 #define NUM_COURAGE			3
-#define NUM_COMMITMENT		        3
-#define RESOURCE_COUNT		        3
+#define NUM_COMMITMENT		3
+#define RESOURCE_COUNT		3
 #define SHORT_WAIT			.5	// must be non-zero
 #define BATTLE				1
 #define HONOR				0
@@ -56,6 +56,8 @@ int A[RESOURCE_COUNT] = {0};
 
 bool done = false;
 
+// TODO: declare semaphore(s) globally
+semaphore access_semaphore;
 
 /*==========================================================================*/
 
@@ -126,14 +128,14 @@ int drop_commitment(int n)
 }
 /*==========================================================================*/
 
-void * deadlock_detector(void * t_num){
+void * deadlock_detector(void * t_num)
+{
   bool deadlock = false;
   bool all_zero, can_run, some_just_ran;
   bool deadlocked[NUM_MIDS] = {false};
   int R_snapshot[NUM_MIDS][RESOURCE_COUNT] = {{0}};
   int C_snapshot[NUM_MIDS][RESOURCE_COUNT] = {{0}};
   int i,j,sum;
-  printf("TEST %d\n", ((int *)t_num));
 
   while (!deadlock && !done) {
 
@@ -141,17 +143,14 @@ void * deadlock_detector(void * t_num){
     memcpy(R_snapshot, R, sizeof (int) * NUM_MIDS * RESOURCE_COUNT);
     memcpy(C_snapshot, C, sizeof (int) * NUM_MIDS * RESOURCE_COUNT);
 
-    // TODO: Populate A0 using E and C_Snapshot
-
-    for(i=0; i<RESOURCE_COUNT; ++i){//A is E-C
+    // Populate A0
+    for (i=0; i < RESOURCE_COUNT; i++) {
       sum = 0;
-      for(j=0; j<NUM_MIDS; ++j)
-        sum += C_snapshot[i][j]; //sum up num of resources that all mids use
-      A0[i] = E[i] - sum; 
+      for (j=0; j < NUM_MIDS; j++) {
+	sum += C_snapshot[j][i];
+      }
+      A0[i] = E[i] - sum;
     }
-    
-
-
 
     // A <- A0
     memcpy(A, A0, sizeof (int) * RESOURCE_COUNT);
@@ -164,46 +163,59 @@ void * deadlock_detector(void * t_num){
       some_just_ran = false;
       for (i=0; i<NUM_MIDS; i++) {
 
-        // See if thread has nothing at all Claimed
-        all_zero = true;
-        for (j=0; j<RESOURCE_COUNT; j++) {
-          if (C_snapshot[i][j] != 0) all_zero = false;
-        }
-        if (all_zero) {
-          deadlocked[i] = false;
-        }
+	// See if thread has nothing allocated
+	all_zero = true;
+	for (j=0; j<RESOURCE_COUNT; j++) {
+	  if (C_snapshot[i][j] != 0) all_zero = false;
+	}
+	if (all_zero) {
+	  deadlocked[i] = false;
+	}
 
-        else {	// See if it can run
+	else {	// See if it can run
 
-          can_run = true;
-          /* TODO: evaluate all R_snapshot needs for this
-           * thread -- if some needs exceed what's avaialable,
-           * set can_run to false. */
+	  can_run = true;
+	  /* TODO: evaluate all R_snapshot needs for this
+	   * thread -- if some needs exceed what's available,
+	   * set can_run to false. */
 
-
-
-          if (can_run) {
-            /* TODO: Notionally 'run' the thread. Add its 
-             * Claims to the Available matrix, then zero 
-             * the thread's (snapshot) Requests and Claims */
-
-
-
-            some_just_ran = true;
-            deadlocked[i] = false;
+          for(j=0; j < RESOURCE_COUNT; ++j){
+            if(R_snapshot[i][j] > A0[j])//i is our current thread 
+              can_run = false;
           }
-          else {	// thread was not able to run
-            deadlocked[i] = true;
-          }
-        }
+
+
+
+	  if (can_run) {
+	    /* TODO: Notionally 'run' the thread. Add its 
+	     * Claims to the Available matrix, then zero 
+	     * the thread's (snapshot) Requests and Claims */
+
+            //TODO run the thread...  How?
+
+            //Zero thread's requests and claims
+            for(j=0; j < RESOURCE_COUNT; ++j){
+              A0[j] += C_snapshot[i][j];
+              C_snapshot[i][j] = 0;
+              R_snapshot[i][j] = 0;
+            }
+
+
+	    some_just_ran = true;
+	    deadlocked[i] = false;
+	  }
+	  else {	// thread was not able to run
+	    deadlocked[i] = true;
+	  }
+	}
       }
 
       // Do some individual threads remain unable to run? 
       // If yes, and nothing ran this time, we have deadlocked.
       // The threads still unable to run are the deadlock set.
       if (!some_just_ran) {
-        deadlock = false;
-        for (i=0; i<NUM_MIDS; i++) deadlock = deadlock || deadlocked[i];
+	deadlock = false;
+	for (i=0; i<NUM_MIDS; i++) deadlock = deadlock || deadlocked[i];
       }
 
     } // End 'while (some_just_ran) ' 
@@ -216,13 +228,13 @@ void * deadlock_detector(void * t_num){
       /* print C and R for deadlocked processes */
       printf("             C        R\n");
       for (i=0; i<NUM_MIDS; i++) {
-        if (deadlocked[i]) {
-          printf("thread %2i: ",i);
-          for (j=0; j<RESOURCE_COUNT; j++) printf("%1i ",C_snapshot[i][j]);
-          printf("   ");
-          for (j=0; j<RESOURCE_COUNT; j++) printf("%1i ",R_snapshot[i][j]);
-          printf("\n");
-        }
+	if (deadlocked[i]) {
+	  printf("thread %2i: ",i);
+	  for (j=0; j<RESOURCE_COUNT; j++) printf("%1i ",C_snapshot[i][j]);
+	  printf("   ");
+	  for (j=0; j<RESOURCE_COUNT; j++) printf("%1i ",R_snapshot[i][j]);
+	  printf("\n");
+	}
       }
 
       /* Print E, A */
@@ -240,8 +252,11 @@ void * deadlock_detector(void * t_num){
 }
 /*==========================================================================*/
 
-void * mid(void * t_num) {
+void * mid(void * t_num)
+{
   int n = * (int *) t_num;
+
+  // semWait(access_semaphore);
 
   R[n][HONOR] = 1; R[n][COURAGE] = 1; R[n][COMMITMENT] = 1; // Update request matrix R;
 
@@ -278,6 +293,8 @@ void * mid(void * t_num) {
     get_courage(n);
   }
 
+  // semSignal(access_semaphore);
+
   sleep(BATTLE);
 
   /* Release Supplies  and finish */
@@ -307,6 +324,13 @@ int main( int argc, char *argv[] )
   for ( i = 0; i < NUM_COURAGE; i++ ) courage[i] = -1;
   for ( i = 0; i < NUM_COMMITMENT; i++ ) commitment[i] = -1;
 
+  /* TODO: Initialize semaphores. */
+  semInit(access_semaphore,1);
+  for (i=0; i < NUM_HONOR; i++) semInit(honor_sem[i], 1);
+  for (i=0; i < NUM_COURAGE; i++) semInit(courage_sem[i], 1);
+  for (i=0; i < NUM_COMMITMENT; i++) semInit(commitment_sem[i], 1);     
+
+
   /* Initialize data. Create a thread for each mid. */
   for ( i = 0; i < NUM_MIDS; i++ )
   {
@@ -326,6 +350,12 @@ int main( int argc, char *argv[] )
 
   /* Wait for detector to finish. */
   pthread_join(deadlock_detect_thread, NULL);
+
+  /* TODO: Release semaphores. */
+  semRelease(access_semaphore);
+  for (i=0; i < NUM_HONOR; i++) semRelease(honor_sem[i]);
+  for (i=0; i < NUM_COURAGE; i++) semRelease(courage_sem[i]);
+  for (i=0; i < NUM_COMMITMENT; i++) semRelease(commitment_sem[i]);  	
 
   /* Produce the final report. */
   printf( "All midshipmen have won the Midnite battle!\n" );

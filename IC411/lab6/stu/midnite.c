@@ -38,7 +38,7 @@ int has_courage[NUM_MIDS];
 int has_commitment[NUM_MIDS];
 
 // TODO: declare semaphore(s) globally
-
+semaphore access_semaphore;
 /*==========================================================================*/
 
 int get_honor(int n)
@@ -102,7 +102,7 @@ void * midshipman(void * t_num)
     int n = * (int *) t_num;
     
     /* Get Supplies */
-    semWait(s);
+    semWait(access_semaphore);
     printf("midshipman %i getting honor %i\n", n, n % NUM_HONOR); fflush(stdout);
     get_honor(n);
 
@@ -123,7 +123,7 @@ void * midshipman(void * t_num)
 
     printf("midshipman %i ........... won Midnite battle!\n", n); fflush(stdout); 
 
-    semSignal(s);
+    semSignal(access_semaphore);
 
 }
 
@@ -143,6 +143,7 @@ int main( int argc, char *argv[] )
     for ( i = 0; i < NUM_COMMITMENT; i++ ) commitment[i] = -1;
 
     /* TODO: Initialize semaphores. */
+    semInit(access_semaphore,1);
 
 
     /* Initialize data. Create a thread for each midshipman. */
@@ -159,6 +160,7 @@ int main( int argc, char *argv[] )
     for ( i = 0; i < NUM_MIDS; i++ ) pthread_join( mid[i], NULL );
 
     /* TODO: Release semaphores. */
+    semRelease(access_semaphore);
 
 
     /* Produce the final report. */
