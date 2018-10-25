@@ -191,7 +191,6 @@ void * deadlock_detector(void * t_num)
 	     * Claims to the Available matrix, then zero 
 	     * the thread's (snapshot) Requests and Claims */
 
-            //TODO run the thread...  How?
 
             //Zero thread's requests and claims
             for(j=0; j < RESOURCE_COUNT; ++j){
