@@ -1,0 +1,43 @@
+Scheduler: RR
+Response Time Avg.:	32.38 ticks
+Turnaround Time Avg.:	58.35 ticks
+
+Scheduler: FCFS
+Response Time Avg.:	45.61 ticks
+Turnaround Time Avg.:	51.11 ticks
+
+Scheduler: HRRN
+Response Time Avg.:	36.96 ticks
+Turnaround Time Avg.:	42.45 ticks
+
+Scheduler: SJF
+Response Time Avg.:	27.38 ticks
+Turnaround Time Avg.:	32.88 ticks
+
+Scheduler: SRT
+Response Time Avg.:	25.81 ticks
+Turnaround Time Avg.:	32.18 ticks
+
+Scheduler: PRI
+Response Time Avg.:	35.26 ticks
+Turnaround Time Avg.:	56.86 ticks
+
+The SRT (Shortest Remaining Time) algorithm performed the best in the
+Response Time because in smaller jobs that only need to be run for a
+short period of time like a lot of the response jobs would get scheduled
+first and be able to respond fast.
+
+where as FCFS (First Come First Server) performed the
+worst at Response time.  This is probably due to some large job coming
+in and then slowing down all the other smaller jobs from being able to
+finish.  This would slow down the response time due to these jobs not
+being able to finish.
+
+SRT was also the fastest at turnaround time. This is because with SRT
+the majority of jobs can get in and get out without being slowed down by
+bigger jobs so that proportionally their turnaround time is faster than
+other algorithms.
+
+RR (Round Robin) was the worst at Turnaround time. This is because the
+OS has to keep switching around and does not let any process get the
+focus that it needs to finish fast.
