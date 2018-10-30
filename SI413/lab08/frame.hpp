@@ -30,9 +30,17 @@ class Frame {
     // be accessed via the public methods below.
     map<string,Value> bindings;
 
+    Frame*parent;
+
   public:
     // Creates a new, empty symbol table
     Frame() { }
+
+    // Create a new symbol table with a frame set
+    Frame(Frame*ST){
+      parent = ST;
+    }
+
 
     // Destructor for a SymbolTable object
     virtual ~Frame () {
@@ -42,35 +50,39 @@ class Frame {
 
     // Returns the Value bound to the given name.
     Value lookup(string name) {
-      if (bindings.count(name) > 0) return bindings[name];
-      else {
-        if (!error) {
-          error = true;
-          errout << "ERROR: No binding for variable " << name << endl;
-        }
-        return Value();
+      for(Frame*curr = this; curr != nullptr; curr = curr.parent){
+        if (curr.bindings.count(name) > 0) return curr.bindings[name];
       }
+      if (!error) {
+        error = true;
+        errout << "ERROR: No binding for variable " << name << endl;
+      }
+      return Value();
     }
 
     // Creates a new name-value binding
     void bind(string name, Value val = Value()) {
-      if(bindings.count(name) > 0)
-        if(!error){
-          error = true;
-          errout << "ERROR: Variable " << name << " already bound!" << endl;
-        }
-      bindings[name] = val;
+      for(Frame*curr=this; curr != nullptr; curr= curr.parent){
+        if(curr.bindings.count(name) > 0)
+          if(!error){
+            error = true;
+            errout << "ERROR: Variable " << name << " already bound!" << endl;
+          }
+        curr.bindings[name] = val;
+      }
     }
 
     // Re-defines the value bound to the given name.
     void rebind(string name, Value val) {
-      if(bindings.count(name) == 0)
-        if(!error){
-          error = true;
-          errout << "ERROR: Can't rebind " << name << "; not yet bound!" << endl;
-        }
-      bindings[name] = val; //FIXME is this broken?
-      // YOU HAVE TO WRITE THE ERROR CHECKING!
+      for(Frame*curr=this; curr != nullptr; curr = curr.parent){
+        if(curr.bindings.count(name) == 0)
+          if(!error){
+            error = true;
+            errout << "ERROR: Can't rebind " << name << "; not yet bound!" << endl;
+          }
+        curr.bindings[name] = val; //FIXME is this broken?
+        // YOU HAVE TO WRITE THE ERROR CHECKING!
+      }
     }
 };
 
