@@ -352,6 +352,7 @@ class Block :public Stmt {
     }
 
     void exec(Frame*ST) override {
+      Frame*BLK = Frame(ST);//Create new frame for each block
       body->exec(ST);
       getNext()->exec(ST);
     };
@@ -528,7 +529,9 @@ class Funcall :public Exp {
 
     Value eval(Frame*ST) override{
       puts("TEST2");
-      return Value(funexp->eval(ST));
+      funexp->eval(ST);
+      return Value();
+      //return Value(funexp->eval(ST));
     }
 };
 
