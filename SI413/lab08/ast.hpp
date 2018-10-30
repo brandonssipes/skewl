@@ -527,6 +527,8 @@ class Funcall :public Exp {
     }
 
     Value eval(Frame*ST) override{
+      int curArg = arg->eval(ST).num();//Get the argument
+
       Closure cur = funexp->eval(ST).func();//get the Closure for the function
       cur.lam->getBody()->exec(cur.env); //execute it
       return Value();
