@@ -2,7 +2,7 @@
  * Lab 7
  * Parser for SPL that just shows the parse tree
  * This parser uses a simpler grammar with assoc/prec specifications.
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 // This code is included in the spl.tab.hpp header file
@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
   bool interactive = isatty(1) && isatty(2);
 
   // Frame symbol table
-  Frame *ST = new Frame();
+  Frame *ST = new Frame(nullptr);
 
   // this saves the entire program's AST to deallocate at the end
   vector<Stmt*> program;
