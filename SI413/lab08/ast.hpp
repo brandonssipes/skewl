@@ -352,9 +352,9 @@ class Block :public Stmt {
     }
 
     void exec(Frame*ST) override {
-      Frame*BLK = Frame(ST);//Create new frame for each block
-      body->exec(ST);
-      getNext()->exec(ST);
+      Frame BLK = Frame(ST);//Create new frame for each block
+      body->exec(&BLK);
+      getNext()->exec(&BLK);
     };
 };
 
@@ -505,9 +505,8 @@ class Lambda :public Exp {
     Stmt* getBody() { return body; }
 
     Value eval(Frame*ST) override {
-      puts("TEST1");
-      body->exec(ST);
-      return Value();//FIXME part 3
+      //body->exec(ST);
+      return Value(this, ST);
     }
 };
 
@@ -528,8 +527,9 @@ class Funcall :public Exp {
     }
 
     Value eval(Frame*ST) override{
-      puts("TEST2");
-      funexp->eval(ST);
+      //puts("TEST2");
+      funexp->eval(ST).func();
+      //funexp->eval(ST);//Eval this somehow
       return Value();
       //return Value(funexp->eval(ST));
     }

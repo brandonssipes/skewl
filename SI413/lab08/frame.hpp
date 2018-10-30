@@ -50,8 +50,8 @@ class Frame {
 
     // Returns the Value bound to the given name.
     Value lookup(string name) {
-      for(Frame*curr = this; curr != nullptr; curr = curr.parent){
-        if (curr.bindings.count(name) > 0) return curr.bindings[name];
+      for(Frame*curr = this; curr != nullptr; curr = curr->parent){
+        if (curr->bindings.count(name) > 0) return curr->bindings[name];
       }
       if (!error) {
         error = true;
@@ -62,25 +62,25 @@ class Frame {
 
     // Creates a new name-value binding
     void bind(string name, Value val = Value()) {
-      for(Frame*curr=this; curr != nullptr; curr= curr.parent){
-        if(curr.bindings.count(name) > 0)
+      for(Frame*curr=this; curr != nullptr; curr= curr->parent){
+        if(curr->bindings.count(name) > 0)
           if(!error){
             error = true;
             errout << "ERROR: Variable " << name << " already bound!" << endl;
           }
-        curr.bindings[name] = val;
+        curr->bindings[name] = val;
       }
     }
 
     // Re-defines the value bound to the given name.
     void rebind(string name, Value val) {
-      for(Frame*curr=this; curr != nullptr; curr = curr.parent){
-        if(curr.bindings.count(name) == 0)
+      for(Frame*curr=this; curr != nullptr; curr = curr->parent){
+        if(curr->bindings.count(name) == 0)
           if(!error){
             error = true;
             errout << "ERROR: Can't rebind " << name << "; not yet bound!" << endl;
           }
-        curr.bindings[name] = val; //FIXME is this broken?
+        curr->bindings[name] = val; //FIXME is this broken?
         // YOU HAVE TO WRITE THE ERROR CHECKING!
       }
     }
