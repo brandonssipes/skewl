@@ -62,27 +62,36 @@ class Frame {
 
     // Creates a new name-value binding
     void bind(string name, Value val = Value()) {
-      for(Frame*curr=this; curr != nullptr; curr= curr->parent){
+      if(this->bindings.count(name) > 0)
+        if(!error){
+          error = true;
+          errout << "ERROR: Variable " << name << " already bound!" << endl;
+        }
+      this->bindings[name] = val;
+      /*for(Frame*curr=this; curr != nullptr; curr= curr->parent){
         if(curr->bindings.count(name) > 0)
           if(!error){
             error = true;
             errout << "ERROR: Variable " << name << " already bound!" << endl;
           }
         curr->bindings[name] = val;
-      }
+      }*/
     }
 
     // Re-defines the value bound to the given name.
     void rebind(string name, Value val) {
+      bool found = false; //look for the variable first
       for(Frame*curr=this; curr != nullptr; curr = curr->parent){
-        if(curr->bindings.count(name) == 0)
-          if(!error){
-            error = true;
-            errout << "ERROR: Can't rebind " << name << "; not yet bound!" << endl;
-          }
-        curr->bindings[name] = val; //FIXME is this broken?
-        // YOU HAVE TO WRITE THE ERROR CHECKING!
+        if(curr->bindings.count(name) != 0){
+          curr->bindings[name] = val;
+          found = true;
+        }
       }
+      if(!found) //if we cannot find it in any frame then throw error
+        if(!error){
+          error = true;
+          errout << "ERROR: Can't rebind " << name << "; not yet bound!" << endl;
+        }
     }
 };
 

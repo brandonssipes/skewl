@@ -352,7 +352,7 @@ class Block :public Stmt {
     }
 
     void exec(Frame*ST) override {
-      Frame BLK = Frame(ST);//Create new frame for each block
+      Frame BLK = Frame(ST);//Create new frame with ST as the parent for each block
       body->exec(&BLK);
       getNext()->exec(&BLK);
     };
