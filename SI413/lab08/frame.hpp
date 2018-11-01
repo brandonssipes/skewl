@@ -85,6 +85,7 @@ class Frame {
         if(curr->bindings.count(name) != 0){
           curr->bindings[name] = val;
           found = true;
+          break;//stop at the first one found
         }
       }
       if(!found) //if we cannot find it in any frame then throw error
