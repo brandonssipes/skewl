@@ -44,6 +44,7 @@ enum Oper {
 // They show the class hierarchy.
 class AST;
   class Stmt;
+    class ExpStmt; //my new class
     class NullStmt;
     class Block;
     class IfStmt;
@@ -481,6 +482,20 @@ class Write :public Stmt {
 
 };
 
+class ExpStmt :public Stmt {
+  private:
+    Exp* func;
+
+  public:
+    ExpStmt(Exp* f){
+      nodeLabel = "Stmt:ExpStmt";
+      func = f;
+      ASTchild(func);
+    }
+
+    void exec(Frame*ST) override {} //do something
+};
+
 /* A lambda expression consists of a parameter name and a body. */
 class Lambda :public Exp {
   private:
@@ -528,6 +543,7 @@ class Funcall :public Exp {
 
     Value eval(Frame*ST) override{
       int curArg = arg->eval(ST).num();//Get the argument
+      //bind curArg to ... something
 
       Closure cur = funexp->eval(ST).func();//get the Closure for the function
       cur.lam->getBody()->exec(cur.env); //execute it

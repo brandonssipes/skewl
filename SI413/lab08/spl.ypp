@@ -69,7 +69,7 @@ void yyerror(const char *p) {
 
 %token LC RC LP RP LAMBDA IF IFELSE WHILE READ WRITE NEW ASN STOP
 %token<id> ID
-%token<exp> NUM BOOL
+%token<exp> NUM BOOL EXPSTMT
 %type<stmt> stmt stmtlist
 %type<block> block
 %type<exp> exp
@@ -95,6 +95,7 @@ stmt: NEW ID ASN exp STOP    {$$ = new NewStmt($2,$4);}
 |     IF exp block           {$$ = new IfStmt($2,$3,new NullStmt());}
 |     IFELSE exp block block {$$ = new IfStmt($2,$3,$4);}
 |     WHILE exp block        {$$ = new WhileStmt($2,$3);}
+|     EXPSTMT STOP           {$$ = new ExpStmt($1);}
 |     block                  {$$ = $1;}
 
 exp: exp BOP exp          {$$ = new BoolOp($1,$2,$3);}
