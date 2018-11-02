@@ -249,7 +249,7 @@ class NotOp :public Exp {
     }
 
     Value eval(Frame*ST) override{
-      bool r = right->eval(ST).num();
+      bool r = right->eval(ST).tf();
       return Value(!r);
     };
 };
@@ -410,8 +410,8 @@ class WhileStmt :public Stmt {
       while (clause->eval(ST).tf() == true){
         //do what I did in Block class
         body->exec(ST);
-        getNext()->exec(ST);
       }
+      getNext()->exec(ST);
     }
 };
 
@@ -482,19 +482,6 @@ class Write :public Stmt {
 
 };
 
-class ExpStmt :public Stmt {
-  private:
-    Exp* func;
-
-  public:
-    ExpStmt(Exp* f){
-      nodeLabel = "Stmt:ExpStmt";
-      func = f;
-      ASTchild(func);
-    }
-
-    void exec(Frame*ST) override {} //do something
-};
 
 /* A lambda expression consists of a parameter name and a body. */
 class Lambda :public Exp {
@@ -520,7 +507,8 @@ class Lambda :public Exp {
     Stmt* getBody() { return body; }
 
     Value eval(Frame*ST) override {
-      //body->exec(ST);
+      //Frame lame = Frame(ST);
+      ST->bind(var->getVal(), Value());
       return Value(this, ST);
     }
 };
@@ -542,13 +530,33 @@ class Funcall :public Exp {
     }
 
     Value eval(Frame*ST) override{
-      int curArg = arg->eval(ST).num();//Get the argument
-      //bind curArg to ... something
 
       Closure cur = funexp->eval(ST).func();//get the Closure for the function
+      ST->rebind(cur.lam->getVar(), arg->eval(ST)); //bind the argument to its value
+
+      
+      //ST->bind(lhs->getVal(),rhs->eval(ST));
+
       cur.lam->getBody()->exec(cur.env); //execute it
       return Value();
     }
+};
+class ExpStmt :public Stmt {
+  private:
+    Exp* func;
+    Exp* arg;
+
+  public:
+    ExpStmt(Exp* f, Exp* a){
+      nodeLabel = "Stmt:ExpStmt";
+      func = f;
+      arg = a;
+      ASTchild(func);
+    }
+
+    void exec(Frame*ST) override {
+      Funcall(func, arg).eval(ST);//I just built a function to do this
+    } 
 };
 
 #endif //AST_HPP

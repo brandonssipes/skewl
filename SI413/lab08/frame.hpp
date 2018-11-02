@@ -68,14 +68,6 @@ class Frame {
           errout << "ERROR: Variable " << name << " already bound!" << endl;
         }
       this->bindings[name] = val;
-      /*for(Frame*curr=this; curr != nullptr; curr= curr->parent){
-        if(curr->bindings.count(name) > 0)
-          if(!error){
-            error = true;
-            errout << "ERROR: Variable " << name << " already bound!" << endl;
-          }
-        curr->bindings[name] = val;
-      }*/
     }
 
     // Re-defines the value bound to the given name.
