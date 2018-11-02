@@ -2,10 +2,10 @@
 # Brandon Sipes
 new fib := lambda n {
   if n = 0
-    { ret 0; }
+    { ret := 0; }
   ifelse n = 1
-    { ret 1; }
-    { ret fib@(n-1) + fib@(n-2); }
+    { ret := 1; }
+    { ret := fib@(n-1) + fib@(n-2); }
 }
 
 
