@@ -49,6 +49,7 @@ class AST;
     class Asn;
     class Write;
     class ExpStmt;
+    class sqrt;
   class Exp;
     class Id;
     class Num;

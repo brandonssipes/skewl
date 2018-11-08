@@ -1,7 +1,7 @@
 /* SI 413 Fall 2018
  * Lab 9
  * C++ header file for the Value class.
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 #ifndef VALUE_HPP
@@ -9,6 +9,11 @@
 
 #include <iostream>
 #include <cstdlib>
+
+#include "colorout.hpp"//add in error checking
+extern bool error;
+extern colorout errout;
+
 using namespace std;
 
 // Forward declarations needed for the closure class.
@@ -66,11 +71,35 @@ class Value {
     VType getType() { return type; }
     void setType(VType t) { type = t; }
 
-    int num() { return val.num; }
+    int num() { 
+      if (type != NUM_T){
+        error = true;
+        errout << "Type mismatch: expected NUM, got ";
+        writeTo(errout);
+        errout << endl;
+      }
+      return val.num;
+    }
 
-    bool tf() { return val.tf; }
+    bool tf() { 
+      if(type != BOOL_T){
+        error = true;
+        errout << "Type mismatch: expected BOOL, got ";
+        writeTo(errout);
+        errout << endl;
+      }
+      return val.tf;
+    }
 
-    Closure func() { return val.func; }
+    Closure func() {
+      /*if(type != FUN_T){
+        error = true;
+        errout << "Type mismatch: expected FUN, got ";
+        writeTo(errout);
+        errout << endl;
+      }*/
+      return val.func; 
+    }
 
     /* Writes a representation of this Value object to the
      * named output stream, according to the stored type.

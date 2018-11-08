@@ -2,7 +2,7 @@
  * Lab 9
  * Parser for SPL that just shows the parse tree
  * This parser uses a simpler grammar with assoc/prec specifications.
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 // This code is included in the spl.tab.hpp header file
@@ -14,6 +14,7 @@
 using namespace std;
 
 #include "ast.hpp"
+#include "builtins.hpp"
 
 int yylex();
 int yylex_destroy();
@@ -135,6 +136,12 @@ int main(int argc, char** argv) {
 
   // this is the root Frame to hold all global variable bindings
   Frame global(nullptr);
+
+  //FIXME 
+  Sqrt sqrtFunc = Sqrt();
+  Id myId = Id("arg");
+  global.bind(Lambda(&myId, &sqrtFunc));
+  //FIXME end of my code
 
   // loop to read in the program and execute it, one statement at a time
   while (true) {
