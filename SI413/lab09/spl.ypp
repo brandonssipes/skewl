@@ -137,10 +137,10 @@ int main(int argc, char** argv) {
   // this is the root Frame to hold all global variable bindings
   Frame global(nullptr);
 
-  //FIXME 
-  Sqrt sqrtFunc = Sqrt();
-  Id myId = Id("arg");
-  global.bind(Lambda(&myId, &sqrtFunc));
+  //FIXME make it act like a closure
+  Sqrt sqrtFunc = Sqrt();//create a new function
+  Id myId = Id("sqrt"); //create a new id for my builtin
+  global.bind(Lambda(&myId, &sqrtFunc)); //bind the id to the function
   //FIXME end of my code
 
   // loop to read in the program and execute it, one statement at a time
