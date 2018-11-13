@@ -13,8 +13,8 @@
 // YOUR CODE HERE
 class Sqrt :public Stmt {
   private:
-  Exp* funexp;
-  Exp* arg;
+    Exp* funexp;
+    Exp* arg;
 
   public:
     Sqrt(Exp* f, Exp*a) {
@@ -33,7 +33,24 @@ class Sqrt :public Stmt {
       Value *ret = new Value(x);
       //use ST to set the return
       ST->rebind("ret",(*ret));
+    }
+};
 
+class Rand :public Stmt {
+  private:
+    Exp* arg;
+
+  public:
+    Rand(Exp*a){
+      arg = a;
+      ASTchild(arg);
+    }
+
+    void exec(Frame*ST)override{
+      int n = arg->eval(ST).num();
+      int randomNum = 1 + std::rand()/((RAND_MAX + 1u)/n); //random number from 1 to n
+      Value *ret = new Value(randomNum);
+      ST->rebind("ret",(*ret));
     }
 };
 

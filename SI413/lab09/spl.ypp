@@ -9,6 +9,7 @@
 %code requires {
 
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -146,8 +147,15 @@ int main(int argc, char** argv) {
   Lambda *lamSqrt = new Lambda(&myVar, sqrtFunc);
   Value *lam = new Value(lamSqrt, &global);
   //bind takes a string, Value
-  global.bind("ret", Value(9));
+  global.bind("ret", Value());
   global.bind("sqrt", (*lam)); //bind the id to the function
+  
+  myId = Id("rand");
+  Rand *randFunc = new Rand(&myVar);
+  Lambda *lamRand = new Lambda(&myVar, randFunc);
+  lam = new Value(lamRand, &global);
+  std::srand(std::time(nullptr));//using namespaces is for losers
+  global.bind("rand", (*lam));
   //FIXME end of my code
 
   // loop to read in the program and execute it, one statement at a time
