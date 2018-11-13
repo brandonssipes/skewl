@@ -54,4 +54,72 @@ class Rand :public Stmt {
     }
 };
 
+class Isnum :public Stmt{
+  private:
+    Exp* arg;
+
+  public:
+    Isnum(Exp*a){
+      arg=a;
+      ASTchild(arg);
+    }
+
+    void exec(Frame*ST)override{
+      Value x = arg->eval(ST);
+      if(x.getType() == NUM_T){
+        Value *ret = new Value(true);
+        ST->rebind("ret",(*ret));
+      }else{
+        Value *ret = new Value(false);
+        ST->rebind("ret",(*ret));
+      }
+    }
+};
+
+class Isbool :public Stmt{
+  private:
+    Exp* arg;
+
+  public:
+    Isbool(Exp*a){
+      arg=a;
+      ASTchild(arg);
+    }
+
+    void exec(Frame*ST)override{
+      Value x = arg->eval(ST);
+      if(x.getType() == BOOL_T){
+        Value *ret = new Value(true);
+        ST->rebind("ret",(*ret));
+      }else{
+        Value *ret = new Value(false);
+        ST->rebind("ret",(*ret));
+      }
+    }
+};
+
+class Isfunc :public Stmt{
+  private:
+    Exp* arg;
+
+  public:
+    Isfunc(Exp*a){
+      arg=a;
+      ASTchild(arg);
+    }
+
+    void exec(Frame*ST)override{
+      Value x = arg->eval(ST);
+      if(x.getType() == FUN_T){
+        Value *ret = new Value(true);
+        ST->rebind("ret",(*ret));
+      }else{
+        Value *ret = new Value(false);
+        ST->rebind("ret",(*ret));
+      }
+    }
+};
+
+
+
 #endif // BUILTIN_HPP
