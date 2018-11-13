@@ -32,6 +32,7 @@ class Frame {
     map<string,Value> bindings;
     Frame* parent;
     static list<Frame*> allFrames;
+    bool marked;
 
     // finds the closest frame with the given name, searching
     // parents frames as necessary.
@@ -49,6 +50,7 @@ class Frame {
     Frame(Frame* par) {
       parent = par;
       allFrames.push_back(this);
+      marked = false;
     }
 
     // Destructor for a Frame object
@@ -71,6 +73,43 @@ class Frame {
     }
 
     static int len() {return allFrames.size();}
+
+    void mark() {
+      if(this->marked == true) return;
+      this->marked = true;
+      map<string,Value>::iterator iter = bindings.begin();
+      while (iter != bindings.end()) {
+        //test if value is a clousure 
+        //if it is then get it's environment
+        //look at that frame and if it is not marked then
+        //mark it
+        if (iter->second.getType() != FUN_T){
+          ++iter;
+          continue;
+        }
+        Frame* cur = iter->second.func().env;
+        if(cur != nullptr)
+          cur->mark();
+
+        /* in here, "iter->second" is the Value.
+         * You see, *iter is a pair<string,Value>, i.e., a
+         * string-Value pair from the map. ".second" gives the second
+         * element of the pair --- the Value.
+         */
+        ++iter; // Increments the iterator to go to the next pair.
+      }
+      //also mark everything that it points to too
+    }
+
+    static void sweep(){
+      puts("TEST1");
+      for (Frame* curr : allFrames)
+        if (!(curr->marked)) {
+          allFrames.remove(curr);
+          delete curr;
+        }else
+          curr->marked = true;
+    }
 
     // Creates a new name-value binding
     void bind(string name, Value val = Value()) {

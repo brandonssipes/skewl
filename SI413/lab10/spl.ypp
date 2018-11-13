@@ -178,6 +178,10 @@ int main(int argc, char** argv) {
     // save the tree for later deallocation
     if (tree) program.push_back(tree);
 
+    global.mark();
+    Frame::sweep();
+    
+
     // quit immediately on error if it's a non-interactive run
     if (!interactive && error) break;
   }
