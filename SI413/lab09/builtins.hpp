@@ -120,6 +120,21 @@ class Isfunc :public Stmt{
     }
 };
 
+class Chr :public Stmt{
+  private:
+    Exp* arg;
 
+  public:
+    Chr(Exp*a){
+      arg=a;
+      ASTchild(arg);
+    }
+
+    void exec(Frame*ST)override{
+      int x = arg->eval(ST).num();
+      char c = (char) x;
+      printf("%c\n", c);
+    }
+};
 
 #endif // BUILTIN_HPP

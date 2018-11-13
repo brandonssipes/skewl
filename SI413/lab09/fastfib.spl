@@ -1,0 +1,13 @@
+new fib := lambda n {
+  ifelse n <= 1
+    { 
+      ret := lambda b { ret := b;};
+      ret := n;
+    }
+    { ret := lambda b { ret := b;};
+      ret := b + fib@b@b-1;
+    }
+};
+
+new x := read;
+write fib@x@x-1;

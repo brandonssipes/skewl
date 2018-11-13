@@ -44,6 +44,7 @@ extern int yydebug;
 
 
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -55,7 +56,7 @@ int yylex();
 int yylex_destroy();
 
 
-#line 59 "spl.tab.hpp" /* yacc.c:1909  */
+#line 60 "spl.tab.hpp" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -94,7 +95,7 @@ int yylex_destroy();
 
 union YYSTYPE
 {
-#line 56 "spl.ypp" /* yacc.c:1909  */
+#line 57 "spl.ypp" /* yacc.c:1909  */
 
   Block* block;
   Stmt* stmt;
@@ -102,7 +103,7 @@ union YYSTYPE
   Id* id;
   Oper op;
 
-#line 106 "spl.tab.hpp" /* yacc.c:1909  */
+#line 107 "spl.tab.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

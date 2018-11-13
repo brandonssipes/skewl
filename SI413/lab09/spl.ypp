@@ -173,6 +173,11 @@ int main(int argc, char** argv) {
   lam = new Value(lamIsfunc, &global);
   global.bind("isfunc", (*lam)); 
 
+  Chr * chrFunc = new Chr(&myVar);
+  Lambda *lamChr = new Lambda(&myVar, chrFunc);
+  lam = new Value(lamChr, &global);
+  global.bind("chr", (*lam));
+
  //*************end of my code
 
 
