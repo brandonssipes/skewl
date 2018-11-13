@@ -138,9 +138,16 @@ int main(int argc, char** argv) {
   Frame global(nullptr);
 
   //FIXME make it act like a closure
-  Sqrt sqrtFunc = Sqrt();//create a new function
+  Id myVar = Id("arg"); //create a new arg for my func
   Id myId = Id("sqrt"); //create a new id for my builtin
-  global.bind(Lambda(&myId, &sqrtFunc)); //bind the id to the function
+  Sqrt *sqrtFunc = new Sqrt(&myId, &myVar);//create a new function
+  //Lambda takes a id and a Stmt
+  //Value takes a Lambda and a Frame*
+  Lambda *lamSqrt = new Lambda(&myVar, sqrtFunc);
+  Value *lam = new Value(lamSqrt, &global);
+  //bind takes a string, Value
+  global.bind("ret", Value(9));
+  global.bind("sqrt", (*lam)); //bind the id to the function
   //FIXME end of my code
 
   // loop to read in the program and execute it, one statement at a time

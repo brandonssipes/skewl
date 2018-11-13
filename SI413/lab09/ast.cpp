@@ -2,7 +2,7 @@
  * Lab 9
  * This file contains the implementations of longer methods in the
  * AST class hierarchy.
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 #include "ast.hpp"
