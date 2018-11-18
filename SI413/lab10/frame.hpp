@@ -75,40 +75,37 @@ class Frame {
     static int len() {return allFrames.size();}
 
     void mark() {
-      if(this->marked == true) return;
-      this->marked = true;
+      if(this->marked == true) return;//break if we find something that is marked
+      this->marked = true; //otherwise mark it as true
       map<string,Value>::iterator iter = bindings.begin();
       while (iter != bindings.end()) {
         //test if value is a clousure 
         //if it is then get it's environment
         //look at that frame and if it is not marked then
         //mark it
-        if (iter->second.getType() != FUN_T){
+        if (iter->second.getType() != FUN_T){//continue until clousure is found
           ++iter;
           continue;
         }
-        Frame* cur = iter->second.func().env;
-        if(cur != nullptr)
-          cur->mark();
-
-        /* in here, "iter->second" is the Value.
-         * You see, *iter is a pair<string,Value>, i.e., a
-         * string-Value pair from the map. ".second" gives the second
-         * element of the pair --- the Value.
-         */
+        Frame* cur = iter->second.func().env;//get the environment
+        if(cur != nullptr)//as long as it is not null
+          cur->mark();//mark it and everything it points to
         ++iter; // Increments the iterator to go to the next pair.
       }
-      //also mark everything that it points to too
     }
 
     static void sweep(){
-      puts("TEST1");
-      for (Frame* curr : allFrames)
-        if (!(curr->marked)) {
-          allFrames.remove(curr);
-          delete curr;
-        }else
-          curr->marked = true;
+      list<Frame*>::iterator iter = allFrames.begin();
+      while(iter != allFrames.end()){
+        Frame* cur = *iter;
+        if (!(cur->marked)) {
+          //delete cur;
+          //cur = allFrames.erase(*cur);
+        }else{
+          cur->marked = false;
+          //cur = iter.next();
+        }
+      }
     }
 
     // Creates a new name-value binding
