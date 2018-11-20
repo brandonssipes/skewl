@@ -53,6 +53,40 @@ CompOp::CompOp(Exp* l, Oper o, Exp* r) {
   ASTchild(right);
 }
 
+string CompOp::eval(Frame*ST, Context*con){
+  string l = left->eval(ST, con);
+  string r = right->eval(ST,con);
+  string dest = con->nextRegister();
+  resout << "    " << dest << " = icmp ";
+  switch(op){
+    case EQ:
+      resout << "eq";
+      break;
+    case NE:
+      resout << "ne";
+      break;
+    case LT:
+      resout << "slt";
+      break;
+    case LE:
+      resout << "sle";
+      break;
+    case GT:
+      resout << "sgt";
+      break;
+    case GE:
+      resout << "sge";
+      break;
+    default:
+      //should never happen...
+      errout << "Internal Error: Illegal Comparison operator" << endl;
+      exit(9);
+  }
+  resout << " i64 " << l << ", " << r << endl;
+  return dest;
+}
+
+
 // Constructor for BoolOp
 BoolOp::BoolOp(Exp* l, Oper o, Exp* r) {
   op = o;
@@ -60,6 +94,19 @@ BoolOp::BoolOp(Exp* l, Oper o, Exp* r) {
   right = r;
   ASTchild(left);
   ASTchild(right);
+}
+
+string BoolOp::eval(Frame*ST, Context*con){
+  string l = left->eval(ST,con);
+  string r = right->eval(ST,con);
+  string dest = con->nextRegister();
+  resout << "    " << dest << " = ";
+  if(op == OR)
+      resout << "or";
+  else
+      resout << "and";
+  resout << " i64 " << l << ", " << r << endl; 
+  return dest;
 }
 
 // Constructor for IfStmt
@@ -80,3 +127,12 @@ void Write::exec(Frame* ST, Context* con) {
     << "i64 " << r << ")" << endl;
   getNext()->exec(ST, con);
 }
+
+string Read::eval(Frame*ST, Context*con){
+  string dest = con->nextRegister();
+  resout << "    call i32(i8*,...) @scanf("
+    << "i8* getelementptr([5 x i8], [5 x i8]* @pfmt, i32 0, i32 0), "
+    << "i64 " << dest << ")" << endl;
+  return dest;
+}
+

@@ -130,6 +130,10 @@ class BoolExp :public Exp {
     BoolExp(bool v) {
       val = v;
     }
+
+    //string eval(Frame*ST, Context*con) override {
+    //}
+
 };
 
 /* A binary opration for arithmetic, like + or *. */
@@ -154,6 +158,8 @@ class CompOp :public Exp {
 
   public:
     CompOp(Exp* l, Oper o, Exp* r);
+
+    string eval(Frame* ST, Context* con) override;
 };
 
 /* A binary operation for boolean logic, like "and". */
@@ -165,6 +171,8 @@ class BoolOp :public Exp {
 
   public:
     BoolOp(Exp* l, Oper o, Exp* r);
+
+    string eval(Frame* ST, Context* con) override;
 };
 
 /* This class represents a unary negation operation. */
@@ -177,6 +185,15 @@ class NegOp :public Exp {
       right = r;
       ASTchild(right);
     }
+    
+    string eval(Frame*ST,Context*con) override {
+      string r = right->eval(ST,con);
+      string dest = con->nextRegister();
+      resout << "    " << dest << " = ";
+      resout << " sub i64 0, " << r << endl;
+      return dest;
+    }
+
 };
 
 /* This class represents a unary "not" operation. */
@@ -189,12 +206,22 @@ class NotOp :public Exp {
       right = r;
       ASTchild(right);
     }
+
+    string eval(Frame*ST,Context*con) override {
+      string r = right->eval(ST,con);
+      string dest = con->nextRegister();
+      resout << "    " << dest << " NOT DONE" << endl;//FIXME
+      return dest;
+    }
 };
 
 /* A read expression. */
 class Read :public Exp {
   public:
     Read() { }
+
+    string eval(Frame* ST, Context* con) override;
+
 };
 
 /* A Stmt is anything that can be evaluated at the top level such
@@ -253,6 +280,11 @@ class Block :public Stmt {
       body = b;
       ASTchild(body);
     }
+
+    //void exec(Frame*ST,Context*con){//FIXME
+    //  body->exec(new Frame(ST));
+    //  getNext()->exec(ST,con);
+    //}
 };
 
 /* This class is for "if" AND "ifelse" statements. */
