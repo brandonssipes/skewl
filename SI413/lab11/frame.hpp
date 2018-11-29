@@ -1,7 +1,7 @@
 /* SI 413 Fall 2018
  * Lab 11
  * C++ header file for the Frame class
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 #ifndef ST_HPP
