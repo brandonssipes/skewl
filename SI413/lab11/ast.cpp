@@ -84,7 +84,7 @@ string CompOp::eval(Frame*ST, Context*con){
   }
   resout << " i64 " << l << ", " << r << endl;
   string dest2 = con->nextRegister();//May need to move this to the write
-  resout << dest2 << " = zext i1 " << dest << " to i64" << endl;
+  resout << "    " << dest2 << " = zext i1 " << dest << " to i64" << endl;
   return dest2;
 }
 
@@ -157,4 +157,23 @@ void Asn::exec(Frame* ST, Context* con){
   string name = ST->lookup(l);
   resout << "    store i64 " << r << ", i64* " << name << endl;//store value on stack at dest
   getNext()->exec(ST, con);
+}
+
+void IfStmt::exec(Frame* ST, Context* con){
+  string test = clause->eval(ST,con);
+  string dest = con->nextRegister();
+  string br1 = con->nextRegister();//Is there one of these for labels?
+  string br2 = con->nextRegister();
+  string end = con->nextRegister();
+
+  resout << "    " << dest << " = trunc i64 " << test << " to i1" << endl
+    << "    br i1 " << dest << ", label " << br1 << ", label " << br2 << endl
+    << "  " << br1.replace(0,1,"") << ":" << endl;
+  ifblock->exec(ST,con);
+  resout << "    br label" << end << endl
+    << "  " << br2.replace(0,1,"") << ":" << endl;
+  elseblock->exec(ST,con);
+  resout << "    br label" << end << endl
+    << "  " << end.replace(0,1,"") << ":" << endl;
+  getNext()->exec(ST,con);
 }

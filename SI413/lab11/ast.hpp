@@ -312,6 +312,8 @@ class IfStmt :public Stmt {
 
   public:
     IfStmt(Exp* e, Stmt* ib, Stmt* eb);
+
+    void exec(Frame* ST, Context* con) override ;
 };
 
 /* Class for while statements. */
