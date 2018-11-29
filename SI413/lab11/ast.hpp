@@ -218,7 +218,7 @@ class NotOp :public Exp {
     string eval(Frame*ST,Context*con) override {
       string r = right->eval(ST,con);
       string dest = con->nextRegister();
-      resout << "    " << dest << " = sub i64 1, " << r << endl;//NOT DONE" << endl;//FIXME
+      resout << "    " << dest << " = sub i64 1, " << r << endl;
       return dest;
     }
 };

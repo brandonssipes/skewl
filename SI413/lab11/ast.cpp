@@ -132,9 +132,10 @@ void Write::exec(Frame* ST, Context* con) {
 
 string Read::eval(Frame*ST, Context*con){
   string dest = con->nextRegister();
-  resout << "    call i32(i8*,...) @scanf("
-    << "i8* getelementptr([5 x i8], [5 x i8]* @pfmt, i32 0, i32 0), "
-    << "i64 " << dest << ")" << endl;
+  //resout << "    call i32(i8*,...) @scanf("
+  //  << "i8* getelementptr([5 x i8], [5 x i8]* @pfmt, i32 0, i32 0), "
+  //  << "i64 " << dest << ")" << endl;
+  resout << "    <d" << endl;
   return dest;
 }
 
