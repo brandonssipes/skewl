@@ -177,3 +177,24 @@ void IfStmt::exec(Frame* ST, Context* con){
     << "  " << end.replace(0,1,"") << ":" << endl;
   getNext()->exec(ST,con);
 }
+void WhileStmt::exec(Frame* ST,Context*con){
+  string wl1 = con->nextRegister();
+  resout << 
+  string test = clause->eval(ST,con);
+  resout << "    " << dest << 
+
+  getNext()->exec(ST,con);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

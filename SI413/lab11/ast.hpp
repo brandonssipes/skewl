@@ -329,6 +329,8 @@ class WhileStmt :public Stmt {
       ASTchild(clause);
       ASTchild(body);
     }
+
+    void exec(Frame* ST, Context* con) override ;
 };
 
 /* A "new" statement creates a new binding of the variable to the
