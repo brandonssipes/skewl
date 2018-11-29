@@ -80,9 +80,9 @@ int main(int argc, char** argv) {
   resout << "    ret i32 0" << endl
          << "}" << endl;
 
-  for (std::map<std::string, lambda>::iterator fun = Map.begin(); fun != Map.end(); ++fun) {
-    fun->second.getBody().eval;
-  }
+  //for (std::map<std::string, lambda>::iterator fun = Map.begin(); fun != Map.end(); ++fun) {
+  //  fun->second.getBody().eval;
+  //}
 
 
   // cleanup

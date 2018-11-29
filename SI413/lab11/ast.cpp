@@ -186,7 +186,7 @@ void WhileStmt::exec(Frame* ST,Context*con){
     << "  " << wl.replace(0,1,"") << ":" << endl;//while body
   wl.insert(0,"%");
   body->exec(ST,con); //body code
-  resout << "    br label" << wlTest << endl //branch down to test
+  resout << "    br label " << wlTest << endl //branch down to test
     << "  " << wlTest.replace(0,1,"") << ":" << endl; //test body
 
   string test = clause->eval(ST,con);//test code

@@ -26,7 +26,7 @@ enum Oper {
   AND, OR, NOT
 };
 
-std::map<std::string, Lambda*> funMap;
+//std::map<std::string, Lambda*> funMap;
 
 // These are forward declarations for the classes defined below.
 // They show the class hierarchy.
@@ -434,7 +434,7 @@ class Lambda :public Exp {
       //resout << "    " << dest << " = ptrtoint i64(i64)* @"
       //  << dest.replace(0,1,"") << " to i64" << endl;
       //add lambda* like the Frame* to keep track of functions
-      funMap[dest] = this;
+      //funMap[dest] = this;
       return dest;
     }
 };
