@@ -103,6 +103,14 @@ class Id :public Exp {
 
     // Returns a reference to the stored string value.
     string& getVal() { return val; }
+
+    string eval(Frame* ST, Context* con){
+      string name = ST->lookup(val);
+      string dest = con->nextRegister();
+      resout << "    " << dest << " = load i64, i64* "
+        << name << endl;
+      return dest;
+    }
 };
 
 /* A literal number in the program. */
@@ -289,7 +297,7 @@ class Block :public Stmt {
       ASTchild(body);
     }
 
-    void exec(Frame*ST,Context*con){//FIXME
+    void exec(Frame*ST,Context*con){
       body->exec(new Frame(ST), con);
       getNext()->exec(ST,con);
     }
@@ -335,6 +343,7 @@ class NewStmt :public Stmt {
       ASTchild(lhs);
       ASTchild(rhs);
     }
+    void exec(Frame* ST, Context* con) override;
 };
 
 /* An assignment statement. This represents a RE-binding in the symbol table. */
@@ -350,6 +359,7 @@ class Asn :public Stmt {
       ASTchild(lhs);
       ASTchild(rhs);
     }
+    void exec(Frame* ST, Context* con) override; 
 };
 
 /* A write statement. */
@@ -386,6 +396,11 @@ class ExpStmt :public Stmt {
     ExpStmt(Exp* b) {
       body = b;
       ASTchild(body);
+    }
+
+    void exec(Frame* ST, Context* con) override {
+      body->eval(ST,con);
+      getNext()->exec(ST,con);
     }
 };
 

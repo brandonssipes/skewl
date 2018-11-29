@@ -140,4 +140,21 @@ string Read::eval(Frame*ST, Context*con){
   resout << "    " << dest2 << " = load i64, i64* " << dest << endl;
   return dest2;
 }
+void NewStmt::exec(Frame* ST, Context* con){
+  string l = lhs->getVal();
+  string r = rhs->eval(ST, con);
+  string dest = con->nextRegister();
+  resout << "    " << dest << " = alloca i64" << endl
+    << "    store i64 " << r << ", i64* " << dest << endl;//store value on stack at dest
+  //add l to dest map to symbol table
+  ST->bind(lhs->getVal(), dest);
+  getNext()->exec(ST, con);
+}
 
+void Asn::exec(Frame* ST, Context* con){
+  string l = lhs->getVal();
+  string r = rhs->eval(ST, con);
+  string name = ST->lookup(l);
+  resout << "    store i64 " << r << ", i64* " << name << endl;//store value on stack at dest
+  getNext()->exec(ST, con);
+}
