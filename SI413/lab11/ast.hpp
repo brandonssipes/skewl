@@ -1,7 +1,7 @@
 /* SI 413 Fall 2018
  * Lab 11
  * This is a C++ header file for the AST class hierarchy.
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 #ifndef AST_HPP
@@ -131,8 +131,16 @@ class BoolExp :public Exp {
       val = v;
     }
 
-    //string eval(Frame*ST, Context*con) override {
-    //}
+    string eval(Frame*ST, Context*con) override {
+      string dest = con ->nextRegister();
+      resout << "    " << dest << " = add i64 0, ";
+      if(val == true)
+        resout << "1";
+      else
+        resout << "0";
+      resout << endl;
+      return dest;
+    }
 
 };
 
@@ -210,7 +218,7 @@ class NotOp :public Exp {
     string eval(Frame*ST,Context*con) override {
       string r = right->eval(ST,con);
       string dest = con->nextRegister();
-      resout << "    " << dest << " NOT DONE" << endl;//FIXME
+      resout << "    " << dest << " = sub i64 1, " << r << endl;//NOT DONE" << endl;//FIXME
       return dest;
     }
 };

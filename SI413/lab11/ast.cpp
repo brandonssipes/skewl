@@ -83,7 +83,9 @@ string CompOp::eval(Frame*ST, Context*con){
       exit(9);
   }
   resout << " i64 " << l << ", " << r << endl;
-  return dest;
+  string dest2 = con->nextRegister();//May need to move this to the write
+  resout << dest2 << " = zext i1 " << dest << " to i64" << endl;
+  return dest2;
 }
 
 
