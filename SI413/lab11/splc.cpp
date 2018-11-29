@@ -1,7 +1,7 @@
 /* SI413 Fall 2018
  * Lab 11
  * Main function to run the compiler
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 #include <fstream>
@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
   // LLVM header stuff
   resout << "target triple = \"x86_64-pc-linux-gnu\"" << endl
          << "@pfmt = constant [5 x i8] c\"%ld\\0A\\00\"" << endl
-         << "@sfmt = constant [5 x i8] c\"%ld\\00\"" << endl
+         << "@sfmt = constant [3 x i8] c\"%d\\00\"" << endl
          << "declare i32 @printf(i8*,...)" << endl
          << "declare i32 @scanf(i8*,...)" << endl;
 

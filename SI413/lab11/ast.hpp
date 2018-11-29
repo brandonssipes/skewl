@@ -289,10 +289,10 @@ class Block :public Stmt {
       ASTchild(body);
     }
 
-    //void exec(Frame*ST,Context*con){//FIXME
-    //  body->exec(new Frame(ST));
-    //  getNext()->exec(ST,con);
-    //}
+    void exec(Frame*ST,Context*con){//FIXME
+      body->exec(new Frame(ST));
+      getNext()->exec(ST,con);
+    }
 };
 
 /* This class is for "if" AND "ifelse" statements. */
