@@ -179,7 +179,8 @@ void IfStmt::exec(Frame* ST, Context* con){
 }
 void WhileStmt::exec(Frame* ST,Context*con){
   string wl1 = con->nextRegister();
-  resout << 
+  string wlTEST = con->nextRegister();
+  resout << "    " << 
   string test = clause->eval(ST,con);
   resout << "    " << dest << 
 
