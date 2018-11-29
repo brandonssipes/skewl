@@ -426,6 +426,13 @@ class Lambda :public Exp {
     // the lambda sometime after it gets created.
     string getVar() { return var->getVal(); }
     Stmt* getBody() { return body; }
+
+    string eval(Frame* ST, Context* con) override {
+      string dest = con->nextRegister();
+      resout << "    " << dest << " = ptrtoint i64(i64)* @"
+        << dest.replace(0,1,"") << " to i64" << endl;
+      return dest;
+    }
 };
 
 /* A function call consists of the function name, and the actual argument.
