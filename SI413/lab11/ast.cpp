@@ -178,11 +178,21 @@ void IfStmt::exec(Frame* ST, Context* con){
   getNext()->exec(ST,con);
 }
 void WhileStmt::exec(Frame* ST,Context*con){
-  string wl1 = con->nextRegister();
-  string wlTEST = con->nextRegister();
-  resout << "    " << 
-  string test = clause->eval(ST,con);
-  resout << "    " << dest << 
+  string dest = con->nextRegister();
+  string wl = con->nextRegister(); //wl for while loop
+  string wlTest = con->nextRegister();
+  string end = con->nextRegister();
+  resout << "    br label " << wlTest <<endl //Branch down to test
+    << "  " << wl.replace(0,1,"") << ":" << endl;//while body
+  wl.insert(0,"%");
+  body->exec(ST,con); //body code
+  resout << "    br label" << wlTest << endl //branch down to test
+    << "  " << wlTest.replace(0,1,"") << ":" << endl; //test body
+
+  string test = clause->eval(ST,con);//test code
+  resout << "    " <<  dest << " = trunc i64 " << test << " to i1" << endl
+    << "    br i1 " << dest << ", label " << wl << ", label " << end << endl
+    << "  " << end.replace(0,1,"") << ":" << endl;
 
   getNext()->exec(ST,con);
 }
