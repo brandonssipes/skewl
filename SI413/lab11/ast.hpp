@@ -290,7 +290,7 @@ class Block :public Stmt {
     }
 
     void exec(Frame*ST,Context*con){//FIXME
-      body->exec(new Frame(ST));
+      body->exec(new Frame(ST), con);
       getNext()->exec(ST,con);
     }
 };
