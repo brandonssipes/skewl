@@ -1,7 +1,7 @@
 /* SI413 Fall 2018
  * Lab 11
  * Global definitions for the compiler
- * YOUR NAME HERE
+ * Brandon Sipes
  */
 
 #ifndef SPLC_HPP
