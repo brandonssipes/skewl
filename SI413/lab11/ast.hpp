@@ -26,6 +26,8 @@ enum Oper {
   AND, OR, NOT
 };
 
+std::map<std::string, Lambda*> funMap;
+
 // These are forward declarations for the classes defined below.
 // They show the class hierarchy.
 class AST;
@@ -429,8 +431,10 @@ class Lambda :public Exp {
 
     string eval(Frame* ST, Context* con) override {
       string dest = con->nextRegister();
-      resout << "    " << dest << " = ptrtoint i64(i64)* @"
-        << dest.replace(0,1,"") << " to i64" << endl;
+      //resout << "    " << dest << " = ptrtoint i64(i64)* @"
+      //  << dest.replace(0,1,"") << " to i64" << endl;
+      //add lambda* like the Frame* to keep track of functions
+      funMap[dest] = this;
       return dest;
     }
 };
