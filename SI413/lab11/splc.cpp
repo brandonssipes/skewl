@@ -47,6 +47,7 @@ int main(int argc, char** argv) {
   // LLVM header stuff
   resout << "target triple = \"x86_64-pc-linux-gnu\"" << endl
          << "@pfmt = constant [5 x i8] c\"%ld\\0A\\00\"" << endl
+         << "@dbgf = constant [3 x i8] c\"%s\\00\"" << endl
          << "@sfmt = constant [3 x i8] c\"%d\\00\"" << endl
          << "declare i32 @printf(i8*,...)" << endl
          << "declare void @exit(i32)" << endl
