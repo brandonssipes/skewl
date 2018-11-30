@@ -99,16 +99,42 @@ BoolOp::BoolOp(Exp* l, Oper o, Exp* r) {
 }
 
 string BoolOp::eval(Frame*ST, Context*con){
+  string br = con->nextRegister();//branch for use in the phi
+  resout << "    br label " << br << endl
+    << "  " << br.replace(0,1,"") << ":" << endl;
+
+  //do the left side,
   string l = left->eval(ST,con);
-  string r = right->eval(ST,con);
-  string dest = con->nextRegister();
-  resout << "    " << dest << " = ";
+  string sc = con->nextRegister(); //short circuit
+  string end = con->nextRegister();//end
+  string other = con->nextRegister();//right side
+  resout << "    " << sc << " = trunc i64 " << l << " to i1" << endl
+    << "    br i1 " << sc << ", label ";
+  //then branch operator dependant
   if(op == OR)
-      resout << "or";
+    resout << end << ", label " << other << endl;
+  else 
+    resout << other << ", label " << end << endl;
+
+  //define right label
+  resout << "  " << other.replace(0,1,"") << ":" << endl;
+  string r = right->eval(ST,con);
+  string rr = con->nextRegister(); //right result
+  resout << "    " << rr << " = trunc i64 " << r << " to i1" << endl;
+  resout << "    br label " << end << endl;
+
+  //define end label
+  string dest = con->nextRegister(); //result
+  resout << "  " << end.replace(0,1,"") << ":" << endl
+    << "    " << dest << " = phi i1 [ ";
+  if(op == OR)
+    resout << "true";
   else
-      resout << "and";
-  resout << " i64 " << l << ", " << r << endl; 
-  return dest;
+    resout << "false";
+  string dest2 = con->nextRegister(); //result
+  resout << ", " << br.insert(0,"%") << " ], [ " << rr << ", " << other.insert(0,"%") << "]" << endl
+    << "    " << dest2 << " = zext i1 " << dest << " to i64" << endl;
+  return dest2;
 }
 
 // Constructor for IfStmt
@@ -160,12 +186,13 @@ void Asn::exec(Frame* ST, Context* con){
 }
 
 void IfStmt::exec(Frame* ST, Context* con){
-  string test = clause->eval(ST,con);
+  string test = clause->eval(ST,con); //Evaluate test
   string dest = con->nextRegister();
-  string br1 = con->nextRegister();//Is there one of these for labels?
+  string br1 = con->nextRegister();
   string br2 = con->nextRegister();
   string end = con->nextRegister();
 
+  //truncate down to bool, then choose which label to go to
   resout << "    " << dest << " = trunc i64 " << test << " to i1" << endl
     << "    br i1 " << dest << ", label " << br1 << ", label " << br2 << endl
     << "  " << br1.replace(0,1,"") << ":" << endl;
