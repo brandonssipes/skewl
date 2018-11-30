@@ -49,7 +49,9 @@ int main(int argc, char** argv) {
          << "@pfmt = constant [5 x i8] c\"%ld\\0A\\00\"" << endl
          << "@sfmt = constant [3 x i8] c\"%d\\00\"" << endl
          << "declare i32 @printf(i8*,...)" << endl
+         << "declare void @exit(i32)" << endl
          << "declare i32 @scanf(i8*,...)" << endl;
+
 
   // this is the root Frame to hold all global variable bindings
   Frame gframe(nullptr);
