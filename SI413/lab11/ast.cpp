@@ -201,10 +201,10 @@ void IfStmt::exec(Frame* ST, Context* con){
     << "    br i1 " << dest << ", label " << br1 << ", label " << br2 << endl
     << "  " << br1.replace(0,1,"") << ":" << endl;
   ifblock->exec(ST,con);
-  resout << "    br label" << end << endl
+  resout << "    br label " << end << endl
     << "  " << br2.replace(0,1,"") << ":" << endl;
   elseblock->exec(ST,con);
-  resout << "    br label" << end << endl
+  resout << "    br label " << end << endl
     << "  " << end.replace(0,1,"") << ":" << endl;
   getNext()->exec(ST,con);
 }
