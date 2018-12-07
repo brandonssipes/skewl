@@ -12,6 +12,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <list>
 #include <typeinfo>
 #include "splc.hpp"
 #include "frame.hpp"
@@ -26,7 +27,7 @@ enum Oper {
   AND, OR, NOT
 };
 
-//std::map<std::string, Lambda*> funMap;
+
 
 // These are forward declarations for the classes defined below.
 // They show the class hierarchy.
@@ -431,10 +432,12 @@ class Lambda :public Exp {
 
     string eval(Frame* ST, Context* con) override {
       string dest = con->nextRegister();
-      //resout << "    " << dest << " = ptrtoint i64(i64)* @"
-      //  << dest.replace(0,1,"") << " to i64" << endl;
+      string func = con->nextRegister();
+      resout << "    " << dest << " = ptrtoint i64(i64)* @"
+        << func.replace(0,1,"") << " to i64" << endl;
       //add lambda* like the Frame* to keep track of functions
-      //funMap[dest] = this;
+      //lamb.push_front(this);
+      //ST->bind(var,dest);
       return dest;
     }
 };
@@ -452,6 +455,11 @@ class Funcall :public Exp {
       arg = a;
       ASTchild(funexp);
       ASTchild(arg);
+    }
+    string eval(Frame* ST, Context* con){ //fake FuncCall for now
+      string dest = con->nextRegister();
+      resout << "    " << dest << " = add i64 0, 0" << endl;
+      return dest;
     }
 };
 
