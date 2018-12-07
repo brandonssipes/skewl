@@ -22,6 +22,7 @@ class Frame {
     // be accessed via the public methods below.
     map<string,string> bindings;
 
+
     // Pointer to the parent Frame
     Frame* parent;
 

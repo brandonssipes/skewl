@@ -65,6 +65,7 @@ int main(int argc, char** argv) {
   // start LLVM main
   resout << "define i32 @main() {" << endl;
 
+  //std::list<Lambda*> lamb;
 
   // loop to read in program statements, one at a time
   tree = nullptr;

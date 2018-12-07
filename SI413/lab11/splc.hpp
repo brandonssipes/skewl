@@ -8,10 +8,12 @@
 #define SPLC_HPP
 
 #include "colorout.hpp"
+#include <map>
 using namespace std;
 
 // forward declarations
 class Stmt;
+
 
 // Global variables
 extern colorout resout;
@@ -23,6 +25,7 @@ extern Stmt* tree;
 class Context {
   private:
     int regcount = 0;
+    std::map<string,Stmt*> funcMap;
 
   public:
     // returns a series of unique register names like
@@ -30,6 +33,7 @@ class Context {
     string nextRegister() {
       return "%v" + to_string(++regcount);
     }
+    int x;
 };
 
 #endif // SPLC_HPP
