@@ -1,5 +1,4 @@
 clang -S -emit-llvm foo.c
-llc foo.ll
 
 clang -emit-llvm -o foo.bc -c foo.c
 clang -o foo foo.bc
