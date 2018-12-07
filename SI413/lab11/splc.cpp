@@ -17,6 +17,8 @@ colorout errout(2, 'r');
 
 Stmt* tree = nullptr;
 
+
+
 int main(int argc, char** argv) {
   // 0, 1, and 2 correspond to stdin, stdout, and stderr respectively.
   bool interactive = isatty(0) && isatty(2);
@@ -83,8 +85,8 @@ int main(int argc, char** argv) {
   resout << "    ret i32 0" << endl
          << "}" << endl;
 
-  //for (std::map<std::string, lambda>::iterator fun = Map.begin(); fun != Map.end(); ++fun) {
-  //  fun->second.getBody().eval;
+  //for (std::list<Lambda*>::iterator it = lamb.begin(); it != lamb.end(); ++it) {
+  //  (*it)->getBody()->exec(&gframe, &gcon);
   //}
 
 
