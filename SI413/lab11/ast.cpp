@@ -164,7 +164,11 @@ string Read::eval(Frame*ST, Context*con){
     << "i64* " << dest << ")" << endl;
   string dest2 = con->nextRegister();
   resout << "    " << dest2 << " = load i64, i64* " << dest << endl;
-  return dest2;
+  string dest3 = con->nextRegister();
+  string dest4 = con->nextRegister();
+  resout << "    " << dest3 << " = trunc i64 " << dest2 << " to i32" << endl
+    << "    " << dest4 << " = sext i32 " << dest3 << " to i64" << endl;
+  return dest4;
 }
 void NewStmt::exec(Frame* ST, Context* con){
   string l = lhs->getVal();
@@ -223,16 +227,6 @@ void WhileStmt::exec(Frame* ST,Context*con){
 
   getNext()->exec(ST,con);
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
