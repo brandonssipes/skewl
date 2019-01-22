@@ -10,6 +10,7 @@ class Tennis {
     int P1score = 0;
     int P2score = 0;
     int turn = 0;
+    int win;
 
     void player(int &X,int &Y,int prob){//generic match
       if ((std::rand()%100) < prob)
@@ -20,6 +21,8 @@ class Tennis {
 
     int _play(){
       if((P1score > 7 || P2score > 7) && (abs(P1score-P2score) >= 2)){
+        if (P1score > P2score) win = 1;
+        else win = 2;
         return P1score + P2score;
       }
       else{
@@ -33,8 +36,7 @@ class Tennis {
       return _play();
     }
 
-
-  public:
+    public:
     Tennis(int p1,int p2){
       P1prob = p1;
       P2prob = p2;
@@ -49,6 +51,10 @@ class Tennis {
         turn = 0;//player1's turn
       }
       return _play();
+    }
+
+    int winner(){
+      return win;
     }
 
 
@@ -68,12 +74,17 @@ int main(){
   scanf("%d", &count);
   int sipes = count;
   int sum = 0;
+  int p1win = 0;
+  int p2win = 0;
   while (count > 0){
     Tennis game(player1,player2);
     sum += game.play();
+    if (game.winner() == 1) p1win ++;
+    else p2win ++;
     count --;
   }
-  printf("%d\n",sum/sipes);
+  printf("tiebreak lasted %d points and player %d is the winner\n",sum/sipes, (p1win > p2win) ? 1 : 2);
+
 
   return 0;
 }
