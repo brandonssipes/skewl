@@ -49,8 +49,10 @@ class RSA:
         # to get an error per centage of 2**-100
         runs = 50
         #input sanitization:
-        if(n%2 == 0) return "composite" #for dumb people
-        if(n <= 1) return "error"
+        if(n%2 == 0):
+            return "composite" #for dumb people
+        if(n <= 1):
+            return "error"
         #n - 1 = m*(2^k) (while m is odd)
         k = 0
         m = n-1 
@@ -60,21 +62,21 @@ class RSA:
         #choose ran int a so that 1 <= a <= n -1
         probability = 0
         for _ in range(runs): #run test many times
-            a = secrets.below(n)#FIXME how many to get n???
-            a = random.randint(1,n-1)
+            a = secrets.randbelow(n-1)+1 #get a number from 1 to n-1
             #let b = a^m mod n
-            b = this.modPow(a,m,n)
-            if (b%n == 1):
+            b = pow(a,m,n)
+            if (b == 1):
                 #probably prime so continue checking
                 probability += 1
                 continue
-            for i in range(k):
-                if (b == (-1%n)):
+            for _ in range(k):
+                if (b == n - 1):
                     probability += 1
                     break
                 else:
-                    b = this.modPow(b,2,n)
-        if (probability == runs) return "prime"
+                    b = pow(b,2,n)
+        if (probability == runs):
+            return "prime"
         return "composite"
 
 
@@ -83,5 +85,6 @@ class RSA:
 
 
 test = RSA()
-print(test.modPow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
-print(pow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
+#print(test.modPow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
+#print(pow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
+print(test.MillerRabin(int(sys.argv[1])))
