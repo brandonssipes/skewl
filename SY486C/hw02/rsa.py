@@ -28,7 +28,7 @@ class RSA:
             if((y%2) == 1): #if the first bit is a 1
                 prod = (prod * curr)%n #use that power of 2
             curr = (curr * curr)%n #increase to the next power of 2
-            y = y/2 #shift y down by 1 bit
+            y = y//2 #shift y down by 1 bit
         return prod
     
     def __modInverse(this,a,b):
@@ -64,7 +64,7 @@ class RSA:
         for _ in range(runs): #run test many times
             a = secrets.randbelow(n-1)+1 #get a number from 1 to n-1
             #let b = a^m mod n
-            b = pow(a,m,n)
+            b = this.modPow(a,m,n)
             if (b == 1):
                 #probably prime so continue checking
                 probability += 1
@@ -74,7 +74,7 @@ class RSA:
                     probability += 1
                     break
                 else:
-                    b = pow(b,2,n)
+                    b = this.modPow(b,2,n)
         if (probability == runs):
             return "prime"
         return "composite"
