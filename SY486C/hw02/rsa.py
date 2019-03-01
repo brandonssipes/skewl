@@ -13,9 +13,9 @@ class RSA:
             return this.__modPow(x,y,n)
         elif (y == -1):
             try:
-                g, a, _ = this.__modInverse(x,n)
+                g, a, p = this.__modInverse(x,n)
                 if g == 1:
-                    return a % n
+                    return p % n
                 else:
                     raise ValueError("Does not have an inverse")
             except ValueError as e:
@@ -39,7 +39,7 @@ class RSA:
         else:
             q = a // b
             r = a % b
-            g, s, t = __invMod(b, r)
+            g, s, t = this.__modInverse(b, r)
             return (g, t - s*q, s)
         
 
@@ -87,4 +87,5 @@ class RSA:
 test = RSA()
 #print(test.modPow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
 #print(pow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
-print(test.MillerRabin(int(sys.argv[1])))
+#print(test.MillerRabin(int(sys.argv[1])))
+print(test.modPow(5,-1,27))
