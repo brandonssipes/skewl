@@ -1,25 +1,24 @@
 #####################################
 #### Brandon Sipes RSA TOOL##########
 #### created February 23, 2019#######
-#### last updated February 23, 2019##
+#### last updated March 1, 2019######
 #####################################
 
-import secrets
 import sys
+if sys.version_info[0] < 3:
+    raise Exception("Must be using Python 3")
+import secrets
 
 class RSA:
     def modPow(this,x,y,n):
         if (y >= 0):
             return this.__modPow(x,y,n)
         elif (y == -1):
-            try:
-                g, a, p = this.__modInverse(x,n)
-                if g == 1:
-                    return p % n
-                else:
-                    raise ValueError("Does not have an inverse")
-            except ValueError as e:
-                print(e.args)
+            g, a, p = this.__modInverse(x,n)
+            if g == 1:
+                return p % n
+            else:
+                return -1
 
     def __modPow(this, x,y,n):
         curr = x%n #start off with x^1
@@ -79,13 +78,37 @@ class RSA:
             return "prime"
         return "composite"
 
+    def Encrypt(this,m,e,n):
+        return this.modPow(m,e,n)
+    def Decrypt(this,c,d,n):
+        return this.modPow(c,d,n)
+
+    def KeyGen(this, y):
+        p = secrets.randbits(y)
+        while(this.MillerRabin(p) == "composite"):
+            p = secrets.randbits(y)
+        q = secrets.randbits(y)
+        while(this.MillerRabin(q) == "composite"):
+            q = secrets.randbits(y)
+        n = p*q
+        phi = (p-1)*(q-1) 
+        e = 65537
+        if (e >= phi): #e has to be less than phi which if phi is less than 65537
+            e = 3      # then the security of e = 3 isn't the concern
+        d = this.modPow(e,-1,phi)
+        if(d == -1): #There is no inverse for d
+            n,e,d = this.KeyGen(y)
+        return n,e,d
+
+
+
 
         
-
 
 
 test = RSA()
 #print(test.modPow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
 #print(pow(int(sys.argv[1]),int(sys.argv[2]),int(sys.argv[3])))
 #print(test.MillerRabin(int(sys.argv[1])))
-print(test.modPow(5,-1,27))
+#print(test.KeyGen(int(sys.argv[1])))
+print(test.Decrypt(2790,413,3233))
