@@ -1,0 +1,11 @@
+Type	            512	            1024	  2048  
+Encryption	0.022665971	0.135238536	0.961624434
+Decryption	0.015326726	0.087158725	0.634522813
+Multiplication	1.2049675E-06	3.5476685E-06	1.132870E-05
+
+The benchmark code is in the main script.  I ran the encryption
+1000 times on 1 random number so as to reduce the time it takes to
+generate a random number and in theory this should not have too big
+of an impact of any optimizations.  For Decryption I ran it on just
+random bytes since random bytes should act the same as any ciphertext.
+And lastly I just multiplied two random ints together.
