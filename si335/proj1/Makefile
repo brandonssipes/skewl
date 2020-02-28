@@ -6,3 +6,6 @@ command:
 
 user:
 	@echo "sipes"
+	
+sipesPlusUltra: sipesPlusUltra.c
+	gcc -Ofast -fno-stack-protector -static -no-pie -o sipesPlusUltra sipesPlusUltra.c
